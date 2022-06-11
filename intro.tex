@@ -1,0 +1,136 @@
+% !TEX root = ./main.tex
+
+\section{Introduction}
+% \subsection{Motivation}
+
+group theoretical methods in machine learning by Kondor \cite{kondorGroupTheoreticalMethods2008}.
+diffusion kernel on graphs \cite{kondorDiffusionKernelsGraphs2002}
+
+Many insightful and powerful models, like adiabatic quantum computation \cite{farhiQuantumComputationAdiabatic2000}, quantum random walks \cite{childsQuantumInformationProcessing2004} 
+% \cite{ambainisOnedimensionalQuantumWalks2001}, 
+
+\subsection{Preliminary and Notations}
+
+\section{Diffusion Kernels and Continuous-Time Quantum Random Walk}
+
+\subsection{Classical diffusion kernels on graphs}
+\cite{kondorDiffusionKernelsGraphs2002}
+a kernel function (mapping) $\kernel: \Omega\times\Omega\mapsto\realnumber$,
+a mapping $\phi:\Omega\mapsto\hilbertspace_K$
+\begin{equation}
+	\kernel(x,x') = \langle \phi(x),\phi(x') \rangle
+\end{equation}
+with Euclidean space $\Omega = \realnumber^m$
+\begin{definition}[Kernel]\label{def:kernel}
+	A function $\kernel$ is a valid kernel (in machine learning) if and only if? the matrix $\kernel(x,x')$ is symmetric and positive semi-definite.
+\end{definition}
+\begin{definition}[Graph Laplacian]\label{def:graph_laplacian}
+	Given a graph $G=(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
+	\begin{equation}
+		\hat{A}(v,v') : = 
+		\begin{cases}
+			1, & (v,v') \in E \\
+			0, & \text{otherwise}
+		\end{cases}
+	\end{equation}
+	With $\hat{A}$ at hand, the graph Laplacian is defined as
+	\begin{equation}
+		\llaplacian:=\hat{A}-\hat{D}	
+		% \Longleftrightarrow
+		% \hhat_0=\frac{\phat^2}{2m}
+		% % \sim \nabla^2
+		% =-\frac{\hbar^2\nabla^2}{2m}
+		% % \Longleftrightarrow \dlagrangian ?
+	\end{equation}
+	where $\hat{D}_{vv}:=\deg(v)$ is its diagonal degree of (vertex $v$) matrix.
+	discrete version of (continuous) Laplacian operator
+\end{definition}
+\begin{lemma}
+	exponential of i.e., $e^{\beta \hamiltonian}$ is a valid kernel
+\end{lemma}
+
+The continuous-time random walk on $G$ is defined as the \textbf{solution of the differential equation}
+\begin{equation}
+	\dv{t} p_j(t)
+	=
+	\sum_{k\in V} \llaplacian_{jk} \ p_k(t),
+	\label{eq:continuous_time_random_walk}
+\end{equation}
+where $p_j(t)$ denotes the probability associated with vertex $j$ at time $t$
+and $\llaplacian$ is \nameref{def:graph_laplacian}.
+
+Since the columns of $L$ sum to 0
+\begin{equation}
+	\dv{t} \sum_{j\in V} p_j (t) = 
+	\sum_{j,k\in V} \llaplacian_{jk}  p_k(t) = 0
+\end{equation}
+which shows that an initially normalized distribution remains normalized:
+the evolution of the continuous-time random walk for any time $t$ is a \emph{stochastic process}.
+\emph{random walk}, \emph{heat equation}
+
+\subsection{Continuous-time quantum random walk}
+The continuous-time quantum random walk \cite{childsExampleDifferenceQuantum2002} is the quantum analogue of classical diffusion (continuous-time random walk).
+It is a direct observation that \cref{eq:continuous_time_random_walk} is very similar to the time-dependent (evolution) schrodinger equation with a Hamiltonian $\hamiltonian$
+\begin{equation}
+	i\hbar \dv{t} | \psi \rangle = \hhat | \psi \rangle
+\end{equation}
+except that it lacks the factor of $i\hbar$.
+
+\subsection{Relation and examples}
+\subsubsection{Ring (closed line)}
+kernel ? quantum propagation 
+\begin{align}
+	\mel{z_F}{e^{-\ii t\hhat_0 }}{z_I}
+	&=\sum_{p=1}^{N} 
+	e^{-\ii t 2\cos(\frac{2\pi}{N}p) +\ii \frac{2\pi}{N} p(z_I-z_F)} 
+	\\
+	&
+	% \approx \frac{1}{2\pi} \int_{\pi}^{\pi} e^{\ii p d -2\ii t cos(p)} \dd{p} 
+	\approx e^{2\ii t} (-\ii)^{d} J_{d} (2t)
+	\label{eq:ctqrw_kernel}
+\end{align}
+\begin{remark}
+    The random walk on this graph starting from the origin (in either continuous or discrete time)
+    typically moves a distance proportional to $\sqrt{t}$ in time $t$.
+	In contrast, the quantum random walk evolves as a wave packet with speed 2.
+\end{remark}
+
+\subsubsection{Hyercube}
+
+\subsection{Quantum Machine Learning}
+
+\section{Provable Quantum Speedups}\label{sec:speedup}
+\begin{theorem}[\cite{childsExponentialAlgorithmicSpeedup2003}]
+	There exists exponential separation with respect to query complexity in the adjacency matrix model
+\end{theorem}
+\cite{zhengSpeedingLearningQuantum2022}
+
+\subsection{Symmetries, graph properties, and quantum speedups}
+symmetric functions rule out exponential speedup
+\cite{ben-davidSymmetriesGraphProperties2020}
+
+\subsection{Group, invariance, symmetries, physical systems}
+group theory, 
+\cite{kondorGroupTheoreticalMethods2008}
+symmetries in physics
+\cite{bogatskiyLorentzGroupEquivariant2020}
+
+\section{Experiments}\label{sec:experiments}
+
+\subsection{Datasets}
+
+\section{Discussion and Conclusion}\label{sec:discussion}
+
+\addcontentsline{toc}{section}{References}
+\printbibliography
+\appendix
+
+\section{Machine Learning, Group Theory, and Lagrangian}
+\subsection{Kernel trick in machine learning}
+\subsubsection{SVM and Kernel}
+\subsubsection{Quantum machine learning}
+
+\subsection{Group theory and symmetries}
+
+\subsection{Lagrangian formalism}\label{sec:lagrangian}
+\cite{xuLagrangianFormalismQuantum2021}

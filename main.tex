@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+% new linux font, ignore mono
+% \usepackage[mono=false]{libertine} 
+% \renewcommand{\baselinestretch}{1.05}
+% \usepackage[top=0.7in,left=1in,bottom=1in,right=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb,epsfig,graphicx,mathrsfs,amsfonts,dsfont,bbm}
+% \usepackage{bbm} % for \mathbb{1}, but ruins the letter
+% \usepackage{unicode-math}
+% \DeclareMathOperator*{\argmax}{argmax}
+% \DeclareMathOperator*{\argmin}{argmin}
+\usepackage{pict2e}
+\usepackage[percent]{overpic}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{authblk}
+\usepackage{caption}
+% \usepackage{fullpage}
+\usepackage[toc,title,titletoc,header]{appendix}
+\usepackage{color}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{hyperref}
+\hypersetup{
+    citecolor=magenta,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,      
+    urlcolor=cyan,
+}
+\usepackage[capitalise]{cleveref}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{tikz}
+% \usepackage{tikzit}
+% \input{path_integral.tikzstyles}
+% \usepackage{tkz-graph} % graph theory
+\usepackage{braket}
+\usepackage{physics}
+% \usepackage{luatex85} % for qcircuit
+\usepackage{luatex85,qcircuit}
+\usepackage{blkarray}
+
+% \setlength\parindent{0pt}
+\setcounter{secnumdepth}{3}
+
+\theoremstyle{plain}
+\newtheorem{axiom}{Axiom}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture} 
+\newtheorem{question}{Question} 
+\newtheorem{claim}{Claim} 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{observation}{Observation} 
+\newtheorem{fact}{Fact}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{problem}{Problem}
+
+\usepackage[margin=2cm]{geometry}
+
+% bib title hyperlink
+\usepackage[style=alphabetic,doi=false,url=false,isbn=false,backend=biber,backref=true]{biblatex}
+% \DefineBibliographyStrings{english}{%
+%   backrefpage = {p.},% originally "cited on page"
+%   backrefpages = {pages},% originally "cited on pages"
+% }
+% \AtEveryBibitem{
+%     \clearfield{urlyear}
+%     \clearfield{urlmonth}
+% }
+% \addbibresource{bib.bib}
+% \addbibresource{ref.bib}
+\addbibresource{~/GitHub/Self-Study-Notes-on-Quantum-Computation/ref.bib}
+% \addbibresource{Quantum_Computation.bib}
+% \addbibresource{Quantum_Physics.bib}
+% \addbibresource{Textbook.bib}
+% \addbibresource{CS.bib}
+% \addbibresource{Math.bib}
+
+\newbibmacro{string+doiurlisbn}[1]{%
+    \iffieldundef{doi}{%
+    \iffieldundef{url}{%
+        \iffieldundef{isbn}{%
+        \iffieldundef{issn}{%
+            #1%
+        }{%
+            \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+        }%
+        }{%
+        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+        }%
+    }{%
+        \href{\thefield{url}}{#1}%
+    }%
+    }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+    }%
+}
+
+\DeclareFieldFormat[article,incollection,inproceedings,book,misc,online]{title}{\usebibmacro{string+doiurlisbn}{#1}}
+\DeclareFieldFormat{journaltitle}{\mkbibemph{#1}\isdot}
+\DeclareFieldFormat{booktitle}{#1\isdot}
+\renewbibmacro{in:}{}
+
+\input{./macros.tex}
+\renewcommand{\llaplacian}{\hat{\mathfrak{L}}}
+% \newcommand{\zpartition}{\mathcal{Z}}
+\newcommand{\hamiltonian}{\hat{H}}
+\newcommand{\U}{\hat{U}}
+\newcommand{\kernel}{\mathcal{K}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\oracle}{\hat{O}}
+\newcommand{\proj}{\hat{P}}
+% \newcommand{\deltat}{\Delta t}
+% \newcommand{\deltatau}{\Delta \tau}
+\newcommand{\cz}{\textup{\textsc{cZ}}}
+\newcommand{\cx}{\textup{\textsc{cx}}}
+\newcommand{\toffoli}{\textup{\textsc{toffoli}}}
+\newcommand{\lleft}{\leftarrow}
+\newcommand{\rright}{\rightarrow}
+\newcommand{\intinf}{\int_{-\infty}^{\infty}}
+
+
+%%%%%%%%%%%%%%%%%%%
+\title{Quantum Diffusion Kernels, Symmetries, Groups}
+\author{Jue Xu\footnote{\href{mailto:juexu@cs.umd.edu}{ juexu@cs.umd.edu}} }
+% \email{juexu@umd.edu}  
+% \affil{University of Maryland, College Park}
+%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% \vspace{10mm}
+\maketitle
+\begin{abstract}
+	We discuss the quantum analogue of diffusion kernels on graphs. prove the quantum speedup in terms of groups and symmetries.
+\end{abstract}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+% \newpage
+
+%%%%%%%%%%%%%%%Content%%%%%%%%%%%%%%%
+\input{intro.tex}
+% \input{preliminary.tex}
+% \input{circuit.tex}
+% \input{qaoa.tex}
+% \input{walk.tex}
+% \input{simulation.tex}
+% \input{complexity.tex}
+% \input{optimization.tex}
+% \input{discussion.tex}
+
+% \section{Conclusions}
+
+% \subsection*{Acknowledgements}
+% The author thanks Yaowu Liu for his pointer to some helpful reference.
+% The author thanks Andrew Childs for helpful discussion. 
+% opensource software TikZiT, QuTip
+
+%\begin{appendices}
+    %\chapter{}
+%\end{appendices}
+
+% \addcontentsline{toc}{section}{References}
+% \printbibliography
+
+% \begin{widetext}
+% \appendix
+% \input{pathintegral.tex}
+% \input{hamiltonian.tex}
+% \input{cs.tex}
+% \input{appendix.tex}
+% \end{widetext}
+% \end{appendices}
+%%%%%%%%%%%%%%%Reference%%%%%%%%%%%%%%%
+% \newpage
+
+\end{document}
