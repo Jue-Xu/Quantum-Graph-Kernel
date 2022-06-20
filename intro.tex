@@ -10,22 +10,30 @@ Many insightful and powerful models, like adiabatic quantum computation \cite{fa
 % \cite{ambainisOnedimensionalQuantumWalks2001}, 
 
 \subsection{Preliminary and Notations}
+% \subsubsection{Support Vector Machine (SVM)}
+% \subsubsection{Kernel trick}
+\subsection{SVM and Kernel trick}
+\subsubsection*{Hilbert space}
 
 \section{Diffusion Kernels and Continuous-Time Quantum Random Walk}
 
 \subsection{Classical diffusion kernels on graphs}
 \cite{kondorDiffusionKernelsGraphs2002}
-a kernel function (mapping) $\kernel: \Omega\times\Omega\mapsto\realnumber$,
-a mapping $\phi:\Omega\mapsto\hilbertspace_K$
+a \emph{kernel function} (mapping) $\kernel: \Omega\times\Omega\mapsto\realnumber$,
+a \emph{(feature) mapping} $\phi:\Omega\mapsto\hilbertspace_\kernel$
 \begin{equation}
-	\kernel(x,x') = \langle \phi(x),\phi(x') \rangle
+	\kernel(\vbx,\vbx') = \langle \phi(\vbx),\phi(\vbx') \rangle
 \end{equation}
 with Euclidean space $\Omega = \realnumber^m$
-\begin{definition}[Kernel]\label{def:kernel}
+\begin{definition}[Feature map]\label{def:feature_map}
+	\emph{feature map};
+	\emph{feature space};
+\end{definition}
+\begin{definition}[Kernel function]\label{def:kernel}
 	A function $\kernel$ is a valid kernel (in machine learning) if and only if? the matrix $\kernel(x,x')$ is symmetric and positive semi-definite.
 \end{definition}
-\begin{definition}[Graph Laplacian]\label{def:graph_laplacian}
-	Given a graph $G=(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
+\begin{definition}[Adjacency matrix]\label{def:adjacency_matrix}
+	Given a (undirected, unweighted) graph $G=(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
 	\begin{equation}
 		\hat{A}(v,v') : = 
 		\begin{cases}
@@ -33,7 +41,10 @@ with Euclidean space $\Omega = \realnumber^m$
 			0, & \text{otherwise}
 		\end{cases}
 	\end{equation}
-	With $\hat{A}$ at hand, the graph Laplacian is defined as
+	where the matrix entry is 1 if the two vertices (labels of the column and the row) are connected by an edge, otherwise 0.
+\end{definition}
+\begin{definition}[Graph Laplacian]\label{def:graph_laplacian}
+	With the adjacency matrix $\hat{A}$, the graph Laplacian is defined as
 	\begin{equation}
 		\llaplacian:=\hat{A}-\hat{D}	
 		% \Longleftrightarrow
@@ -43,12 +54,16 @@ with Euclidean space $\Omega = \realnumber^m$
 		% % \Longleftrightarrow \dlagrangian ?
 	\end{equation}
 	where $\hat{D}_{vv}:=\deg(v)$ is its diagonal degree of (vertex $v$) matrix.
-	discrete version of (continuous) Laplacian operator
 \end{definition}
+\begin{remark}
+	Graph Laplacian $\llaplacian$ is the 
+	discrete version of (continuous) Laplacian operator $\laplacian$.
+\end{remark}
 \begin{lemma}
 	exponential of i.e., $e^{\beta \hamiltonian}$ is a valid kernel
 \end{lemma}
 
+\subsubsection{Diffusion, heat equation, random walk,}
 The continuous-time random walk on $G$ is defined as the \textbf{solution of the differential equation}
 \begin{equation}
 	\dv{t} p_j(t)
@@ -70,15 +85,22 @@ the evolution of the continuous-time random walk for any time $t$ is a \emph{sto
 
 \subsection{Continuous-time quantum random walk}
 The continuous-time quantum random walk \cite{childsExampleDifferenceQuantum2002} is the quantum analogue of classical diffusion (continuous-time random walk).
-It is a direct observation that \cref{eq:continuous_time_random_walk} is very similar to the time-dependent (evolution) schrodinger equation with a Hamiltonian $\hamiltonian$
+By a direct observation, \cref{eq:continuous_time_random_walk} is very similar to the time-dependent (evolution) schrodinger equation governed by a Hamiltonian operator $\hamiltonian$
 \begin{equation}
 	i\hbar \dv{t} | \psi \rangle = \hhat | \psi \rangle
 \end{equation}
-except that it lacks the factor of $i\hbar$.
+except that the factor of $i\hbar$.
+\begin{definition}[Quantum propagator, kernel, transition]
+	
+\end{definition}
 
 \subsection{Relation and examples}
 \subsubsection{Ring (closed line)}
-kernel ? quantum propagation 
+classical kernel 
+\begin{equation}
+	\kernel()
+\end{equation}
+quantum propagation (kernel)
 \begin{align}
 	\mel{z_F}{e^{-\ii t\hhat_0 }}{z_I}
 	&=\sum_{p=1}^{N} 
@@ -95,21 +117,38 @@ kernel ? quantum propagation
 	In contrast, the quantum random walk evolves as a wave packet with speed 2.
 \end{remark}
 
+\subsubsection{Tree}
 \subsubsection{Hyercube}
 
-\subsection{Quantum Machine Learning}
+\section{Quantum Speedups via QKE}\label{sec:speedup}
+% \subsection{Quantum Machine Learning: SVM and QKE}
+\subsection{Previous works: Quantum Kernel Estimation}\label{sec:qke}
+\emph{quantum kernel estimation}
+\cite{schuldQuantumMachineLearning2019}
+\cite{havlicekSupervisedLearningQuantum2019}
 
-\section{Provable Quantum Speedups}\label{sec:speedup}
+\subsubsection{Explicit method}
+variational quantum circuit
+
+\subsubsection{Implicit method}
+\emph{quantum feature map}.
+quantum propagation, kernel in the path-integral formalism.
+
 \begin{theorem}[\cite{childsExponentialAlgorithmicSpeedup2003}]
 	There exists exponential separation with respect to query complexity in the adjacency matrix model
 \end{theorem}
 \cite{zhengSpeedingLearningQuantum2022}
 
-\subsection{Symmetries, graph properties, and quantum speedups}
+\cite{liuRigorousRobustQuantum2021}
+
+\subsection{Provable: Symmetries, graph properties, and quantum speedups}
 symmetric functions rule out exponential speedup
 \cite{ben-davidSymmetriesGraphProperties2020}
+\subsubsection{Permutation, symmetry, and speedup}
 
-\subsection{Group, invariance, symmetries, physical systems}
+\subsection{Heuristic: Group, invariance, symmetries, physical systems}
+\subsubsection{Group, symmetries in physics}
+covariant 
 \cite{glickCovariantQuantumKernels2021}
 group theory, 
 \cite{kondorGroupTheoreticalMethods2008};
@@ -118,9 +157,13 @@ symmetries in physics
 equivariant CNN 
 \cite{zhengSpeedingLearningQuantum2022}
 
-\section{Experiments}\label{sec:experiments}
+\subsubsection{Group theory and machine learning}
+\cite{kondorDiffusionKernelsGraphs2002}
 
-\subsection{Datasets}
+\section{Experiment}\label{sec:experiments}
+
+\subsection{Datasets and benchmark}
+% benchmark
 
 \section{Discussion and Conclusion}\label{sec:discussion}
 
@@ -129,9 +172,10 @@ equivariant CNN
 \appendix
 
 \section{Machine Learning, Group Theory, and Lagrangian}
-\subsection{Kernel trick in machine learning}
-\subsubsection{SVM and Kernel}
-\subsubsection{Quantum machine learning}
+% \subsection{Kernel trick in machine learning}
+% \subsubsection{SVM and Kernel}
+% \subsubsection{Quantum machine learning}
+\subsection{Machine learning}
 
 \subsection{Group theory and symmetries}
 
