@@ -11,16 +11,21 @@ Many insightful and powerful models, like adiabatic quantum computation \cite{fa
 
 \subsection{Preliminary and Notations}
 a datum $\vbx:= (x_1,x_2,\dots,x_n) \in \realnumber^n$ is a vector where $n$ is the number of \emph{features};
-dataset $\qty{\vbx^{(m)}, y}$ where the \emph{label} $y\in\qty{-1,1}$,
+dataset $\qty{\vbx^{(m)}, y}$ where the \emph{label} $y\in\Sigma$ with some (discrete set) alphabet/category $\Sigma$. for binary classification $\Sigma\qty{-1,1}$,
 $\Omega$;
 quantum state $\ket{z}$ with $z\in {1,2,\dots,2^n}$ where $n$ is the number of qubits,
 computational basis; 
 the binary representation $\ket{\vbx}=\ket{x_1,x_2,\dots,x_n},x_i\in \qty{0,1}$.
-$\ket{0}^n$
+$\ket{0}^n$, $\ket{\pm}$.
+graph $\graph$, group $\group$
 % \subsubsection{Support Vector Machine (SVM)}
 % \subsubsection{Kernel trick}
+% \subsubsection*{Hilbert space}
+\begin{definition}[Hilbert space]\label{def:hilbert_space}
+	\emph{Hilbert space} $\hilbertspace$ induced by inner product
+\end{definition}
 
-\subsection{SVM and Kernel trick}\label{sec:svm}
+\subsection{Terminology: SVM and Kernel trick}\label{sec:svm}
 \emph{supervised learning} 
 \footnote{unsupervised learning}
 \subsubsection*{Support Vector Machine}
@@ -28,7 +33,7 @@ training set, test set.
 training stage, classification stage.
 exponentially large space;
 hyperplane $(\vb{w},b)$ parametrized by a normal vector $\vb{w}\in\realnumber^n$ and a bias term $b\in\realnumber$. in the (high-dimensional) \emph{feature space}.
-maximize the margin
+maximize the margin [ref]
 \begin{equation}
 	\arg \max_f  L(y,\tilde{y}) + \norm{}
 \end{equation}
@@ -52,29 +57,32 @@ subject to $\sum_{i=1}^t \alpha_i y_i = 0$ and $\alpha_i\ge 0$ for each $i$?.
 % \end{figure}
 construct the classifier
 \begin{equation}
-	\tilde{m}(\vb{s}) = \textup(sign) \qty(
+	\tilde{m}(\vb{s}) := \textup{sign} \qty(
 		\sum_{i=1}^t y_i \alpha_i^* \kernel(\vbx_i,\vb{s}) + b
 	)
 \end{equation}
 
 \subsubsection*{Kernel trick (method)}
 \emph{kernel trick}: \emph{feature map} the input data to higher dimension such that the data are linearly separatable in this feature space.
-only depend on the inner product to avoid the expensive (exponential) calculation.
-a \emph{kernel function} (mapping) $\kernel: \Omega\times\Omega\mapsto\realnumber$,
-a \emph{(feature) mapping} $\phi:\Omega\mapsto\hilbertspace_\kernel$
-\begin{equation}
-	\kernel(\vbx,\vbx') = \langle \phi(\vbx),\phi(\vbx') \rangle
-\end{equation}
+only depend on the inner product to avoid the expensive (exponential) calculation. [ref]
 inner product (Dirac notation?).
+\begin{definition}[Kernel function]\label{def:kernel}
+	a \emph{kernel function} (mapping) $\kernel: \Omega\times\Omega\to\realnumber$,
+	\nameref{def:feature_map_classical} $\Phi(\vbx)$
+	% a \emph{(feature) mapping} $\phi:\Omega\mapsto\hilbertspace_\kernel$
+	\begin{equation}
+		\kernel(\vbx,\vbx') = \langle \Phi(\vbx),\Phi(\vbx') \rangle_{\hilbertspace}
+		\label{eq:kernel_classical}
+	\end{equation}
+	A function $\kernel$ ($k$) is a valid kernel (in machine learning) if and only if? the matrix $\kernel(x,x')$ is symmetric and positive semi-definite.
+\end{definition}
 \begin{definition}[Feature map]\label{def:feature_map_classical}
 	\emph{feature map};
 	\begin{equation}
-		\Phi(\vbx) : \realnumber^n \to \hilbertspace
+		\Phi(\vbx) : \Omega \to \hilbertspace_{\kernel}
+		\label{eq:feature_map_classical}
 	\end{equation}
-	from a low dimensional space non-linearly in to a high dimensional Hilbert-space $\hilbertspace$ which is commonly referred to as the \emph{feature space}.
-\end{definition}
-\begin{definition}[Kernel function]\label{def:kernel}
-	A function $\kernel$ is a valid kernel (in machine learning) if and only if? the matrix $\kernel(x,x')$ is symmetric and positive semi-definite.
+	from a low dimensional space non-linearly in to a high dimensional \nameref{def:hilbert_space} $\hilbertspace$ which is commonly referred to as the \emph{feature space}.
 \end{definition}
 \begin{figure}[!ht]
 	\centering
@@ -98,26 +106,36 @@ Some common kernels:
 \begin{itemize}
 	\item polynomial kernel:
 	\item radial:
-	\item Gaussian kernel:
+	\item \emph{Gaussian (radial basis) kernel}:
+	\begin{equation}
+		\kernel(\vbx,\vbx') = 
+		\exp(-\frac{\norm{\vbx-\vbx'}}{2\sigma^2})
+	\end{equation}
 \end{itemize}
 
 \begin{definition}[Reproducing Kernel Hilbert Space]
-	
+	It is well known that any continuous, symmetric, positive definite \nameref{def:kernel} has corresponding Hilbert space $\hilbertspace$, called the \emph{Reproducing Kernel Hilbert Space} (RKHS),
+	which induces a \nameref{def:feature_map_classical}
+	satisfying \cref{eq:kernel_classical}.
 \end{definition}
-\begin{theorem}[Representer]
-	
+\begin{theorem}[Representer theorem]
+	?
 \end{theorem}
 
-\subsubsection*{Hilbert space}
+\section{Graph Kernels and Quantum Random Walks}
+Largely, this development was driven by the empirical success of supervised learning of vector-valued data or image data. However, in many domains, such as chemo- and bioinformatics, social network analysis or computer vision, observations describe relations between objects or individuals and cannot be interpreted as vectors or fixed grids; instead, they are naturally represented by graphs.
+\cite{kriegeSurveyGraphKernels2020}
+graph-structured data is to make use of graph kernels—functions which measure the similarity between graphs.
 
-\section{Diffusion Kernels and Continuous-Time Quantum Random Walk}
-
-\subsection{Classical diffusion kernels on graphs}
-\cite{kondorDiffusionKernelsGraphs2002}
+\subsection{Diffusion kernel of a graph (between a pair of vertices)}
+\cite{kondorDiffusionKernelsGraphs2002}.
+generalize to regularization: 
+We propose a family of regularization operators (equivalently, kernels) on graphs that include Diffusion Kernels as a special case, and show that this family encompasses all possible regularization operators invariant under permutations of the vertices in a particular sense.
+\cite{smolaKernelsRegularizationGraphs2003}
 with Euclidean space $\Omega = \realnumber^m$
 
 \begin{definition}[Adjacency matrix]\label{def:adjacency_matrix}
-	Given a (undirected, unweighted) graph $G=(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
+	Given a (undirected, unweighted) graph $\graph(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
 	\begin{equation}
 		\hat{A}(v,v') : = 
 		\begin{cases}
@@ -138,6 +156,7 @@ with Euclidean space $\Omega = \realnumber^m$
 		% % \Longleftrightarrow \dlagrangian ?
 	\end{equation}
 	where $\hat{D}_{vv}:=\deg(v)$ is its diagonal degree of (vertex $v$) matrix.
+	The adjacency matrix and graph Laplacian of weighted graphs can be defined similarly.
 \end{definition}
 \begin{remark}
 	Graph Laplacian $\llaplacian$ is the 
@@ -146,6 +165,10 @@ with Euclidean space $\Omega = \realnumber^m$
 \begin{lemma}
 	exponential of i.e., $e^{\beta \hamiltonian}$ is a valid kernel
 \end{lemma}
+\begin{definition}[Diffusion kernel]\label{def:diffusion_kernel}
+	\emph{diffusion kernel}
+	$\kernel(v,v'):V(G)\to \realnumber$ where $\Omega$ is the set of vertices of graph $G$.
+\end{definition}
 
 \subsubsection{Diffusion, heat equation, random walk,}
 The continuous-time random walk on $G$ is defined as the \textbf{solution of the differential equation}
@@ -167,7 +190,7 @@ which shows that an initially normalized distribution remains normalized:
 the evolution of the continuous-time random walk for any time $t$ is a \emph{stochastic process}.
 \emph{random walk}, \emph{heat equation}
 
-\subsection{Continuous-time quantum random walk}
+\subsection{Continuous-time quantum random walk}\label{sec:ct_quantum_walk}
 The continuous-time quantum random walk \cite{childsExampleDifferenceQuantum2002} is the quantum analogue of classical diffusion (continuous-time random walk).
 By a direct observation, \cref{eq:continuous_time_random_walk} is very similar to the time-dependent (evolution) schrodinger equation governed by a Hamiltonian operator $\hamiltonian$
 \begin{equation}
@@ -178,6 +201,35 @@ except that the factor of $i\hbar$.
 	
 \end{definition}
 
+\subsection{Graph kernels of a pair of graphs}
+random walk kernel
+\cite{vishwanathanGraphKernels2010}
+quantum kernel
+\cite{baiQuantumJensenShannon2015}
+survey
+\cite{kriegeSurveyGraphKernels2020}
+\begin{definition}[Graph kernel]\label{def:graph_kernel}
+	$\kernel(G,G'): { G } \to \realnumber$
+\end{definition}
+\begin{definition}[Product of graphs]\label{def:product_graphs}
+	
+\end{definition}
+\begin{remark}
+	A natural question to ask is the following: Since diffusion can be viewed as a \textbf{continuous time} limit of random walks, can the ideas behind the random walk kernel be extended to diffusion? Unfortunately, the Laplacian of the product graph does not decompose into the Kronecker product of the Laplacian matrices of the constituent graphs; this rules out a straightforward extension.
+	discrete-time quantum random walk (need coin space) \cite{ambainisCoinsMakeQuantum2005} \cite{childsQuantumInformationProcessing2004};
+	Szegedy's walk formalism.
+	\cite{szegedySpectraQuantizedWalks2004}
+\end{remark}
+\begin{remark}
+	for diﬀusion processes on factor graphs the kernel on the factor graph is given by the product of kernels on the constituents, that is 
+	\begin{equation}
+		k((i, i'), (j, j')) = k(i, j) k' (i' , j' ).
+	\end{equation}
+\end{remark}
+
+\subsection{Discrete-time quantum random walk}
+\emph{Discrete-time quantum random walk}
+
 \subsection{Relation and examples}
 \subsubsection{Ring (closed line)}
 classical kernel 
@@ -186,7 +238,7 @@ classical kernel
 \end{equation}
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=.8\linewidth]{walk_1d.pdf}
+	\includegraphics[width=.7\linewidth]{walk_propagator_1d.pdf}
 	\caption{}
 \end{figure}
 quantum propagation (kernel)
@@ -213,7 +265,7 @@ quantum propagation (kernel)
 	Cayley graph is a graph that encodes the abstract structure of a group. 
 \end{definition}
 
-\section{Quantum Speedups via QKE}\label{sec:speedup}
+\section{Quantum Advantages and Speedups}\label{sec:speedup}
 A quantum version of this approach has already been proposed in \cite{rebentrostQuantumSupportVector2014},
 where an exponential improvement can be achieved if data is provided in a coherent superposition. 
 \begin{remark}
@@ -223,16 +275,22 @@ input model, quantum RAM;
 quantum-inspired \cite{tangQuantuminspiredClassicalAlgorithm2019}
 
 % \subsection{Quantum Machine Learning: SVM and QKE}
-\subsection{Previous works: Quantum Kernel Estimation}\label{sec:qke}
+\subsection{Related works}\label{sec:qke}
+
+\subsubsection{Quantum SVM and kernel tricks}
+Quantum version of SVM was proposed \cite{rebentrostQuantumSupportVector2014}
 \emph{quantum kernel estimation}
 \cite{schuldQuantumMachineLearning2019}
 \cite{havlicekSupervisedLearningQuantum2019}
-the quantum state space (Hilbert space) as the feature space to still obtain a quantum advantage
-mapping the input data non-linearly to a quantum state 
-\begin{equation}
-	\Phi(\vbx): \Omega \to \dyad{\Phi(\vbx)},
-\end{equation}
-the direct quantum analogy of classical \nameref{def:feature_map_classical}
+\begin{definition}[Quantum feature map]\label{def:quantum_feature_map}
+	the quantum state space (Hilbert space) as the feature space to still obtain a quantum advantage
+	mapping the input data non-linearly to a quantum state 
+	\begin{equation}
+		\Phi(\vbx): \Omega \to \dyad{\Phi(\vbx)},
+		\label{eq:quantum_feature_map}
+	\end{equation}
+the direct quantum analogy of classical \nameref{def:feature_map_classical}.
+\end{definition}
 
 \subsubsection{Explicit method (Quantum Variational Classification)}
 variational quantum circuit: generates a separating hyperplane in the quantum feature space
@@ -244,7 +302,7 @@ variational quantum circuit: generates a separating hyperplane in the quantum fe
 	then assign the label according to $p_y$?
 \end{enumerate}
 
-\subsubsection{Implicit method (QKE)}
+\subsubsection{Implicit method (Quantum Kernel Estimation)}
 estimate the kernel function quantumly and implement a conventional SVM.
 Rather than using a variational quantum circuit to generate the separating hyperplane, we use a classical SVM for classification.
 \begin{enumerate}
@@ -258,22 +316,32 @@ The overlap can be estimated directly from the transition amplitude
 	\abs{\braket{\Phi(\vbx)}{\Phi(\vbx')}}^2 = 
 	\abs{\matrixel{0^n}{U^\dagger_{\Phi(\vbx)} U_{\Phi(\vbx')}}{0^n}}^2
 \end{equation}
-measure the final state in the Z-basis R-times and record the number of $\ket{o^n}$.
+measure the final state in the Z-basis R-times and record the number of $\ket{0^n}$.
 The frequency of this string is the estimate of the transition probability.
 The kernel entry is obtained to an additive sampling error of $\tilde{\epsilon}$ when $\bigO(\tilde{\epsilon}^{-2})$ shots are used.
 \emph{quantum feature map}.
 quantum propagation, kernel in the path-integral formalism.
 
 \begin{theorem}[\cite{childsExponentialAlgorithmicSpeedup2003}]
-	There exists exponential separation with respect to query complexity in the adjacency matrix model
+	There exists exponential (classiacl-quantum) separation with respect to query complexity under the adjacency matrix (graph) model. (glued tree)
 \end{theorem}
-\cite{zhengSpeedingLearningQuantum2022}
-
+\cite{zhengSpeedingLearningQuantum2022};
+robust, provable speedup
 \cite{liuRigorousRobustQuantum2021}
+
+\subsubsection{Quantum Graph Kernel}
+quantum graph kernel defined in terms of Jensen Shannon
+\cite{baiQuantumJensenShannon2015}
+
+\subsubsection{Quantum Diffusion Map}
+Inspired by random walk on graphs, \emph{diffusion map} (DM) is a class of unsupervised machine learning that oﬀers automatic identification of \textbf{low-dimensional data structure hidden in a high dimensional dataset}.
+\cite{sornsaengQuantumDiffusionMap2021}
+
 
 \subsection{Provable: Symmetries, graph properties, and quantum speedups}
 symmetric functions rule out exponential speedup
 \cite{ben-davidSymmetriesGraphProperties2020}
+
 \subsubsection{Permutation, symmetry, and speedup}
 \begin{figure}[!ht]
 	\centering
@@ -281,7 +349,15 @@ symmetric functions rule out exponential speedup
 	\caption{\cite{childsExponentialAlgorithmicSpeedup2003}}
 \end{figure}
 
+\subsubsection{FFT and QFT}
+\cite{kondorGraphletSpectrum2009};
+quantum linear algebra (qMAT) [ref]: HHL, matrix inversion, matrix exponentiation, FFT by quantum algorithms
+\cite{sornsaengQuantumDiffusionMap2021}
+
 \subsection{Heuristic: Group, invariance, symmetries, physical systems}
+hidden subgroup problem solved by quantum Fourier transformation\cite{childsQuantumAlgorithmsAlgebraic2010};
+DLog \cite{zhengSpeedingLearningQuantum2022}
+
 \subsubsection{Group, symmetries in physics}
 covariant 
 \cite{glickCovariantQuantumKernels2021}
@@ -298,10 +374,11 @@ equivariant CNN
 \section{Experiment}\label{sec:experiments}
 
 \subsection{Datasets and benchmark}
+preliminary experiment
 \subsubsection{Artificial data}
 we generate artificial data that can be fully separated by our feature map.
-\subsubsection{Real dataset}
-JET?; quantum phase transition? order?
+\subsubsection{Real-world dataset}
+UCI, protein, JET?; quantum phase transition? order?
 % benchmark
 
 \section{Discussion and Conclusion}\label{sec:discussion}
@@ -317,7 +394,56 @@ JET?; quantum phase transition? order?
 \subsection{Machine learning}
 
 \subsection{Group theory and symmetries}
+group $\group$
 \subsubsection{Representation}
 
 \subsection{Lagrangian formalism}\label{sec:lagrangian}
 \cite{xuLagrangianFormalismQuantum2021}
+In optics, Fermat's principle states that the path taken by a ray between two given points is the path that can be traveled in the least (extremum) time. 
+% Lagrange multiplier method
+A similar argument, \emph{principle of least action}, was developed in classical mechanics:
+% [\emph{Principle of least action}]
+% postulate
+% \begin{postulate}
+% \end{postulate}
+\begin{axiom}[Principle of least action]\label{thm:least_action}
+    The actual path $q(t)$ taken by a classical system is the path that 
+	yields an extremum of its action \(\action\).
+	So, this principle is also called principle of stationary action.
+	% or \emph{Hamilton's principle}.
+	The action of the dynamics is the integral of Lagrangian over time
+	\begin{equation}
+		\action[q(t)]:=\int_{t_I}^{t_F}\dlagrangian(q(t),\dot{q}(t);t)\dd{t}
+		\label{eq:action}
+	\end{equation}
+	where $\lagrangian(q,\dot{q})$ is the Lagrangian in terms of generalized coordinate $q$ and velocity $\dot{q}$ at certain time $t$. 
+\end{axiom}
+The notion $\action[\cdot]$ reminds that action is a functional that takes a function (path) $q(t)$ as input.
+% see \cref{sec:path_integral} for more detail.
+% (the simplest case is cartesian corrdinates, can be spherical etc)
+% In classical mechanics, it is the actual path in the Euclidean space. 
+By varying the action, one have the equation of motion (Eq.\ref{eq:euler_lagrange}) called Euler-Lagrange equation.
+% \begin{equation}
+%     \pdv{\lagrangian}{q_a}-\dv{t}\pdv{\lagrangian}{\dot{q}_a}=0
+% \end{equation}
+This Lagrangian formalism was extended by Dirac \cite{diracAnalogyClassicalQuantum1945} and Feynman \cite{feynmanQuantumMechanicsPath2010} to explain quantum mechanics. 
+\begin{axiom}[Path integral]\label{thm:path_integral}
+    The amplitude (probability) of a quantum system evolving from $\ket{q_I}$ to $\ket{q_F}$ in a time interval can be evaluated by (functional) integrating over all possible paths with fixed initial and final position 
+    \begin{equation}
+		\mel{q_F}{e^{-\ii t\hhat/\hbar}}{q_I} =
+        \int_{q(t_I)= q_F}^{q(t_F)=q_I} \D q \; e^{\ii \action[q]/\hbar}
+    \end{equation}
+	where the action defined in classical mechanics as \cref{eq:action}.
+\end{axiom}
+The Larangian (path integral) formalism of quantum mechanics is proved to be equivalent to the well-known \schrodinger equation \cite[Chp4]{feynmanQuantumMechanicsPath2010} 
+% (complete specification)
+\begin{equation}
+    \ii\hbar \dv{t} \ket{\psi(t)} = \hhat(t) \ket{\psi(t)}
+	% \ket{\psi}=\sum_{q} \alpha_{q} \ket{q}$, $\sum_{q} \abs{\alpha_{q}}^2=1.
+    \label{eq:evolution}
+\end{equation}
+which is a differential equation determining the evolution of quantum state.
+In the classical limit (Planck's constant $\hbar\to 0$), \nameref{thm:path_integral} reduces to \nameref{thm:least_action}
+because only the paths around the stationary point of the action contribute 
+(the other paths' contributions frequently oscillate and cancel out).
+We have included a summary of the path integral formalism for various kinds of systems in \cref{sec:path_integral}.
