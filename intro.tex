@@ -14,7 +14,7 @@ a datum $\vbx:= (x_1,x_2,\dots,x_d) \in \realnumber^d$ is a vector where $d$ is 
 dataset $\qty{(\vbx^{(i)}, y^{(i)})}^{m}_{i=1}$ where the \emph{label} $y\in\Sigma$ with some (discrete set) alphabet/category $\Sigma$. 
 for binary classification, we have $\Sigma=\qty{-1,1}$,
 $\Omega$;
-computational basis $\ket{z}$ with $z\in \qty{1,2,\dots,2^n}$ where $n$ is the number of qubits,
+computational basis $\ket{z}$ with $z\in \qty{1,2,\dots,2^n-1,2^n}$ where $n$ is the number of qubits,
 the binary representation $\ket{\vbx}=\ket{x_1,x_2,\dots,x_n},x_j\in \qty{0,1}$.
 $\ket{0}^n$, $\ket{\pm}$.
 graph $\graph$, group $\group$
@@ -22,28 +22,49 @@ graph $\graph$, group $\group$
 % \subsubsection{Kernel trick}
 % \subsubsection*{Hilbert space}
 \begin{definition}[Inner product]\label{def:inner_product}
-	\emph{inner product} $\expval{\vbx,\vbx'}$.
-	Dirac notation $\braket{\vbx}{\vbx'}$
+	\emph{inner product} is a map
+	\begin{equation}
+		\expval{\cdot,\cdot}: V \times V \to \numberfield
+	\end{equation}
+	that $\forall \vbx,\vb{y},\vb{z}\in V,a,b\in\numberfield$
+	satisfies the following three properties 
+	\begin{itemize}
+		\item \textbf{Conjugate symmetry}:
+		$\expval{\vbx,\vb{y}}=\overline{\expval{\vb{y},\vbx}}$
+		\item \textbf{Linearity} in the first argument:
+		$\expval{a\vbx+b\vb{y},\vb{z}}=a\expval{\vbx,\vb{z}}+b\expval{\vb{y},\vb{z}}$
+		\item \textbf{Positive-definiteness}:
+		$\expval{\vbx,\vbx}\ge 0$ with equality only when $\vbx=\vb{0}$.
+	\end{itemize}
+	In classical machine learning, we assume the base field is $\realnumber$.
+	The inner product gives rise to the \emph{norm} $\norm{\vbx}=\sqrt{\expval{\vbx,\vbx}}$,
+	and a distance metric $d(\vbx,\vbx')=\norm{\vbx-\vbx'}$.
 \end{definition}
-`similarity' between two vectors ?
+Euclidean vector space $\realnumber^n$ with dot product is an inner product space,.
+While in the context of quantum mechanics,
+the inner product is replaced by 
+Dirac notation $\braket{\vbx}{\vbx'}$ with complex field $\complexnumber$.
+inner product can be understood as a `similarity' metric between two vectors ?
 \begin{definition}[Hilbert space]\label{def:hilbert_space}
-	\emph{Hilbert space} $\hilbertspace$ induced by \emph{inner product}
+	A \emph{Hilbert space} is a vector space $\hilbertspace$ induced by an \nameref{def:inner_product}
+	such that the inner product yields a complete metric space?.
 \end{definition}
 
 \subsection{Terminology: SVM and Kernel trick}\label{sec:svm}
 \emph{supervised learning} 
 \footnote{unsupervised learning}
-\subsubsection*{Support Vector Machine (SVM)}
+
+\subsubsection{Support Vector Machine (SVM)}
 training stage, classification stage.
 exponentially large space;
 \emph{hyperplane} $(\vb{w},b)$ parametrized by a normal vector $\vb{w}\in\realnumber^n$ and a \emph{bias} term $b\in\realnumber$. in the (high-dimensional) \emph{feature space}.
 maximize the \emph{margin} [ref]
 \begin{equation}
-	f^* = \arg \max_f  L(y,\tilde{y}) + \norm{}
+	f^* = \arg \max_f  L(y,\tilde{y}=f(x)) + \norm{}
 \end{equation}
 where the loss function $L$, slackness. called \emph{support vector}.
 
-\subsubsection*{Kernel trick (method)}
+\subsubsection{Kernel trick (method)}
 \emph{kernel trick}: \emph{feature map} the input data to higher dimension such that the data are linearly separatable in this feature space.
 only depend on the inner product to avoid the expensive (exponential) calculation. [ref]
 \begin{definition}[Kernel function]\label{def:kernel}
@@ -56,49 +77,64 @@ only depend on the inner product to avoid the expensive (exponential) calculatio
 	\end{equation}
 	w.r.t a \nameref{def:feature_map_classical} $\Phi(\vbx)$.
 \end{definition}
+\begin{definition}[Positive semi-definite]\label{def:psd}
+	\emph{positive semi-definite} (PSD/p.s.d).	
+	\begin{equation}
+		\sum_{i=1}^m \sum_{j=1}^m \alpha_i\alpha_j \kernel(\vbx^{(i)},\vbx^{(j)}) \ge 0
+	\end{equation}
+\end{definition}
 \begin{remark}
-	A function $\kernel$ ($k$) is a valid kernel (in machine learning) if and only if? the matrix $\kernel(x,x')$ is symmetric and \emph{positive semi-definite} (PSD, p.s.d).
+	A function $\kernel$ ($k$) is a valid kernel if and only if? the (Gram) matrix $\kernel(x,x')$ is symmetric and PSD.
 \end{remark}
-\begin{definition}[Feature map]\label{def:feature_map_classical}
+\begin{definition}[feature map]\label{def:feature_map_classical}
 	The \emph{feature map} is a function (mapping)
 	\begin{equation}
-		\Phi(\vbx) : \Omega \to \hilbertspace_{\kernel}
+		\Phi(\vbx) : \mathcal{X} \to \hilbertspace_{\kernel}
 		\label{eq:feature_map_classical}
 	\end{equation}
 	from a low dimensional space non-linearly in to a high dimensional \nameref{def:hilbert_space} $\hilbertspace$ which is commonly referred to as the \emph{feature space}.
 	For example, $\Phi(\vbx):\realnumber^d \to \realnumber^n$ with $n\gg d$.
 \end{definition}
-\begin{figure}[!ht]
-	\centering
-	\begin{subfigure}{0.3\textwidth}
-	\centering
-		\includegraphics[width=.9\linewidth]{SVM_margin.png}
-		\caption{linearly separable SVM}
-	\end{subfigure}
-	\begin{subfigure}{0.68\textwidth}
-	\centering
-		\includegraphics[width=.9\linewidth]{kernel_trick_idea.png}
-		\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx:=(a, b)) = (a, b, a^2 + b^2)$ and thus $\kernel(\vbx,\vb{y})=\vbx\cdot \vb{y}+\norm{x}^2 \norm{y}^2$ that only depends on inner product. The training points are mapped to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}	
-	\end{subfigure}
-\end{figure}
 % \begin{figure}[!ht]
 % 	\centering
-% 	\includegraphics[width=0.8\linewidth]{Kernel_trick_idea.png}
-% 	\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx:=(a, b)) = (a, b, a^2 + b^2)$ and thus $\kernel(\vbx,\vb{y})=\vbx\cdot \vb{y}+\norm{x}^2 \norm{y}^2$ that only depends on inner product. The training points are mapped to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}
+% 	\begin{subfigure}{0.3\textwidth}
+% 	\centering
+% 		\includegraphics[width=.9\linewidth]{SVM_margin.png}
+% 		\caption{linearly separable SVM}
+% 	\end{subfigure}
+% 	\begin{subfigure}{0.68\textwidth}
+% 	\centering
+% 		\includegraphics[width=.9\linewidth]{kernel_trick_idea.png}
+% 		\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx:=(a, b)) = (a, b, a^2 + b^2)$ and thus $\kernel(\vbx,\vb{y})=\vbx\cdot \vb{y}+\norm{x}^2 \norm{y}^2$ that only depends on inner product. The training points are mapped to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}	
+% 	\end{subfigure}
 % \end{figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Kernel_trick_idea.png}
+	\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx:=(a, b)) = (a, b, a^2 + b^2)$ and thus $\kernel(\vbx,\vb{y})=\vbx\cdot \vb{y}+\norm{x}^2 \norm{y}^2$. The training points are mapped from a 2-dimensional to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}
+	% that only depends on inner product
+	\label{fig:kernel}
+\end{figure}
 Some common kernels: 
 \begin{itemize}
 	\item polynomial kernel:
-	\item radial:
+	see \cref{fig:kernel}
+
 	\item \emph{Gaussian (radial basis) kernel}:
 	\begin{equation}
 		\kernel(\vbx,\vbx') = 
 		\exp(-\frac{\norm{\vbx-\vbx'}}{2\sigma^2})
+		=
 	\end{equation}
+	with the feature map
 \end{itemize}
+graph kernels discuss in the remainder of this paper.
 
 \begin{definition}[Reproducing Kernel Hilbert Space]
 	It is well known that any continuous, symmetric, positive definite \nameref{def:kernel} has corresponding Hilbert space $\hilbertspace$, called the \emph{Reproducing Kernel Hilbert Space} (RKHS),
+	\begin{equation}
+		f(x) = \expval{f,\kernel_x}
+	\end{equation}
 	which induces a \nameref{def:feature_map_classical}
 	satisfying \cref{eq:kernel_classical}.
 \end{definition}
@@ -123,7 +159,7 @@ with Euclidean space $\Omega = \realnumber^m$
 \begin{definition}[Adjacency matrix]\label{def:adjacency_matrix}
 	Given a (undirected, unweighted) graph $\graph(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
 	\begin{equation}
-		\hat{A}(v,v') : = 
+		\hat{A}_{v,v'} : = 
 		\begin{cases}
 			1, & (v,v') \in E \\
 			0, & \text{otherwise}
@@ -154,7 +190,7 @@ with Euclidean space $\Omega = \realnumber^m$
 \end{lemma}
 \begin{definition}[Diffusion kernel]\label{def:diffusion_kernel}
 	The \emph{diffusion kernel} of a graph w.r.t a pair of vertices $(v,v')$
-	is $\kernel(v,v'):V(G)\to \realnumber$, i.e.,
+	% is $\kernel(v,v'):V(G)\to \realnumber$, i.e.,
 	\begin{equation}
 		\kernel(v,v') := 
 		\qty[\sum_{k}\frac{\beta^k}{k!}\llaplacian^k]_{v,v'}  =
@@ -182,13 +218,18 @@ Since the columns of $\llaplacian$ sum to 0,
 an initially normalized distribution remains normalized:
 the evolution of the continuous-time random walk for any time $t$ is a \emph{stochastic process}.
 \emph{random walk} (discrete-space, discrete-time), 
-\emph{heat equation} 
+discretize the time derivative in \cref{eq:continuous_time_random_walk}
 \begin{equation}
-	u_t = \alpha \laplacian u \equiv \alpha \Delta u
+	p_j(t+1) = \frac{p_{j+1}(t) + p_{j-1}(t)}{2} 
+\end{equation}
+which is the finite difference equation of \emph{heat equation} 
+\begin{equation}
+	\pdv{p(t,z)}{t} = \pdv{ ^2 p(t,z)}{z^2}
+	% u_t = \alpha \laplacian u \equiv \alpha \Delta u
 	\label{eq:heat_equation}
 \end{equation}
-continuous-space (continous-time)
-the solution to \cref{eq:heat_equation} is called heat kernel $\kernel(t;x,y)=\frac{1}{4\pi t} e^{-\abs{x-y}^2/4t}$ (Gaussian).
+continuous-space (continous-time) case.
+The solution to \cref{eq:heat_equation} is called \emph{heat kernel} $\kernel(t;x,y)=\frac{1}{4\pi t} e^{-\abs{x-y}^2/4t}$ (Gaussian).
 
 \subsection{Continuous-time quantum random walk}\label{sec:ct_quantum_walk}
 The continuous-time quantum random walk \cite{childsExampleDifferenceQuantum2002} is the quantum analogue of classical diffusion (continuous-time random walk).
@@ -220,13 +261,27 @@ survey
 	Given a pair of graphs $(G,G')$,
 	a \emph{graph kernel} is a function (mapping)
 	$\kernel(G,G'): \qty{ \graph } \to \realnumber$
+	\begin{equation}
+		\kernel(G,G') =
+		\frac{1}{\abs{G}\abs{G'}}
+		\sum_k \frac{\lambda^k}{k!} \vbe^\T A_{\times} \vbe
+		=\frac{1}{\abs{G}\abs{G'}}
+		\vbe^\T \exp(\beta \hat{A}_{\times}) \vbe
+	\end{equation}
+	\emph{random walk kernel}
 \end{definition}
+\begin{remark}
+	the adjacency matrix of the product graph $A_{\times}=A\otimes A'$ ($\exp(A_{\times}=\exp(A)\otimes \exp(A'))$).	
+	In general, the Laplacian of the direct product graph 
+	$\llaplacian_{\times}\neq \llaplacian_1\otimes \llaplacian_2$.
+\end{remark}
 \cite{chungSpectralGraphTheory1997}
 \begin{definition}[Product of graphs]\label{def:product_graphs}
 	\emph{direct product of graphs};
 	\begin{equation}
+		G_{\times} : =
 		G(V,E)\times G'(V',E') 
-		: = \qty{(v,v')\in V\times V',((v,v'),(w,w'))\in E \wedge??}
+		: = \qty{(v,v')\in V\times V',((v,v'),(w,w')): (v,w)\in E, (v',w')\in E'}
 	\end{equation}
 	\emph{tensor product of graphs};
 	\begin{equation}
@@ -240,6 +295,9 @@ survey
 	\emph{factor graph};
 	\emph{Hadamard product};
 \end{definition}
+\begin{remark}
+	Random Walk on Product Graph is equivalent to simultaneous random walk on input graphs [?]
+\end{remark}
 \begin{remark}
 	A natural question to ask is the following: Since diffusion can be viewed as a \textbf{continuous time} limit of random walks, can the ideas behind the random walk kernel be extended to diffusion? Unfortunately, the Laplacian of the product graph does not decompose into the Kronecker product of the Laplacian matrices of the constituent graphs; this rules out a straightforward extension.
 	discrete-time quantum random walk (need coin space) \cite{ambainisCoinsMakeQuantum2005} \cite{childsQuantumInformationProcessing2004};
@@ -256,7 +314,7 @@ survey
 \subsection{Discrete-time quantum random walk}
 \emph{Discrete-time quantum random walk} is the quantum analogy of random walk
 
-\subsection{Relation and examples}
+\subsection{Relations, difference, and examples}
 \subsubsection{Line}
 (classical) diffusion kernel of a 1-dimensional lattice (line)
 \begin{equation}
@@ -274,10 +332,11 @@ survey
 	\approx e^{2\ii t} (-\ii)^{d} J_{d} (2t)
 	\label{eq:ctqrw_kernel}
 \end{align}
+where the distance between .
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=.7\linewidth]{walk_propagator_1d.pdf}
-	\caption{}
+	\caption{Different kinds of walks in 1d space}
 \end{figure}
 \begin{remark}
     The random walk on this graph starting from the origin (in either continuous or discrete time)
@@ -285,8 +344,20 @@ survey
 	In contrast, the quantum random walk spreads as a wave packet with speed 2.
 \end{remark}
 
-\subsubsection{Tree}
 \subsubsection{Hyercube}
+the unitary evolution operator of quantum diffusion on hypercube
+\begin{equation}
+	e^{-\ii t \hat{A}} = 
+	\prod_{j=1}^n e^{-\ii t \px^{(j)} }
+	= \bigotimes_{j=1}^n
+	\begin{pmatrix}
+		\cos t & -\ii \sin t \\ 
+		-\ii \sin t & \cos t
+	\end{pmatrix}
+\end{equation}
+
+\subsubsection{Tree}
+
 \subsubsection{Cayley graphs}
 \begin{definition}[Cayley graph]\label{def:cayley_graph}
 	Cayley graph is a graph that encodes the abstract structure of a group. 
@@ -371,32 +442,59 @@ Inspired by random walk on graphs, \emph{diffusion map} (DM) is a class of \text
 Though both are machine learning techniques, diffusion map (for dimension reduction) is the `reverse direction' of the kernel method.
 
 
-\subsection{Provable: Symmetries, graph properties}
+\subsection{Provable speedups}
 structure is required for quantum speedup
 \cite{aaronsonNeedStructureQuantum2014}
-symmetric functions rule out exponential speedup
-\cite{ben-davidSymmetriesGraphProperties2020}
 
-\subsubsection{Permutation, symmetry, and speedup}
+\subsubsection{Quantum Fourier Transform (QFT)}
+hidden subgroup problem solved by quantum Fourier transformation\cite{childsQuantumAlgorithmsAlgebraic2010};
+rigorous and robust quantum speedup with Discret Logarithm (DLOG) problem \cite{liuRigorousRobustQuantum2021}
+\begin{definition}[Hidden subgroup problem]\label{prm:hidden_subgroup}
+	Given a group $\group$ and a black-box function $f:\group\to S$, 
+	$f$ is promised to satisfy 
+	\begin{equation}
+		f(x) =f(y) \iff x^{-1}y \in H
+	\end{equation}
+	for some unknow subgroup $H\le \group$.
+	We say such a function $f$ hides a subgroup $H$.
+	The goal of \emph{hidden subgroup problem} (HSP) is to learn $H$
+	(specified in terms of a generating set) using queries to $f$.
+\end{definition}
+\begin{remark}
+	For Abelian subgroup problem (Simon's problem), the HSP with $G = \integer^n_2$ and $H = \qty{ 0, s }$ for some $s \in \integer_2^n$ .
+\end{remark}
+\begin{definition}[Discrete Logarithm problem]\label{prm:dlog}
+	\emph{discrete logarithm problem} is a special case of \nameref{prm:hidden_subgroup} with 
+	\begin{itemize}
+		\item \textbf{Input:} generator $g$, $y=g^x$ with some unknow $x$, black-box function $f$
+		\item \textbf{Output:} $x=\log_g y$
+	\end{itemize}
+\end{definition}
+
+\subsubsection{Permutation, symmetry, graph properties, and speedup}
+symmetric functions rule out exponential speedup
+\cite{ben-davidSymmetriesGraphProperties2020}.
+We have seen that the behavior of a quantum walk can be dramatically different from that of its classical counterpart. Next we will see an even stronger example of the power of quantum walk: a black-box problem that can be solved exponentially faster by a quantum walk than by any classical algorithm \cite{childsExponentialAlgorithmicSpeedup2003}.
+
+Consider a graph obtained by starting from two balanced binary trees of height n, and joining them by a random cycle of length $2\cdot 2^n$ that alternates between the leaves of the two trees. 
+For example, such a graph for $n = 4$ could look like \cref{fig:glued_tree}
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=.6\linewidth]{glued_tree.pdf}
-	\caption{\cite{childsExponentialAlgorithmicSpeedup2003}}
+	\caption{A typical graph exhibits rigorous exponential speedup over classical model in graph matrix representation. \cite{childsExponentialAlgorithmicSpeedup2003}}
+	\label{fig:glued_tree}
 \end{figure}
 
-\subsubsection{FFT and QFT}
+\subsubsection{qMAT}
+FFT
 \cite{kondorGraphletSpectrum2009};
 quantum linear algebra (qMAT) [ref]: HHL, matrices multiplication, matrix inversion, matrix exponentiation, FFT by quantum algorithms
 \cite{sornsaengQuantumDiffusionMap2021}
 
-\subsection{Heuristic: Groups, invariance, symmetries of physical systems}
-hidden subgroup problem solved by quantum Fourier transformation\cite{childsQuantumAlgorithmsAlgebraic2010};
-rigorous and robust quantum speedup with Discret Logarithm (DLOG) problem \cite{liuRigorousRobustQuantum2021}
+\subsection{Heuristic advantages for learning physics systems}
+problems of practical interest
 
-\subsubsection{Groups, symmetries in physics}
-covariant 
-\cite{glickCovariantQuantumKernels2021}
-group theory, 
+\subsubsection{Groups, symmetries, invariances in physics}
 \cite{kondorGroupTheoreticalMethods2008};
 symmetries in physics
 \cite{bogatskiyLorentzGroupEquivariant2020}
@@ -404,17 +502,25 @@ symmetries in physics
 equivariant CNN 
 \cite{zhengSpeedingLearningQuantum2022}.
 (classical) machine learning (neural network) for quantum many-body physics:
-determining the phase (transition) \cite{carrasquillaMachineLearningPhases2017}
+determining the phase (transition) 
+a standard feed-forward neural network can be trained to detect multiple types of order parameter directly from raw state conﬁgurations sampled with Monte Carlo.
+what if one was presented with a data set of Ising conﬁgurations from an unknown Hamiltonian, where the lattice structure (and therefore its T c) is not known?
+We turn to the application of such techniques to problems of greater interest in modern condensed matter, such as disordered or topological phases, where no conventional order parameter exists.
+Ising lattice gauge theory, one of the most prototypical examples of a topological phase of matter.
+A straightforward implementation of supervised training fails to classify a test set containing samples of the two states to an accuracy over 50\% – equivalent to simply guessing. Such failures typically occur because the neural network overﬁts to the training set. To overcome this diﬃculty we consider a convolutional neural network (CNN) [4, 22] which readily takes advantage of the two-dimensional structure of the input conﬁgurations, as well as the translational invariance of the model.
+\cite{carrasquillaMachineLearningPhases2017}
 \cite{carleoSolvingQuantumManyBody2017}
 
 \subsubsection{Group theory and machine learning}
 % \cite{kondorDiffusionKernelsGraphs2002}
+covariant quantum kernels for the data with group structures
+\cite{glickCovariantQuantumKernels2021}
 \begin{definition}[Covariant]\label{def:covariant}
 	\emph{covariant}
 \end{definition}
 \begin{definition}[Equivariance]\label{def:equivariant}
-	A map $f: X\to Y$ is said to be \emph{equivariant} w.r.t.
-	the actions $\rho: \group \times X\to X$ and $\rho': \group \times Y\to Y$ of a group $\group$ on $X$ and $Y$ if
+	Given a group $\group$ and the actions $\rho: \group \times X\to X$ and $\rho': \group \times Y\to Y$,
+	a map $f: X\to Y$ is said to be \emph{equivariant} if
 	\begin{equation}
 		\forall x\in X, g\in \group,
 		f(\rho(g,x)) = \rho'(g,f(x))
@@ -440,6 +546,11 @@ quantum many-body physics (phase transition)
 % topology order?
 
 \section{Discussion and Conclusion}\label{sec:discussion}
+to do 
+\begin{itemize}
+	\item quantum graph kernel with group structures
+	\item quantum machine learning for physics problem with symmetries
+\end{itemize}
 
 \addcontentsline{toc}{section}{References}
 \printbibliography
@@ -465,7 +576,7 @@ subject to $\sum_{i=1}^t \alpha_i y_i = 0$ and $\alpha_i\ge 0$ for each $i$?.
 % \begin{figure}[!ht]
 % 	\centering
 % 	\includegraphics[width=.3\linewidth]{SVM_margin.png}
-% 	\caption{}
+% 	\caption{linearly separable SVM}
 % \end{figure}
 construct the classifier
 \begin{equation}
@@ -473,6 +584,8 @@ construct the classifier
 		\sum_{i=1}^t y_i \alpha_i^* \kernel(\vbx_i,\vb{s}) + b
 	)
 \end{equation}
+
+\subsubsection{Neural network}
 
 \subsubsection{Quantum machine learning}\label{sec:quantum_machine_learning}
 \cite{biamonteQuantumMachineLearning2017}; neural network
@@ -509,7 +622,9 @@ The notion $\action[\cdot]$ reminds that action is a functional that takes a fun
 % see \cref{sec:path_integral} for more detail.
 % (the simplest case is cartesian corrdinates, can be spherical etc)
 % In classical mechanics, it is the actual path in the Euclidean space. 
-By varying the action, one have the equation of motion (Eq.\ref{eq:euler_lagrange}) called \emph{Euler-Lagrange equation}.
+By varying the action, one have the equation of motion 
+% (Eq.\ref{eq:euler_lagrange}) 
+called \emph{Euler-Lagrange equation}.
 % \begin{equation}
 %     \pdv{\lagrangian}{q_a}-\dv{t}\pdv{\lagrangian}{\dot{q}_a}=0
 % \end{equation}
