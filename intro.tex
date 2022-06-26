@@ -10,8 +10,9 @@ Many insightful and powerful models, like adiabatic quantum computation \cite{fa
 % \cite{ambainisOnedimensionalQuantumWalks2001}, 
 
 \subsection{Preliminary and Notations}
-a datum $\vbx:= (x_1,x_2,\dots,x_d) \in \realnumber^d$ is a vector where $d$ is the number of \emph{features};
-dataset $\qty{(\vbx^{(i)}, y^{(i)})}^{m}_{i=1}$ where the \emph{label} $y\in\Sigma$ with some (discrete set) alphabet/category $\Sigma$. 
+The data $\qty{(\vbx^{(i)}, y^{(i)})}^{m}_{i=1}$ consists of $m$ data points $\vbx:= (x_1,x_2,\dots,x_d) \in \realnumber^d$.
+where the \emph{label} $y\in\Sigma$ with some (discrete set) alphabet/category $\Sigma$. 
+Each is a vector where $d$ is the number of \emph{features}.
 for binary classification, we have $\Sigma=\qty{-1,1}$,
 $\Omega$;
 computational basis $\ket{z}$ with $z\in \qty{1,2,\dots,2^n-1,2^n}$ where $n$ is the number of qubits,
@@ -31,7 +32,7 @@ graph $\graph$, group $\group$
 	\begin{itemize}
 		\item \textbf{Conjugate symmetry}:
 		$\expval{\vbx,\vb{y}}=\overline{\expval{\vb{y},\vbx}}$
-		\item \textbf{Linearity} in the first argument:
+		\item \textbf{(Bi)Linearity}:
 		$\expval{a\vbx+b\vb{y},\vb{z}}=a\expval{\vbx,\vb{z}}+b\expval{\vb{y},\vb{z}}$
 		\item \textbf{Positive-definiteness}:
 		$\expval{\vbx,\vbx}\ge 0$ with equality only when $\vbx=\vb{0}$.
@@ -39,6 +40,7 @@ graph $\graph$, group $\group$
 	In classical machine learning, we assume the base field is $\realnumber$.
 	The inner product gives rise to the \emph{norm} $\norm{\vbx}=\sqrt{\expval{\vbx,\vbx}}$,
 	and a distance metric $d(\vbx,\vbx')=\norm{\vbx-\vbx'}$.
+	dot product
 \end{definition}
 Euclidean vector space $\realnumber^n$ with dot product is an inner product space,.
 While in the context of quantum mechanics,
@@ -63,12 +65,13 @@ maximize the \emph{margin} [ref]
 	f^* = \arg \max_f  L(y,\tilde{y}=f(x)) + \norm{}
 \end{equation}
 where the loss function $L$, slackness. called \emph{support vector}.
+\emph{concept class}, \emph{hypothesis}
 
 \subsubsection{Kernel trick (method)}
-\emph{kernel trick}: \emph{feature map} the input data to higher dimension such that the data are linearly separatable in this feature space.
+\emph{kernel trick}: \emph{feature map} the input data to higher dimension such that the data are linearly separatable in this feature space (see \cref{fig:kernel} for the intuition).
 only depend on the inner product to avoid the expensive (exponential) calculation. [ref]
-\begin{definition}[Kernel function]\label{def:kernel}
-	a \emph{kernel function} (mapping) $\kernel: \Omega\times\Omega\to\realnumber$,
+\begin{definition}[kernel function]\label{def:kernel}
+	a \emph{kernel function} (mapping) $\kernel: \Omega\times\Omega\to\hilbertspace$,
 	is defined as \nameref{def:inner_product}
 	% a \emph{(feature) mapping} $\phi:\Omega\mapsto\hilbertspace_\kernel$
 	\begin{equation}
@@ -76,16 +79,21 @@ only depend on the inner product to avoid the expensive (exponential) calculatio
 		\label{eq:kernel_classical}
 	\end{equation}
 	w.r.t a \nameref{def:feature_map_classical} $\Phi(\vbx)$.
-\end{definition}
-\begin{definition}[Positive semi-definite]\label{def:psd}
-	\emph{positive semi-definite} (PSD/p.s.d).	
+	A function $\kernel$ is a valid kernel if and only if? it corresponding Gram matrix $K_{\vbx,\vbx'}:=\kernel(x,x')$ is symmetric and positive semi-definite.
+% \end{definition}
+% \begin{definition}[Positive semi-definite]\label{def:psd}
+	A matrix $M\in\realnumber^{d\times n}$ is \emph{positive semi-definite} (PSD/p.s.d) if
+	\begin{equation}
+		\forall \vb{a} \in \realnumber^d, \vb{a}^\T M \vb{a} \ge 0.
+	\end{equation}
+	all positive eigenvalues?.
 	\begin{equation}
 		\sum_{i=1}^m \sum_{j=1}^m \alpha_i\alpha_j \kernel(\vbx^{(i)},\vbx^{(j)}) \ge 0
 	\end{equation}
 \end{definition}
-\begin{remark}
-	A function $\kernel$ ($k$) is a valid kernel if and only if? the (Gram) matrix $\kernel(x,x')$ is symmetric and PSD.
-\end{remark}
+% \begin{remark}
+% 	A function $\kernel$ is a valid kernel if and only if? it corresponding (Gram) matrix $K_{\vbx,\vbx'}=\kernel(x,x')$ is symmetric and PSD.
+% \end{remark}
 \begin{definition}[feature map]\label{def:feature_map_classical}
 	The \emph{feature map} is a function (mapping)
 	\begin{equation}
@@ -111,32 +119,41 @@ only depend on the inner product to avoid the expensive (exponential) calculatio
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.6\linewidth]{Kernel_trick_idea.png}
-	\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx:=(a, b)) = (a, b, a^2 + b^2)$ and thus $\kernel(\vbx,\vb{y})=\vbx\cdot \vb{y}+\norm{x}^2 \norm{y}^2$. The training points are mapped from a 2-dimensional to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}
+	\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx(x_1, x_2)) = (x_1, x_2, x_1^2 + x_2^2)$ and thus $\kernel(\vbx,\vbx')=\vbx\cdot \vbx' + \norm{\vbx}^2 \norm{\vbx'}^2$. The training points are mapped from a 2-dimensional to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}
 	% that only depends on inner product
 	\label{fig:kernel}
 \end{figure}
-Some common kernels: 
+Some common (popular) kernels on $\realnumber^d$ with dot product:
 \begin{itemize}
-	\item polynomial kernel:
-	see \cref{fig:kernel}
+	\item \emph{polynomial kernel}:
+	$\kernel(\vbx,\vbx')=(c+\vbx\cdot \vbx')^p$.
+	Take $d=2,p=2$ as an example, the corresponding feature map $\Phi(\vbx)=(x_1^2,x_2^2,\sqrt{2c}x_1,\sqrt{2c}x_2,c)^\T$.
 
 	\item \emph{Gaussian (radial basis) kernel}:
+	with the feature map $\Phi(\vbx)?=(\frac{1}{\sqrt{0!}}e^{-\vbx^2}\vbx^0,\dots,\frac{1}{\sqrt{n!}}e^{-\vbx^2}\vbx^n,\dots)$ (infinite dimensions)
 	\begin{equation}
 		\kernel(\vbx,\vbx') = 
 		\exp(-\frac{\norm{\vbx-\vbx'}^2}{2\sigma^2})
-		=?
+		% =?
+		\label{eq:gaussian_kernel}
 	\end{equation}
-	with the feature map
+
+	% \item Radial Kernels (Ornstein Uhlenbeck):
+	% \begin{equation}
+	% 	\kernel(\vbx,\vbx') = 
+	% 	\exp(-\frac{\norm{\vbx-\vbx'}}{\gamma})
+	% \end{equation}
 \end{itemize}
+only depend on the inner product $\vbx\cdot\vbx'$ without calculating the feature map explicitly. 
 graph kernels discuss in the remainder of this paper.
 
-\begin{definition}[Reproducing Kernel Hilbert Space]
-	It is well known that any continuous, symmetric, positive definite \nameref{def:kernel} has corresponding Hilbert space $\hilbertspace$, called the \emph{Reproducing Kernel Hilbert Space} (RKHS),
+\begin{definition}[Reproducing Kernel Hilbert Space]\label{def:rkhs}
+	It is well known that any continuous, symmetric, positive definite (\nameref{def:kernel}) has corresponding Hilbert space $\hilbertspace$ of (any real) functions $f$ defined on $\inputspace$, 
+	called the \emph{Reproducing Kernel Hilbert Space} (RKHS) with the \emph{reproducing property}
 	\begin{equation}
-		f(x) = \expval{f,\kernel_x}
+		f(\vbx) = \expval{f(\cdot),\kernel(\cdot,\vbx)}
 	\end{equation}
-	which induces a \nameref{def:feature_map_classical}
-	satisfying \cref{eq:kernel_classical}.
+	% which induces a \nameref{def:feature_map_classical} satisfying \cref{eq:kernel_classical}.
 \end{definition}
 \begin{theorem}[Representer theorem]
 	?
@@ -485,7 +502,13 @@ Use the diffusion map to get the embedding $\Psi_t$.
 	P, L
 \end{equation}
 Though both of SVM and DM are machine learning techniques that utilize kernel tricks, DM is designed for dimension reduction, the `reverse direction' of the kernel trick in SVM.
-
+\begin{definition}[Coherent state]
+	\emph{coherent state}
+	\begin{equation}
+		\ket{n} = \sum_{i}^n \frac{a}{n!} \ket{i}
+	\end{equation}
+\end{definition}
+\nameref{def:rkhs} \cite{chatterjeeGeneralizedCoherentStates2017}
 The quantum DM proposed by \cite{sornsaengQuantumDiffusionMap2021} takes as an input $N$ classical data vectors, 
 performs (quantumly) an eigen-decomposition of the Markov transition matrix in time $\bigO(\log^3 N)$, 
 and classically constructs the diffusion map via the readout (tomography) of the eigenvectors, giving a total expected runtime proportional to $N^2 \poly\log N$.
@@ -499,7 +522,7 @@ only quadratic speedup for unstructured search \cite{groverQuantumMechanicsHelps
 
 \subsubsection{Quantum Fourier Transform (QFT)}
 hidden subgroup problem solved by quantum Fourier transformation\cite{childsQuantumAlgorithmsAlgebraic2010};
-rigorous and robust quantum speedup with Discret Logarithm (DLOG) problem \cite{liuRigorousRobustQuantum2021}
+rigorous and robust quantum speedup with Discret Logarithm (\dlog) problem \cite{liuRigorousRobustQuantum2021}
 \begin{definition}[Hidden subgroup problem]\label{prm:hidden_subgroup}
 	Given a group $\group$ and a black-box function $f:\group\to S$, 
 	$f$ is promised to satisfy 
@@ -508,19 +531,20 @@ rigorous and robust quantum speedup with Discret Logarithm (DLOG) problem \cite{
 	\end{equation}
 	for some unknow subgroup $\le \group$.
 	We say such a function $f$ hides a subgroup $\subgroup$.
-	The goal of \emph{hidden subgroup problem} (HSP) is to learn $\subgroup$
+	The goal of \emph{hidden subgroup problem} (\hsp) is to learn $\subgroup$
 	(specified in terms of a generating set) using queries to $f$.
 \end{definition}
 \begin{remark}
-	For Simon's problem (Abelian subgroup problem), the HSP with $\group = \integer^n_2$ and $\subgroup = \qty{ 0, s }$ for some $s \in \integer_2^n$ .
+	Simon's problem (Abelian subgroup problem) is a $\hsp$ with $\group = \integer^n_2$ and $\subgroup = \qty{ 0, s }$ for some $s \in \integer_2^n$ .
 \end{remark}
 \begin{definition}[Discrete Logarithm problem]\label{prm:dlog}
-	\emph{discrete logarithm problem} is a special case of \nameref{prm:hidden_subgroup} with 
+	\emph{discrete logarithm problem} (\dlog) is a special case of HSP with 
 	\begin{itemize}
-		\item \textbf{Input:} generator $g$, $y=g^x$ with some unknow $x$, black-box function $f$
-		\item \textbf{Output:} $x=\log_g y$
+		\item \textbf{Input:} a prime $p$, a primitive element (generator) $g$ of $\integer_p^*=\qty{1,2,\dots,p-1}$, and an element $y=g^x \pmod{p} \in\integer_p^*$ with some unknow $x$. black-box function $f$?
+		\item \textbf{Output (goal):} find $x=\log_g y$
 	\end{itemize}
 \end{definition}
+reducible to decision version $\dlog_{1/2}$, then classification version.
 
 \subsubsection{Permutation, symmetry, and graph properties}
 symmetric functions rule out exponential speedup
@@ -606,6 +630,7 @@ quantum many-body physics (phase transition)
 \section{Discussion and Conclusion}\label{sec:discussion}
 to do 
 \begin{itemize}
+	\item formalize quantum graph kernels with quantum random walk
 	\item quantum graph kernel with group structures
 	\item quantum machine learning for physics problem with symmetries
 	\item NISQ?
