@@ -16,7 +16,7 @@ Each is a vector where $d$ is the number of \emph{features}.
 for binary classification, we have $\Sigma=\qty{-1,1}$,
 $\Omega$;
 computational basis $\ket{z}$ with $z\in \qty{1,2,\dots,2^n-1,2^n}$ where $n$ is the number of qubits,
-the binary representation $\ket{\vbx}=\ket{x_1,x_2,\dots,x_n},x_j\in \qty{0,1}$.
+the binary representation $\ket{\vbx}=\ket{x_1,x_2,\dots,x_n},x_j\in \qty{0,1}$. $N \equiv 2^n$
 $\ket{0}^n$, $\ket{\pm}$.
 graph $\graph$, group $\group$
 % \subsubsection{Support Vector Machine (SVM)}
@@ -59,11 +59,12 @@ inner product can be understood as a `similarity' metric between two vectors ?
 \subsubsection{Support Vector Machine (SVM)}
 training stage, classification stage.
 exponentially large space;
-\emph{hyperplane} $(\vb{w},b)$ parametrized by a normal vector $\vb{w}\in\realnumber^n$ and a \emph{bias} term $b\in\realnumber$. in the (high-dimensional) \emph{feature space}.
+($n-1$-dimensional) \emph{hyperplane} $(\vb{w},b)$ parametrized by a normal vector $\vb{w}\in\realnumber^n$ and a \emph{bias} term $b\in\realnumber$. in the (high-dimensional) \emph{feature space}.
 maximize the \emph{margin} [ref]
 \begin{equation}
-	f^* = \arg \max_f  L(y,\tilde{y}=f(x)) + \norm{}
+	f^* = \arg \max_f  L(y,\tilde{y}) + \norm{}
 \end{equation}
+$\tilde{y}:=f(x)$.
 where the loss function $L$, slackness. called \emph{support vector}.
 \emph{concept class}, \emph{hypothesis}
 
@@ -86,10 +87,11 @@ only depend on the inner product to avoid the expensive (exponential) calculatio
 	\begin{equation}
 		\forall \vb{a} \in \realnumber^d, \vb{a}^\T M \vb{a} \ge 0.
 	\end{equation}
-	all positive eigenvalues?.
+	all positive eigenvalues?. (Mercer's condition.)
 	\begin{equation}
 		\sum_{i=1}^m \sum_{j=1}^m \alpha_i\alpha_j \kernel(\vbx^{(i)},\vbx^{(j)}) \ge 0
 	\end{equation}
+	Informally, a kernel is a type of similarity measure between two data in the high-dimensional feature space.
 \end{definition}
 % \begin{remark}
 % 	A function $\kernel$ is a valid kernel if and only if? it corresponding (Gram) matrix $K_{\vbx,\vbx'}=\kernel(x,x')$ is symmetric and PSD.
@@ -155,8 +157,10 @@ graph kernels discuss in the remainder of this paper.
 	\end{equation}
 	% which induces a \nameref{def:feature_map_classical} satisfying \cref{eq:kernel_classical}.
 \end{definition}
+we don't need the explicit mapping $\Phi$ as the kernel alone defines the solution 
 \begin{theorem}[Representer theorem]
-	?
+	the kernel trick ? or more formally the \emph{representer theorem}
+	\cite{chatterjeeGeneralizedCoherentStates2017}
 \end{theorem}
 
 \section{Graph Kernels and Quantum Random Walks}
@@ -169,7 +173,7 @@ graph-structured data is to make use of graph kernels—functions which measure 
 
 \subsection{Diffusion kernel of a pair of vertices}
 \cite{kondorDiffusionKernelsGraphs2002}.
-generalize to regularization: 
+generalize to regularization \cite{kondorGraphletSpectrum2009}: 
 We propose a family of regularization operators (equivalently, kernels) on graphs that include Diffusion Kernels as a special case, and show that this family encompasses all possible regularization operators invariant under permutations of the vertices in a particular sense.
 \cite{smolaKernelsRegularizationGraphs2003}
 with Euclidean space $\Omega = \realnumber^m$
@@ -195,7 +199,7 @@ with Euclidean space $\Omega = \realnumber^m$
 		% =-\frac{\hbar^2\nabla^2}{2m}
 		% % \Longleftrightarrow \dlagrangian ?
 	\end{equation}
-	where $\hat{D}_{v,v}:=\deg(v)$ is the diagonal degree matrix.
+	where $\hat{D}_{v,v}:=\textup{deg}(v)=\sum_{v}[\hat{A}]_{v,v'}$ is the diagonal degree matrix.
 \end{definition}
 	Analogously, the adjacency matrix and graph Laplacian of weighted graphs can be defined.
 % \begin{remark}
@@ -387,6 +391,7 @@ the unitary evolution operator of quantum diffusion on hypercube
 \end{definition}
 
 \section{Quantum Advantages and Speedups}\label{sec:speedup}
+provide both theoretical insight and numerical demonstrations for its success, and show its feasibility for near-term experimental implementation.
 A quantum version of this approach has already been proposed in \cite{rebentrostQuantumSupportVector2014},
 where an exponential improvement can be achieved if data is provided in a coherent superposition. 
 \begin{remark}
@@ -394,12 +399,19 @@ where an exponential improvement can be achieved if data is provided in a cohere
 \end{remark}
 input model, quantum RAM;
 quantum-inspired \cite{tangQuantuminspiredClassicalAlgorithm2019}
+\cite{tangQuantumPrincipalComponent2021}.
 
 % \subsection{Quantum Machine Learning: SVM and QKE}
 \subsection{Related works}\label{sec:qke}
+There have been several attempts to introduce kernel method to quantum machine learning.
+% theoretically sound analogs of convolutional neural networks to quantum circuits, but they have generally been somewhat heuristic.
+% is highly desirable because it not only helps to gain important physical insights about the system but also leads to more eﬃcient
 
 \subsubsection{Quantum SVM and kernel tricks}
 Quantum version of SVM was proposed \cite{rebentrostQuantumSupportVector2014} to exploit the power of quantum computer.
+It is shown that a quantum support vector machine can be implemented with $O(\log md)$ run time in both training and classiﬁcation stages. 
+The performance in N arises due to a fast quantum evaluation of inner products.
+For the performance in M, we re-express the SVM as an approximate least-squares problem [15] that allows for a quantum solution with the matrix inversion algorithm [16, 17]. We employ a technique for the exponentiation of non-sparse matrices recently developed in [18]. This allows us to reveal efﬁciently in quantum form the largest eigenvalues and corresponding eigenvectors of the training data overlap (kernel) and covariance matrices. We thus efﬁciently perform a low-rank approximation of these matrices (principal component analysis, PCA).
 Naturally, the \emph{quantum kernel estimation}
 \cite{schuldQuantumMachineLearning2019}
 \cite{havlicekSupervisedLearningQuantum2019} 
@@ -473,11 +485,12 @@ In (classical information theory), the Jensen-Shannon divergence is a dissimilar
 \end{remark}
 The quantum version of Jensen-Shannon divergence is defined as the distance measure between mixed quantum states (density matrices).
 \begin{definition}[]
-	Given a graph $\group(V,E)$, The von Neumann entropy of $\group$ is defined as
+	Given a graph $\graph(V,E)$, the von Neumann entropy of $\graph$ is defined as
 	\begin{equation}
-		H_N (\rho_{\group}) = -\Tr(\rho_{G}\log \rho_{\group})
+		H_N (\rho_{\graph}) = -\Tr(\rho_{G}\log \rho_{\graph})
 		= - \sum_{j}^{\abs{V}} \lambda_j \log \lambda_j
 	\end{equation}
+	where $\rho_{\graph}$ and $\lambda$.
 	Given two density operators $\rho$ and $\rho'$,
 	the \emph{quantum Jensen-Shannon divergence} is defined as
 	\begin{equation}
@@ -491,24 +504,83 @@ Instead, we could exploit the structures inherent in physics systems and make us
 
 \subsubsection{Quantum diffusion map}
 Inspired by random walk on graphs, \emph{diffusion map} (DM) is a class of \textbf{unsupervised} machine learning that offers automatic identification of \textbf{low-dimensional data structure hidden in a high dimensional dataset}.
-% \begin{itemize}
-% 	\item 
-% 	\item 
-% \end{itemize}
+Most dimensionality reduction methods require the computation of singular value decomposition (SVD) of a matrix constructed from a collection of high-dimensional data points. $\bigO(N^3)$
+Thus, classical dimensionality reduction can be computationally prohibitive for a large data sample. However, under moderate assumptions of accessibility to certain features of full-scale quantum computers, matrix exponentiation-based quantum algorithms have been proposed to perform SVD more eﬃciently [17]. $\bigO(\poly\log N)$
+% \begin{remark}
+% 	Although the backbone of DM is a graph-based dimensionality reduction method, the procedure is diﬀerent from other spectral graph methods. 
+% 	Namely, rather than working with the data-induced graph Laplacian as in Laplacian eigenmaps or in spectral clustering, DM involves Markov transition matrix that deﬁnes random walks on a data-induced graph.
+% \end{remark}
+Our quantum diﬀusion map (qDM) consists of 5 major steps: 
+\begin{itemize}
+	\item 
+	coherent state data encoding scheme, 
+	\item 
+	a natural construction of kernel matrix from coherent states, 
+	\item 
+	a scheme to construct the Markov transition matrix from the kernel matrix, 
+	\item 
+	the eigen-decomposition of the transition matrix, 
+	\item 
+	and extracting relevant quantum information to construct diffusion map classically. 
+\end{itemize}
+The expected time complexity of qDM is N 2 polylog N, compared to the worst-case runtime O(N 3 ) of a classical DM. Importantly, from accessing of qRAM to performing an eigendecomposition of the Markov transition matrix, the total time complexity is only O(log 3N).
 Given the normalized (similarity) matrix $M$, 
 compute the $k$ largest eigenvalues(vectors) of $M^t$.
-Use the diffusion map to get the embedding $\Psi_t$.
-\begin{equation}
-	P, L
-\end{equation}
 Though both of SVM and DM are machine learning techniques that utilize kernel tricks, DM is designed for dimension reduction, the `reverse direction' of the kernel trick in SVM.
-\begin{definition}[Coherent state]
-	\emph{coherent state}
+Rather than using mere Euclidean distance as a similarity measure between data points, manifold learning approach assigns the connectivity among data points in their neighborhood as a proxy for proximity between points.
+% \begin{remark}
+% 	Two points whose squared distance exceed this bandwidth contribute exponentially little to the weighted edge, suggesting that these two points are far away from being a neighbor in its original feature space.
+% \end{remark}
+In diffusion map (DM), the similarity matrix between a pair of data vectors, or equivalently the weighted edge between a pair of graph vertices, is often taken to be a Gaussian kernel \cref{eq:gaussian_kernel}:
+\begin{equation}
+	W_{ij}:=\kernel_{\sigma}(\vbx^{(i)},\vbx^{(j)}) =
+	\exp(-\frac{\norm{\vbx^{(i)}-\vbx^{(j)}}_2^2}{2\sigma})
+\end{equation}
+where the adjustable parameter $\sigma$, called the bandwidth, sets the scale of neighborhood.
+Given a graph with weighted edges $W_{ij}$ ’s, DM assigns a \emph{discrete-time random walk} on a data-induced graph, 
+where the Markov transition probability from vertex $i$ to $j$ is given by the normalized weighted edge,
+\begin{equation}
+	P_{ij} = \frac{W_{ij}}{\sum_{j}W_{ij}}
+	,
+	P = D^{-1} W
+\end{equation}
+% \begin{remark}
+% 	The notion of proximity based on graph connectivity can be characterized by how fast random walkers on a graph starting at diﬀerent data points visit each other. One expects that two points that are connected by multiple paths should be near; whereas two points that are sparsely connected should lie far from each other.
+% \end{remark}
+Use the diffusion map to get the embedding $\Psi_t$.
+% \begin{equation}
+% 	P, L
+% \end{equation}
+\begin{definition}[Coherent state]\label{def:coherent_state}
+	A \emph{coherent state} is ...
 	\begin{equation}
-		\ket{n} = \sum_{i}^n \frac{a}{n!} \ket{i}
+		\ket{\alpha} 
+		= \sum_{n=0}^{\infty} \ket{n} \braket{n}{\alpha}
+		= e^{-\frac{1}{2}\abs{\alpha}^2} \sum_{n=0}^{\infty} \frac{\alpha^n}{\sqrt{n!}} \ket{n} 
+		= e^{-\frac{1}{2}\abs{\alpha}^2} e^{\alpha\acreation}\ket{0} 
 	\end{equation}
+	where $\ket{n}$ basis and $\acreation$ is the creation operator [ref].
+	% displacement operator
+	% \begin{equation}
+	% 	\hat{D}(\alpha)\ket{0} : = e^{\alpha \acreation - \alpha^* \aannihilation} \ket{0} = \ket{\alpha}
+	% \end{equation}
 \end{definition}
-\nameref{def:rkhs} \cite{chatterjeeGeneralizedCoherentStates2017}
+Consider two $n$ tensor product of (canonical) coherent states
+\begin{equation}
+	\ket{\pmb{\alpha}} = \ket{\alpha_{1}} \otimes\ket{\alpha_{2}} \cdots\otimes\ket{\alpha_{n}} 
+	,\quad
+	\ket{\pmb{\alpha}'} = \ket{\alpha_{1}'} \otimes\ket{\alpha_{2}'} \cdots\otimes\ket{\alpha_{n}'} 
+\end{equation}
+with $\vbx=(\alpha_1,\alpha_2,\dots,\alpha_n)$ and $\vbx'=(\alpha_1',\alpha_2',\dots,\alpha_n')$, the kernel reads
+\begin{equation}
+	\abs{\braket{\pmb{\alpha}}{\pmb{\alpha}'}}^2 = 
+	\exp(-\norm{\vbx-\vbx'}^2) 
+\end{equation}
+which is the Gaussian kernel c.f. \cref{eq:gaussian_kernel}.
+One of the most significant limitations of classical algorithms using non-linear kernels is that the kernel function has to be evaluated for all pairs of input feature vectors which themselves may be of substantially high dimension. [quantum parallelism (superposition) measurement]
+The key link will be the \nameref{def:rkhs} property for SVMs that naturally arise from canonical and generalized coherent states. 
+Specifically, we discuss the fast evaluation of radial kernels through a positive operator valued measure (POVM) on a quantum optical system based on canonical coherent states.
+\cite{chatterjeeGeneralizedCoherentStates2017}
 The quantum DM proposed by \cite{sornsaengQuantumDiffusionMap2021} takes as an input $N$ classical data vectors, 
 performs (quantumly) an eigen-decomposition of the Markov transition matrix in time $\bigO(\log^3 N)$, 
 and classically constructs the diffusion map via the readout (tomography) of the eigenvectors, giving a total expected runtime proportional to $N^2 \poly\log N$.
@@ -520,37 +592,44 @@ structure is required for quantum speedup
 only polynomial speedup for total problem [ref].
 only quadratic speedup for unstructured search \cite{groverQuantumMechanicsHelps1997}
 
-\subsubsection{Quantum Fourier Transform (QFT)}
+\subsubsection{Quantum Fourier Transform (QFT) and algebraic problems}
 hidden subgroup problem solved by quantum Fourier transformation\cite{childsQuantumAlgorithmsAlgebraic2010};
-rigorous and robust quantum speedup with Discret Logarithm (\dlog) problem \cite{liuRigorousRobustQuantum2021}
-\begin{definition}[Hidden subgroup problem]\label{prm:hidden_subgroup}
+rigorous and robust quantum speedup with Discret Logarithm problem \cite{liuRigorousRobustQuantum2021}
+\begin{problem}[Hidden subgroup problem]\label{prm:hidden_subgroup}
 	Given a group $\group$ and a black-box function $f:\group\to S$, 
 	$f$ is promised to satisfy 
 	\begin{equation}
 		f(x) =f(y) \iff x^{-1}y \in \subgroup 
 	\end{equation}
-	for some unknow subgroup $\le \group$.
+	for some unknow subgroup $\subgroup \le \group$.
 	We say such a function $f$ hides a subgroup $\subgroup$.
 	The goal of \emph{hidden subgroup problem} (\hsp) is to learn $\subgroup$
 	(specified in terms of a generating set) using queries to $f$.
-\end{definition}
+\end{problem}
 \begin{remark}
-	Simon's problem (Abelian subgroup problem) is a $\hsp$ with $\group = \integer^n_2$ and $\subgroup = \qty{ 0, s }$ for some $s \in \integer_2^n$ .
+	Simon's problem [ref] (Abelian subgroup problem) is a $\hsp$ with $\group = \integer^n_2$ and $\subgroup = \qty{ 0, s }$ for some $s \in \integer_2^n$ .
 \end{remark}
-\begin{definition}[Discrete Logarithm problem]\label{prm:dlog}
-	\emph{discrete logarithm problem} (\dlog) is a special case of HSP with 
+\begin{problem}[Discrete Logarithm problem]\label{prm:dlog}
+	The \emph{discrete logarithm problem} (\dlog) 
 	\begin{itemize}
 		\item \textbf{Input:} a prime $p$, a primitive element (generator) $g$ of $\integer_p^*=\qty{1,2,\dots,p-1}$, and an element $y=g^x \pmod{p} \in\integer_p^*$ with some unknow $x$. black-box function $f$?
 		\item \textbf{Output (goal):} find $x=\log_g y$
 	\end{itemize}
-\end{definition}
+	$\dlog$ is a special case of $\hsp$ with ... subgroup 
+\end{problem}
 reducible to decision version $\dlog_{1/2}$, then classification version.
 
 \subsubsection{Permutation, symmetry, and graph properties}
 symmetric functions rule out exponential speedup
 \cite{ben-davidSymmetriesGraphProperties2020}.
 We have seen that the behavior of a quantum walk can be dramatically different from that of its classical counterpart. Next we will see an even stronger example of the power of quantum walk: a black-box problem that can be solved exponentially faster by a quantum walk than by any classical algorithm \cite{childsExponentialAlgorithmicSpeedup2003}.
-
+\begin{problem}[Glued tree]
+	see \cref{fig:glued_tree}
+	\begin{itemize}
+		\item \textbf{Input:} a glued tree in the \nameref{def:adjacency_matrix} representation, oracle (neighbor)?
+		\item \textbf{Output (goal):} find the exit (start from entrance)
+	\end{itemize}
+\end{problem}
 Consider a graph obtained by starting from two balanced binary trees of height n, and joining them by a random cycle of length $2\cdot 2^n$ that alternates between the leaves of the two trees. 
 For example, such a graph for $n = 4$ could look like \cref{fig:glued_tree}
 \begin{figure}[!ht]
@@ -560,28 +639,28 @@ For example, such a graph for $n = 4$ could look like \cref{fig:glued_tree}
 	\label{fig:glued_tree}
 \end{figure}
 
-\subsubsection{Quantum linear algebra}
+\subsubsection{Quantum linear algebra toolbox (subroutines)}
 FFT \cite{kondorGraphletSpectrum2009};
 quantum linear algebra (qMAT) \cite{zhaoCompilingBasicLinear2019}: 
 \begin{itemize}
-	\item HHL \cite{harrowQuantumAlgorithmSolving2009}, 
+	\item HHL quantum algorithm for linear equation systems \cite{harrowQuantumAlgorithmSolving2009}, qSVD (eigen decomposition)
 	\item matrices multiplication, matrix inversion, matrix exponentiation, 
 	\item quantum simulation techniques (evolution)
-	\item FFT by quantum algorithms: $\bigO(n\log n)$
+	\item FFT by quantum algorithms: $\bigO(n\log n)$; QFT, quantum phase estimation.
+	It is shown that quantum circuits are a natural choice for Fourier space neural architectures affording a super-exponential speedup in computing the matrix elements of $S_n$-Fourier coefficients compared to the best known classical Fast Fourier Transform (FFT) over the symmetric group. \cite{zhengSpeedingLearningQuantum2022}
 \end{itemize}
 \cite{sornsaengQuantumDiffusionMap2021}
 
 \subsection{Heuristic quantum advantages for learning physics systems}
 problems of practical interest,
-not guaranteed 
+not guaranteed.
+\cite{rebentrostQuantumSupportVector2014} \cite{lloydQuantumPrincipalComponent2014} etc need quantum state preparation assumptions, which state that given an input vector $v$, one can quickly form a corresponding quantum state $\ket{v}$. \cite{tangQuantuminspiredClassicalAlgorithm2019}
 
 \subsubsection{Groups and symmetries in physics and machine learning}
 \cite{kondorGroupTheoreticalMethods2008};
 symmetries in physics
 \cite{bogatskiyLorentzGroupEquivariant2020}
 \cite{bogatskiySymmetryGroupEquivariant2022};
-equivariant CNN 
-\cite{zhengSpeedingLearningQuantum2022}.
 (classical) machine learning (neural network) for quantum many-body physics:
 determining the phase (transition) 
 a standard feed-forward neural network can be trained to detect multiple types of order parameter directly from raw state conﬁgurations sampled with Monte Carlo.
@@ -599,6 +678,16 @@ covariant quantum kernels for the data with group structures
 \begin{definition}[Covariant]\label{def:covariant}
 	\emph{covariant}
 \end{definition}
+One of the key properties of classical CNNs is equivariance, which roughly states that if the input to the neural network is shifted, then its activations translate accordingly. 
+Equivariance is one of the main reasons behind the unreasonable success of CNNs.
+Combining these two is the basis of so-called Permutational Quantum Computing (PQC) [30]. Therefore, a natural starting point for realizing convolutional neural networks in quantum circuits is to look for permutational equivariance.
+In particular, it has been recognized that by constructing neural networks that operate on the basis of irreducible representations of the group (so-called Fourier space neural networks), and group equivariant convolution is easy to implement because it simply reduces to matrix multiplication [32].
+the quantum Fourier space activation (within PQP+) enjoys a super-exponential quantum speed-up compared with the best-known result in classical FFT over the symmetric group.
+% There have been several attempts to introduce theoretically sound analogs of convolutional neural networks to quantum circuits, but they have generally been somewhat heuristic.
+The major difficulty is that the key ingredient of the success of CNNs - translation invariance - lacks a mathematically rigorous quantum counterpart due to the discrete spectrum of spin-based quantum circuits.
+the natural form of equivariance in quantum circuits is permutation equivariance!.
+equivariant CNN 
+\cite{zhengSpeedingLearningQuantum2022}.
 \begin{definition}[Equivariance]\label{def:equivariant}
 	Given a group $\group$ and the actions $\rho: \group \times X\to X$ and $\rho': \group \times Y\to Y$,
 	a map $f: X\to Y$ is said to be \emph{equivariant} if
@@ -623,6 +712,7 @@ UCI \cite{kondorDiffusionKernelsGraphs2002}, protein, JET? \cite{bogatskiyLorent
 The MUTAG dataset consists of graphs representing 188 chemical compounds labeled ..;
 quantum many-body physics (phase transition)
 \cite{carrasquillaMachineLearningPhases2017} 
+\cite{congQuantumConvolutionalNeural2019}
 % quantum phase transition? 
 % \cite{dohertyIdentifyingPhasesQuantum2009} 
 % topology order?
@@ -633,7 +723,7 @@ to do
 	\item formalize quantum graph kernels with quantum random walk
 	\item quantum graph kernel with group structures
 	\item quantum machine learning for physics problem with symmetries
-	\item NISQ?
+	\item NISQ? low-depth circuit
 \end{itemize}
 
 \addcontentsline{toc}{section}{References}
@@ -661,6 +751,7 @@ we maximize
 	L_D(\alpha) = \sum_{i=1}^t \alpha_i - \frac{1}{2}\sum_{i,j=1}^t y_i y_j \alpha_i \alpha_j \kernel(\vbx_i,\vbx_j)
 \end{equation}
 subject to $\sum_{i=1}^t \alpha_i y_i = 0$ and $\alpha_i\ge 0$ for each $i$?.
+Lagrangian multiplier method. then dual problem
 % \begin{figure}[!ht]
 % 	\centering
 % 	\includegraphics[width=.3\linewidth]{SVM_margin.png}
@@ -668,7 +759,7 @@ subject to $\sum_{i=1}^t \alpha_i y_i = 0$ and $\alpha_i\ge 0$ for each $i$?.
 % \end{figure}
 construct the classifier
 \begin{equation}
-	\tilde{m}(\vb{s}) := \textup{sign} \qty(
+	\tilde{y}_{\textup{pred}}(\vb{s}) := \textup{sign} \qty(
 		\sum_{i=1}^t y_i \alpha_i^* \kernel(\vbx_i,\vb{s}) + b
 	)
 \end{equation}
@@ -676,10 +767,17 @@ construct the classifier
 % \subsubsection{Neural network}
 
 \subsubsection{Quantum machine learning}\label{sec:quantum_machine_learning}
-\cite{biamonteQuantumMachineLearning2017}; neural network
+\cite{biamonteQuantumMachineLearning2017}; 
+unsupervised learning, quantum PCA \cite{lloydQuantumPrincipalComponent2014} \cite{tangQuantumPrincipalComponent2021}.
+neural network,
+Quantum CNN \cite{congQuantumConvolutionalNeural2019} for quantum phase recognition and quantum error correction.
+The MERA framework provides an efficient tensor network representation of many classes of interesting many-body wavefunctions, including those associated with critical systems.
+The QCNN circuit has similar structure, but runs in the reverse direction.
+In this sense, the QCNN circuit can mimic renormalizationgroup (RG) ﬂow, a methodology which successfully classifies many families of quantum phases 29.
 
 \subsection{Group theory and symmetries}
-group $\group$
+group $\group$,
+permutation group $\mathbb{S}_n$;
 
 \subsubsection{Representation theory}\label{sec:representation_theory}
 
@@ -740,7 +838,7 @@ because only the paths around the stationary point of the action contribute
 
 \subsection{Symmetries with Lagrangian}
 \subsubsection{Z}
-Ising
+Ising model, $\integer_2$
 % \begin{theorem}[Noether theorem]
 % \end{theorem}
 
@@ -748,7 +846,7 @@ Ising
 local, gauge symmetry
 
 \subsubsection{SU(2)}
-non-abelian
+non-abelian, particle physics
 
 \subsubsection{SO(1,3)}
 Lorentz invariance
