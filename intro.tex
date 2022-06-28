@@ -23,10 +23,11 @@ graph $\graph$, group $\group$
 % \subsubsection{Kernel trick}
 % \subsubsection*{Hilbert space}
 \begin{definition}[inner product]\label{def:inner_product}
-	\emph{inner product} is a map
-	\begin{equation}
-		\expval{\cdot,\cdot}: V \times V \to \numberfield
-	\end{equation}
+	An \emph{inner product} is a map
+	$\expval{\cdot,\cdot}: V \times V \to \numberfield$
+	% \begin{equation}
+	% 	\expval{\cdot,\cdot}: V \times V \to \numberfield
+	% \end{equation}
 	that $\forall \vbx,\vb{y},\vb{z}\in V,a,b\in\numberfield$
 	satisfies the following three properties 
 	\begin{itemize}
@@ -57,7 +58,8 @@ inner product can be understood as a `similarity' metric between two vectors ?
 % \footnote{unsupervised learning}
 
 \subsubsection{Support Vector Machine (SVM)}
-training stage, classification stage.
+training stage, classification stage (phase).
+\cite{cortesSupportvectorNetworks1995}
 exponentially large space;
 ($n-1$-dimensional) \emph{hyperplane} $(\vb{w},b)$ parametrized by a normal vector $\vb{w}\in\realnumber^n$ and a \emph{bias} term $b\in\realnumber$. in the (high-dimensional) \emph{feature space}.
 maximize the \emph{margin} [ref]
@@ -139,7 +141,7 @@ Some common (popular) kernels on $\realnumber^d$ with dot product:
 		% =?
 		\label{eq:gaussian_kernel}
 	\end{equation}
-
+	The Hilbert space associated with the Gaussian RBF kernel has infinite dimension but the kernel may be readily computed for any pair of data points.
 	% \item Radial Kernels (Ornstein Uhlenbeck):
 	% \begin{equation}
 	% 	\kernel(\vbx,\vbx') = 
@@ -273,7 +275,7 @@ except that the factor of $\ii\hbar$.
 \end{definition}
 
 \subsection{Graph kernels of a pair of graphs}
-R-convolution kernel proposed by Haussler [ref].
+R-convolution kernel proposed by Haussler \cite{hausslerConvolutionKernelsDiscrete1999}.
 graphs kernels are designed to compare the similarity of each of the decompositions of a pair of graphs.
 Different kernels are defined, depending on how the graphs are decomposed.
 Most R-convolution kernels count the number of isomorphic substructures in the two graphs.
@@ -321,6 +323,8 @@ survey
 	\emph{factor graph};
 	\emph{Hadamard product};
 \end{definition}
+The idea of the shortest path kernel is to compare the attributes and lengths of the shortest paths between all pairs of vertices in two graphs.
+graph kernels based on random walks, which count the number of (label sequences along) walks that two graphs have in common.
 \begin{remark}
 	Random Walk on Product Graph is equivalent to simultaneous random walk on input graphs [?]
 \end{remark}
@@ -409,13 +413,16 @@ There have been several attempts to introduce kernel method to quantum machine l
 
 \subsubsection{Quantum SVM and kernel tricks}
 Quantum version of SVM was proposed \cite{rebentrostQuantumSupportVector2014} to exploit the power of quantum computer.
+, where an exponential improvement can be achieved if data is provided in a coherent superposition. However, when data is provided in the conventional way, i.e. from a classical computer, then the methods of [15] cannot be applied. \cite{tangQuantuminspiredClassicalAlgorithm2019}
+% \cite{havlicekSupervisedLearningQuantum2019}
 It is shown that a quantum support vector machine can be implemented with $O(\log md)$ run time in both training and classiﬁcation stages. 
 The performance in N arises due to a fast quantum evaluation of inner products.
-For the performance in M, we re-express the SVM as an approximate least-squares problem [15] that allows for a quantum solution with the matrix inversion algorithm [16, 17]. We employ a technique for the exponentiation of non-sparse matrices recently developed in [18]. This allows us to reveal efﬁciently in quantum form the largest eigenvalues and corresponding eigenvectors of the training data overlap (kernel) and covariance matrices. We thus efﬁciently perform a low-rank approximation of these matrices (principal component analysis, PCA).
+For the performance in M, we re-express the SVM as an approximate least-squares problem [15] that allows for a quantum solution with the matrix inversion algorithm [16, 17]. We employ a technique for the exponentiation of non-sparse matrices recently developed in [18]. This allows us to reveal efﬁciently in quantum form the largest eigenvalues and corresponding eigenvectors of the training data overlap (kernel) and covariance matrices. We thus efficiently perform a low-rank approximation of these matrices (principal component analysis, PCA).
 Naturally, the \emph{quantum kernel estimation}
 \cite{schuldQuantumMachineLearning2019}
 \cite{havlicekSupervisedLearningQuantum2019} 
 is studied to enhance the performance of quantum SVM.
+Here, we propose two SVM type classifiers that process data provided purely classically and use the quantum state space as the feature space to still obtain a quantum advantage.
 \begin{definition}[Quantum feature map]\label{def:quantum_feature_map}
 	the quantum state space (Hilbert space) as the feature space to still obtain a quantum advantage
 	mapping the input data non-linearly to a quantum state (density matrix) 
@@ -428,18 +435,33 @@ is studied to enhance the performance of quantum SVM.
 \end{definition}
 
 \subsubsection*{Explicit method (Quantum Variational Classification)}
-variational quantum circuit: generates a separating hyperplane in the quantum feature space
+variational quantum circuit: generates a separating hyperplane in the quantum feature space.
+the quantum variational classifier builds on \cite{mitaraiQuantumCircuitLearning2018} \cite{farhiClassificationQuantumNeural2018} and operates through using a variational quantum circuit to classify a training set in direct analogy to conventional SVMs.
+not robust (heuristic)
+To obtain an advantage over classical approaches we need to implement a map based on circuits that are hard to simulate classically.
+% The exact evaluation of the inner-product between two states generated from a similar circuit with only a single diagonal layer is $\#P$ - hard.
 \begin{enumerate}
-	\item $\vbx\in\Omega$ (feature) mapped to a quantum state by applying a unitary circuit $U_{\Phi(\vbx)}$ to a reference (initial) state $\ket{0}^n$
-	\item a short depth quantum circuit $W(\vb{\theta})$
-	\item for binary classification, apply a binary measurement $\qty{M_y}=2^{-1}(\identity + y \vb{f})$?
+	\item a classical datum $\vbx\in\Omega$ is mapped to a quantum (feature) state by applying a unitary circuit $\U_{\Phi(\vbx)}$ to a reference (initial) state $\ket{0}^n$
+	\item a \textbf{short depth quantum} circuit $W(\pmb{\theta})$.
+	iteratively optimize the circuit variational parameters $\pmb{\theta}$ 
+	by minizing empirical error (cost function)
+	\item for binary classification, apply a \textbf{binary measurement} in $Z$-basis
+	% $\qty{M_y}=2^{-1}(\identity + y \vb{f})$?
 	\item to obtain the empirical distribution $p_y(\vbx)$, perform repeated measurement shots.
 	then assign the label according to $p_y$?
 \end{enumerate}
+hardness \cite{bremnerAveragecaseComplexityApproximate2016}.
+the circuit is hard to simulate classically.
+The hardness of estimating the kernel with classical resources is of course only a necessary and not always sufficient condition to obtain a quantum advantage.
+% \begin{remark}
+% 	While it may appear to be only a detail, it is important to deﬁne the feature state as the density matrix Φ(x).
+% \end{remark}
 
 \subsubsection*{Implicit method (Quantum kernel estimation)}
-estimate the kernel function quantumly and implement a conventional SVM.
-Rather than using a variational quantum circuit to generate the separating hyperplane, we use a classical SVM for classification.
+In this method, quantum computer is used only to estimate the kernel function (matrix).
+implement a conventional (classical) SVM to generate the separating hyperplane
+rather than using a variational quantum circuit.
+% to generate the separating hyperplane, we use a classical SVM for classification.
 \begin{enumerate}
 	\item the kernel $\kernel(\vbx,\vbx')$ is estimated on a quantum computer
 	\item the quantum computer is used a second time to estimate the kernel for a new datum (test) $\vb{s}\in S$ with all the support vectors.
@@ -510,7 +532,7 @@ Thus, classical dimensionality reduction can be computationally prohibitive for 
 % 	Although the backbone of DM is a graph-based dimensionality reduction method, the procedure is diﬀerent from other spectral graph methods. 
 % 	Namely, rather than working with the data-induced graph Laplacian as in Laplacian eigenmaps or in spectral clustering, DM involves Markov transition matrix that deﬁnes random walks on a data-induced graph.
 % \end{remark}
-Our quantum diﬀusion map (qDM) consists of 5 major steps: 
+Our quantum diffusion map (qDM) consists of 5 major steps: 
 \begin{itemize}
 	\item 
 	coherent state data encoding scheme, 
@@ -591,6 +613,7 @@ structure is required for quantum speedup
 \cite{aaronsonNeedStructureQuantum2014}.
 only polynomial speedup for total problem [ref].
 only quadratic speedup for unstructured search \cite{groverQuantumMechanicsHelps1997}
+the core challenge to provable quantum speedup and practical problems.
 
 \subsubsection{Quantum Fourier Transform (QFT) and algebraic problems}
 hidden subgroup problem solved by quantum Fourier transformation\cite{childsQuantumAlgorithmsAlgebraic2010};
@@ -620,7 +643,7 @@ rigorous and robust quantum speedup with Discret Logarithm problem \cite{liuRigo
 reducible to decision version $\dlog_{1/2}$, then classification version.
 
 \subsubsection{Permutation, symmetry, and graph properties}
-symmetric functions rule out exponential speedup
+fully symmetric (partial) functions do not admit exponential quantum speedup in the query model.
 \cite{ben-davidSymmetriesGraphProperties2020}.
 We have seen that the behavior of a quantum walk can be dramatically different from that of its classical counterpart. Next we will see an even stronger example of the power of quantum walk: a black-box problem that can be solved exponentially faster by a quantum walk than by any classical algorithm \cite{childsExponentialAlgorithmicSpeedup2003}.
 \begin{problem}[Glued tree]
@@ -651,6 +674,11 @@ quantum linear algebra (qMAT) \cite{zhaoCompilingBasicLinear2019}:
 \end{itemize}
 \cite{sornsaengQuantumDiffusionMap2021}
 
+\subsubsection{Dequantization}
+If we assume we can efficiently perform $l^2$-norm samples of input data, a natural analogue to quantum algorithms that assume efficient state preparation of classical data.
+Since they are only polynomially slower, these algorithms suggest that the exponential speedups of their quantum counterparts are simply an artifact of state preparation assumptions.
+\cite{tangQuantumPrincipalComponent2021}
+
 \subsection{Heuristic quantum advantages for learning physics systems}
 problems of practical interest,
 not guaranteed.
@@ -675,9 +703,26 @@ A straightforward implementation of supervised training fails to classify a test
 % \cite{kondorDiffusionKernelsGraphs2002}
 covariant quantum kernels for the data with group structures
 \cite{glickCovariantQuantumKernels2021}
+The feature states are intimately related to covariant measurements?
+Examples could constitute learning permutations or classifying translations or rotations. Exploiting group structure and learning problems for group data have already been investigated for classical kernels \cite{kondorGraphletSpectrum2009}.
+The fiducial state $\ket{\phi}$ is chosen as some reference state from the representing Hilbert space. 
+In principle, any state that can be prepared efficiently may be chosen. 
+However, the choice will greatly affect the performance of the classifier as we will discuss shortly.
 \begin{definition}[Covariant]\label{def:covariant}
 	\emph{covariant}
+	feature map circuits that we call covariant feature maps. 
 \end{definition}
+kernel alignment?
+\begin{problem}[labeling cosets with error]
+	\emph{labeling cosets with error}
+
+	\textbf{Input:} given a group $\group$ and subgroup $\subgroup$,
+	we can define two left-cosets $\mathbb{C}_{\pm}=c_{\pm}\subgroup$ by choosing $c_+,c_-$ randomly
+
+	\textbf{Output:} 
+
+	% this problem is related to the problem of deciding membership in a subgroup
+\end{problem}
 One of the key properties of classical CNNs is equivariance, which roughly states that if the input to the neural network is shifted, then its activations translate accordingly. 
 Equivariance is one of the main reasons behind the unreasonable success of CNNs.
 Combining these two is the basis of so-called Permutational Quantum Computing (PQC) [30]. Therefore, a natural starting point for realizing convolutional neural networks in quantum circuits is to look for permutational equivariance.
@@ -702,7 +747,8 @@ equivariant CNN
 \section{Experiments}\label{sec:experiments}
 
 \subsection{Datasets and benchmark}
-preliminary experiment
+preliminary experiment;
+prototypical machine learning tasks
 
 \subsubsection{Artificial data}
 we generate artificial data that can be fully separated by our feature map.
@@ -738,8 +784,13 @@ unsupervised learning: clustering, dimension reduction;
 reinforced learning not discussed in this paper.
 \subsection{Machine learning}
 training set, test set.
+find $f\in C$ classifier, hypothesis (concept) class. (unknow probability distribution)
+The algorithm consists of two main parts: a training stage and a classification stage. 
+For the training stage, a set of labeled data points are provided, on which the algorithm is performed. 
+For the classification stage, we take a different set of data points and run the optimized classifying circuit on them without any label input.
 
 \subsubsection{SVM and kernel tricks}
+maximize the margin
 objective (cost function): \emph{empirical risk} (error rate, loss function)
 \begin{equation}
 	R_{emp}(\vb{\theta}) = \frac{1}{\abs{T}}
@@ -770,6 +821,7 @@ construct the classifier
 \cite{biamonteQuantumMachineLearning2017}; 
 unsupervised learning, quantum PCA \cite{lloydQuantumPrincipalComponent2014} \cite{tangQuantumPrincipalComponent2021}.
 neural network,
+graph neural networks (GNNs) have emerged as an alternative to graph kernels.
 Quantum CNN \cite{congQuantumConvolutionalNeural2019} for quantum phase recognition and quantum error correction.
 The MERA framework provides an efficient tensor network representation of many classes of interesting many-body wavefunctions, including those associated with critical systems.
 The QCNN circuit has similar structure, but runs in the reverse direction.
@@ -843,6 +895,7 @@ Ising model, $\integer_2$
 % \end{theorem}
 
 \subsubsection{U(1)}
+\cite{kogutIntroductionLatticeGauge1979}
 local, gauge symmetry
 
 \subsubsection{SU(2)}
