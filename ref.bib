@@ -1,5 +1,5 @@
 
-@article{aaronsonBosonSamplingFarUniform2013,
+@unpublished{aaronsonBosonSamplingFarUniform2013,
   title = {{{BosonSampling Is Far From Uniform}}},
   author = {Aaronson, Scott and Arkhipov, Alex},
   date = {2013-09-30},
@@ -34,7 +34,7 @@
   langid = {english}
 }
 
-@article{aaronsonComplexityQuantumStates2016,
+@unpublished{aaronsonComplexityQuantumStates2016,
   title = {The {{Complexity}} of {{Quantum States}} and {{Transformations}}: {{From Quantum Money}} to {{Black Holes}}},
   shorttitle = {The {{Complexity}} of {{Quantum States}} and {{Transformations}}},
   author = {Aaronson, Scott},
@@ -50,7 +50,7 @@
   keywords = {Computer Science - Computational Complexity,General Relativity and Quantum Cosmology,Quantum Physics}
 }
 
-@article{aaronsonComplexityTheoreticFoundationsQuantum2016,
+@unpublished{aaronsonComplexityTheoreticFoundationsQuantum2016,
   title = {Complexity-{{Theoretic Foundations}} of {{Quantum Supremacy Experiments}}},
   author = {Aaronson, Scott and Chen, Lijie},
   date = {2016-12-26},
@@ -85,7 +85,7 @@
   keywords = {\#p,BGP,bosons,linear optics,permanent,polynomial hierarchy,random self-reducibility,sampling}
 }
 
-@article{aaronsonDegreeVsApproximate2020,
+@unpublished{aaronsonDegreeVsApproximate2020,
   title = {Degree vs. {{Approximate Degree}} and {{Quantum Implications}} of {{Huang}}'s {{Sensitivity Theorem}}},
   author = {Aaronson, Scott and Ben-David, Shalev and Kothari, Robin and Rao, Shravas and Tal, Avishay},
   date = {2020-10-23},
@@ -101,6 +101,57 @@
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
 }
 
+@article{aaronsonImprovedSimulationStabilizer2004,
+  title = {Improved {{Simulation}} of {{Stabilizer Circuits}}},
+  author = {Aaronson, Scott and Gottesman, Daniel},
+  date = {2004-11-30},
+  journaltitle = {Phys. Rev. A},
+  volume = {70},
+  number = {5},
+  eprint = {quant-ph/0406196},
+  eprinttype = {arxiv},
+  pages = {052328},
+  issn = {1050-2947, 1094-1622},
+  doi = {10.1103/PhysRevA.70.052328},
+  url = {http://arxiv.org/abs/quant-ph/0406196},
+  urldate = {2022-05-06},
+  abstract = {The Gottesman-Knill theorem says that a stabilizer circuit -- that is, a quantum circuit consisting solely of CNOT, Hadamard, and phase gates -- can be simulated efficiently on a classical computer. This paper improves that theorem in several directions. First, by removing the need for Gaussian elimination, we make the simulation algorithm much faster at the cost of a factor-2 increase in the number of bits needed to represent a state. We have implemented the improved algorithm in a freely-available program called CHP (CNOT-Hadamard-Phase), which can handle thousands of qubits easily. Second, we show that the problem of simulating stabilizer circuits is complete for the classical complexity class ParityL, which means that stabilizer circuits are probably not even universal for classical computation. Third, we give efficient algorithms for computing the inner product between two stabilizer states, putting any n-qubit stabilizer circuit into a "canonical form" that requires at most O(n\^2/log n) gates, and other useful tasks. Fourth, we extend our simulation algorithm to circuits acting on mixed states, circuits containing a limited number of non-stabilizer gates, and circuits acting on general tensor-product initial states but containing only a limited number of measurements.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computational Complexity,Quantum Physics}
+}
+
+@unpublished{aaronsonNeedStructureQuantum2014,
+  title = {The {{Need}} for {{Structure}} in {{Quantum Speedups}}},
+  author = {Aaronson, Scott and Ambainis, Andris},
+  date = {2014-02-06},
+  shortjournal = {ArXiv09110996 Quant-Ph},
+  eprint = {0911.0996},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/0911.0996},
+  urldate = {2022-02-23},
+  abstract = {Is there a general theorem that tells us when we can hope for exponential speedups from quantum algorithms, and when we cannot? In this paper, we make two advances toward such a theorem, in the black-box model where most quantum algorithms operate. First, we show that for any problem that is invariant under permuting inputs and outputs (like the collision or the element distinctness problems), the quantum query complexity is at least the 7th root of the classical randomized query complexity. (An earlier version of this paper gave the 9th root.) This resolves a conjecture of Watrous from 2002. Second, inspired by recent work of O'Donnell et al. (2005) and Dinur et al. (2006), we conjecture that every bounded low-degree polynomial has a "highly influential" variable. Assuming this conjecture, we show that every T-query quantum algorithm can be simulated on most inputs by a poly(T)-query classical algorithm, and that one essentially cannot hope to prove P!=BQP relative to a random oracle.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computational Complexity,Quantum Physics}
+}
+
+@unpublished{aaronsonNewApproachesQuantum2020,
+  title = {New {{Approaches}} for {{Quantum Copy-Protection}}},
+  author = {Aaronson, Scott and Liu, Jiahui and Liu, Qipeng and Zhandry, Mark and Zhang, Ruizhe},
+  date = {2020-10-16},
+  shortjournal = {ArXiv200409674 Quant-Ph},
+  eprint = {2004.09674},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/2004.09674},
+  urldate = {2022-03-09},
+  abstract = {Quantum copy protection uses the unclonability of quantum states to construct quantum software that provably cannot be pirated. Copy protection would be immensely useful, but unfortunately little is known about how to achieve it in general. In this work, we make progress on this goal, by giving the following results: \textendash{} We show how to copy protect any program that cannot be learned from its input/output behavior, relative to a classical oracle. This improves on Aaronson [CCC'09], which achieves the same relative to a quantum oracle. By instantiating the oracle with post-quantum candidate obfuscation schemes, we obtain a heuristic construction of copy protection.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Cryptography and Security,Quantum Physics}
+}
+
 @misc{aaronsonQuantumComputingLecture2020,
   title = {Quantum {{Computing Lecture Notes}} 2.0},
   author = {Aaronson, Scott},
@@ -110,7 +161,7 @@
   langid = {english}
 }
 
-@article{aaronsonQuantumComputingPostselection2004,
+@unpublished{aaronsonQuantumComputingPostselection2004,
   title = {Quantum {{Computing}}, {{Postselection}}, and {{Probabilistic Polynomial-Time}}},
   author = {Aaronson, Scott},
   date = {2004-12-23},
@@ -124,7 +175,7 @@
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
 }
 
-@article{aaronsonQuantumImplicationsHuang2020,
+@unpublished{aaronsonQuantumImplicationsHuang2020,
   title = {Quantum {{Implications}} of {{Huang}}'s {{Sensitivity Theorem}}},
   author = {Aaronson, Scott and Ben-David, Shalev and Kothari, Robin and Tal, Avishay},
   date = {2020-04-27},
@@ -159,7 +210,7 @@
   keywords = {Collision,element distinctness,polynomial method,quantum computing,quantum lower bounds}
 }
 
-@article{aaronsonQuantumLowerBounds2020,
+@unpublished{aaronsonQuantumLowerBounds2020,
   title = {Quantum {{Lower Bounds}} for {{Approximate Counting}} via {{Laurent Polynomials}}},
   author = {Aaronson, Scott and Kothari, Robin and Kretschmer, William and Thaler, Justin},
   date = {2020-06-04},
@@ -246,6 +297,21 @@
   archiveprefix = {arXiv}
 }
 
+@unpublished{aharonovAdiabaticQuantumState2003,
+  title = {Adiabatic {{Quantum State Generation}} and {{Statistical Zero Knowledge}}},
+  author = {Aharonov, Dorit and Ta-Shma, Amnon},
+  date = {2003-01-07},
+  shortjournal = {ArXivquant-Ph0301023},
+  eprint = {quant-ph/0301023},
+  eprinttype = {arxiv},
+  url = {http://arxiv.org/abs/quant-ph/0301023},
+  urldate = {2022-04-13},
+  abstract = {The design of new quantum algorithms has proven to be an extremely difficult task. This paper considers a different approach to the problem. We systematically study 'quantum state generation', namely, which superpositions can be efficiently generated. We first show that all problems in Statistical Zero Knowledge (SZK), a class which contains many languages that are natural candidates for BQP, can be reduced to an instance of quantum state generation. This was known before for graph isomorphism, but we give a general recipe for all problems in SZK. We demonstrate the reduction from the problem to its quantum state generation version for three examples: Discrete log, quadratic residuosity and a gap version of closest vector in a lattice.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
 @article{aharonovGuestColumnQuantum2013,
   title = {Guest Column: The Quantum {{PCP}} Conjecture},
   shorttitle = {Guest Column},
@@ -266,7 +332,7 @@
   langid = {english}
 }
 
-@article{aharonovQuantumWalksGraphs2002,
+@unpublished{aharonovQuantumWalksGraphs2002,
   title = {Quantum {{Walks On Graphs}}},
   author = {Aharonov, Dorit and Ambainis, Andris and Kempe, Julia and Vazirani, Umesh},
   date = {2002-05-24},
@@ -280,7 +346,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{aharonovSimpleProofThat2003,
+@unpublished{aharonovSimpleProofThat2003,
   title = {A {{Simple Proof}} That {{Toffoli}} and {{Hadamard}} Are {{Quantum Universal}}},
   author = {Aharonov, Dorit},
   date = {2003-01-09},
@@ -418,7 +484,22 @@
   langid = {english}
 }
 
-@article{anshuAreaLaw2D2021,
+@article{amitAsymptoticBehaviorTrue1983,
+  title = {Asymptotic Behavior of the "True" Self-Avoiding Walk},
+  author = {Amit, Daniel J. and Parisi, G. and Peliti, L.},
+  date = {1983-02-01},
+  journaltitle = {Phys. Rev. B},
+  volume = {27},
+  number = {3},
+  pages = {1635--1645},
+  issn = {0163-1829},
+  doi = {10.1103/PhysRevB.27.1635},
+  url = {https://link.aps.org/doi/10.1103/PhysRevB.27.1635},
+  urldate = {2022-03-07},
+  langid = {english}
+}
+
+@unpublished{anshuAreaLaw2D2021,
   title = {An Area Law for {{2D}} Frustration-Free Spin Systems},
   author = {Anshu, Anurag and Arad, Itai and Gosset, David},
   date = {2021-03-23},
@@ -433,7 +514,7 @@
   keywords = {Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
 }
 
-@article{apersUnifiedFrameworkQuantum2019,
+@unpublished{apersUnifiedFrameworkQuantum2019,
   title = {A {{Unified Framework}} of {{Quantum Walk Search}}},
   author = {Apers, Simon and Gily\'en, Andr\'as and Jeffery, Stacey},
   date = {2019-12-09},
@@ -449,7 +530,23 @@
   keywords = {Computer Science - Data Structures and Algorithms,Quantum Physics}
 }
 
-@article{aradImproved1DArea2012,
+@unpublished{aradAreaLawSubexponential2013,
+  title = {An Area Law and Sub-Exponential Algorithm for {{1D}} Systems},
+  author = {Arad, Itai and Kitaev, Alexei and Landau, Zeph and Vazirani, Umesh},
+  date = {2013-01-07},
+  shortjournal = {ArXiv13011162 Cond-Mat Physicsquant-Ph},
+  eprint = {1301.1162},
+  eprinttype = {arxiv},
+  primaryclass = {cond-mat, physics:quant-ph},
+  url = {http://arxiv.org/abs/1301.1162},
+  urldate = {2022-03-05},
+  abstract = {We give a new proof for the area law for general 1D gapped systems, which exponentially improves Hastings' famous result \textbackslash cite\{ref:Has07\}. Specifically, we show that for a chain of d-dimensional spins, governed by a 1D local Hamiltonian with a spectral gap \textbackslash eps{$>$}0, the entanglement entropy of the ground state with respect to any cut in the chain is upper bounded by \$O\{\textbackslash frac\{\textbackslash log\^3 d\}\{\textbackslash eps\}\}\$. Our approach uses the framework Arad et al to construct a Chebyshev-based AGSP (Approximate Ground Space Projection) with favorable factors. However, our construction uses the Hamiltonian directly, instead of using the Detectability lemma, which allows us to work with general (frustrated) Hamiltonians, as well as slightly improving the \$1/\textbackslash eps\$ dependence of the bound in Arad et al. To achieve that, we establish a new, "random-walk like", bound on the entanglement rank of an arbitrary power of a 1D Hamiltonian, which might be of independent interest: \textbackslash ER\{H\^\textbackslash ell\} \textbackslash le (\textbackslash ell d)\^\{O(\textbackslash sqrt\{\textbackslash ell\})\}. Finally, treating d as a constant, our AGSP shows that the ground state is well approximated by a matrix product state with a sublinear bond dimension \$B=e\^\{O(\textbackslash log\^\{3/4\}n/\textbackslash eps\^\{1/4\})\}. Using this in conjunction with known dynamical programing algorithms, yields an algorithm for a 1/\textbackslash poly(n) approximation of the ground energy with a subexponential running time T\textbackslash le \textbackslash exp(e\^\{O(\textbackslash log\^\{3/4\}n/\textbackslash eps\^\{1/4\})\}).},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
+}
+
+@unpublished{aradImproved1DArea2012,
   title = {An Improved {{1D}} Area Law for Frustration-Free Systems},
   author = {Arad, Itai and Landau, Zeph and Vazirani, Umesh},
   date = {2012-06-09},
@@ -530,6 +627,23 @@
   keywords = {Computational complexity}
 }
 
+@unpublished{arunachalamSurveyQuantumLearning2017,
+  title = {A {{Survey}} of {{Quantum Learning Theory}}},
+  author = {Arunachalam, Srinivasan and de Wolf, Ronald},
+  options = {useprefix=true},
+  date = {2017-07-28},
+  shortjournal = {ArXiv170106806 Quant-Ph},
+  eprint = {1701.06806},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/1701.06806},
+  urldate = {2022-03-06},
+  abstract = {This paper surveys quantum learning theory: the theoretical aspects of machine learning using quantum computers. We describe the main results known for three models of learning: exact learning from membership queries, and Probably Approximately Correct (PAC) and agnostic learning from classical or quantum examples.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computational Complexity,Computer Science - Machine Learning,Quantum Physics}
+}
+
 @article{babaiArthurMerlinGamesRandomized1988,
   title = {Arthur-{{Merlin}} Games: {{A}} Randomized Proof System, and a Hierarchy of Complexity Classes},
   shorttitle = {Arthur-{{Merlin}} Games},
@@ -558,7 +672,7 @@
   url = {http://people.cs.uchicago.edu/~laci/06dm/lecturenotes.pdf}
 }
 
-@article{babaiGraphIsomorphismQuasipolynomial2016,
+@unpublished{babaiGraphIsomorphismQuasipolynomial2016,
   title = {Graph {{Isomorphism}} in {{Quasipolynomial Time}}},
   author = {Babai, L\'aszl\'o},
   date = {2016-01-19},
@@ -630,6 +744,37 @@
   langid = {english}
 }
 
+@article{baiQuantumJensenShannon2015,
+  title = {A Quantum {{Jensen}}\textendash{{Shannon}} Graph Kernel for Unattributed Graphs},
+  author = {Bai, Lu and Rossi, Luca and Torsello, Andrea and Hancock, Edwin R.},
+  date = {2015-02},
+  journaltitle = {Pattern Recognition},
+  volume = {48},
+  number = {2},
+  pages = {344--355},
+  issn = {00313203},
+  doi = {10.1016/j.patcog.2014.03.028},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S0031320314001265},
+  urldate = {2022-06-10},
+  abstract = {In this paper, we use the quantum Jensen-Shannon divergence as a means of measuring the information theoretic dissimilarity of graphs and thus develop a novel graph kernel. In quantum mechanics, the quantum Jensen-Shannon divergence can be used to measure the dissimilarity of quantum systems specified in terms of their density matrices. We commence by computing the density matrix associated with a continuous-time quantum walk over each graph being compared. In particular, we adopt the closed form solution of the density matrix introduced in [27, 28] to reduce the computational complexity and to avoid the cumbersome task of simulating the quantum walk evolution explicitly. Next, we compare the mixed states represented by the density matrices using the quantum Jensen-Shannon divergence. With the quantum states for a pair of graphs described by their density matrices to hand, the quantum graph kernel between the pair of graphs is defined using the quantum Jensen-Shannon divergence between the graph density matrices. We evaluate the performance of our kernel on several standard graph datasets from both bioinformatics and computer vision. The experimental results demonstrate the effectiveness of the proposed quantum graph kernel.},
+  langid = {english}
+}
+
+@article{baiQuantumKernelsUnattributed2017,
+  title = {Quantum Kernels for Unattributed Graphs Using Discrete-Time Quantum Walks},
+  author = {Bai, Lu and Rossi, Luca and Cui, Lixin and Zhang, Zhihong and Ren, Peng and Bai, Xiao and Hancock, Edwin},
+  date = {2017-02},
+  journaltitle = {Pattern Recognition Letters},
+  volume = {87},
+  pages = {96--103},
+  issn = {01678655},
+  doi = {10.1016/j.patrec.2016.08.019},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S016786551630232X},
+  urldate = {2022-06-25},
+  abstract = {In this paper, we develop a new family of graph kernels where the graph structure is probed by means of a discrete-time quantum walk. Given a pair of graphs, we let a quantum walk evolve on each graph and compute a density matrix with each walk. With the density matrices for the pair of graphs to hand, the kernel between the graphs is defined as the negative exponential of the quantum Jensen-Shannon divergence between their density matrices. In order to cope with large graph structures, we propose to construct a sparser version of the original graphs using the simplification method introduced in Qiu and Hancock (2007). To this end, we compute the minimum spanning tree over the commute time matrix of a graph. This spanning tree representation minimizes the number of edges of the original graph while preserving most of its structural information. The kernel between two graphs is then computed on their respective minimum spanning trees. We evaluate the performance of the proposed kernels on several standard graph datasets and we demonstrate their effectiveness and efficiency.},
+  langid = {english}
+}
+
 @article{banerjeeAtomicQuantumSimulation2013,
   title = {Atomic {{Quantum Simulation}} of {{U}}({{N}}) and {{SU}}({{N}}) {{Non-Abelian Lattice Gauge Theories}}},
   author = {Banerjee, D. and B\"ogli, M. and Dalmonte, M. and Rico, E. and Stebler, P. and Wiese, U.-J. and Zoller, P.},
@@ -667,6 +812,26 @@
   abstract = {Lattice gauge theories, which originated from particle physics in the context of Quantum Chromodynamics (QCD), provide an important intellectual stimulus to further develop quantum information technologies. While one long-term goal is the reliable quantum simulation of currently intractable aspects of QCD itself, lattice gauge theories also play an important role in condensed matter physics and in quantum information science. In this way, lattice gauge theories provide both motivation and a framework for interdisciplinary research towards the development of special purpose digital and analog quantum simulators, and ultimately of scalable universal quantum computers. In this manuscript, recent results and new tools from a quantum science approach to study lattice gauge theories are reviewed. Two new complementary approaches are discussed: first, tensor network methods are presented - a classical simulation approach - applied to the study of lattice gauge theories together with some results on Abelian and non-Abelian lattice gauge theories. Then, recent proposals for the implementation of lattice gauge theory quantum simulators in different quantum hardware are reported, e.g., trapped ions, Rydberg atoms, and superconducting circuits. Finally, the first proof-of-principle trapped ions experimental quantum simulations of the Schwinger model are reviewed.},
   archiveprefix = {arXiv},
   keywords = {Condensed Matter - Quantum Gases,High Energy Physics - Lattice,High Energy Physics - Theory,Quantum Physics}
+}
+
+@article{bapatApproximateOptimizationMAXCUT2021,
+  title = {Approximate Optimization of {{MAXCUT}} with a Local Spin Algorithm},
+  author = {Bapat, Aniruddha and Jordan, Stephen P.},
+  date = {2021-05-12},
+  journaltitle = {Phys. Rev. A},
+  volume = {103},
+  number = {5},
+  eprint = {2008.06054},
+  eprinttype = {arxiv},
+  pages = {052413},
+  issn = {2469-9926, 2469-9934},
+  doi = {10.1103/PhysRevA.103.052413},
+  url = {http://arxiv.org/abs/2008.06054},
+  urldate = {2022-02-28},
+  abstract = {Local tensor methods are a class of optimization algorithms that was introduced in [Hastings,arXiv:1905.07047v2][1] as a classical analogue of the quantum approximate optimization algorithm (QAOA). These algorithms treat the cost function as a Hamiltonian on spin degrees of freedom and simulate the relaxation of the system to a low energy configuration using local update rules on the spins. Whereas the emphasis in [1] was on theoretical worst-case analysis, we here investigate performance in practice through benchmarking experiments on instances of the MAXCUT problem.Through heuristic arguments we propose formulas for choosing the hyperparameters of the algorithm which are found to be in good agreement with the optimal choices determined from experiment. We observe that the local tensor method is closely related to gradient descent on a relaxation of maxcut to continuous variables, but consistently outperforms gradient descent in all instances tested. We find time to solution achieved by the local tensor method is highly uncorrelated with that achieved by a widely used commercial optimization package; on some MAXCUT instances the local tensor method beats the commercial solver in time to solution by up to two orders of magnitude and vice-versa. Finally, we argue that the local tensor method closely follows discretized, imaginary-time dynamics of the system under the problem Hamiltonian.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
 }
 
 @article{bapatBangbangControlDesign2019,
@@ -787,7 +952,23 @@
   langid = {english}
 }
 
-@article{belovsTightQuantumLower2020,
+@unpublished{belovsQuantumAlgorithmsClassical2019,
+  title = {Quantum {{Algorithms}} for {{Classical Probability Distributions}}},
+  author = {Belovs, Aleksandrs},
+  date = {2019-04-03},
+  shortjournal = {ArXiv190402192 Quant-Ph},
+  eprint = {1904.02192},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/1904.02192},
+  urldate = {2022-04-19},
+  abstract = {We study quantum algorithms working on classical probability distributions. We formulate four different models for accessing a classical probability distribution on a quantum computer, which are derived from previous work on the topic, and study their mutual relationships.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
+@unpublished{belovsTightQuantumLower2020,
   title = {Tight {{Quantum Lower Bound}} for {{Approximate Counting}} with {{Quantum States}}},
   author = {Belovs, Aleksandrs and Rosmanis, Ansis},
   date = {2020-02-17},
@@ -917,6 +1098,22 @@
   keywords = {Quantum Physics}
 }
 
+@unpublished{berryGateefficientDiscreteSimulations2013,
+  title = {Gate-Efficient Discrete Simulations of Continuous-Time Quantum Query Algorithms},
+  author = {Berry, Dominic W. and Cleve, Richard and Gharibian, Sevag},
+  date = {2013-04-04},
+  shortjournal = {ArXiv12114637 Quant-Ph},
+  eprint = {1211.4637},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/1211.4637},
+  urldate = {2022-04-09},
+  abstract = {We show how to efficiently simulate continuous-time quantum query algorithms that run in time T in a manner that preserves the query complexity (within a polylogarithmic factor) while also incurring a small overhead cost in the total number of gates between queries. By small overhead, we mean T within a factor that is polylogarithmic in terms of T and a cost measure that reflects the cost of computing the driving Hamiltonian. This permits any continuous-time quantum algorithm based on an efficiently computable driving Hamiltonian to be converted into a gate-efficient algorithm with similar running time.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
 @article{berryQuantalPhaseFactors1984,
   title = {Quantal Phase Factors Accompanying Adiabatic Changes},
   author = {Berry, Michael Victor},
@@ -971,6 +1168,22 @@
   keywords = {Condensed Matter - Strongly Correlated Electrons,Quantum Physics,Statistics - Machine Learning}
 }
 
+@unpublished{bieniasMetaHamiltonianLearning2021,
+  title = {Meta {{Hamiltonian Learning}}},
+  author = {Bienias, Przemyslaw and Seif, Alireza and Hafezi, Mohammad},
+  date = {2021-04-09},
+  shortjournal = {ArXiv210404453 Cond-Mat Physicsphysics Physicsquant-Ph},
+  eprint = {2104.04453},
+  eprinttype = {arxiv},
+  primaryclass = {cond-mat, physics:physics, physics:quant-ph},
+  url = {http://arxiv.org/abs/2104.04453},
+  urldate = {2022-03-04},
+  abstract = {Efficient characterization of quantum devices is a significant challenge critical for the development of large scale quantum computers. We consider an experimentally motivated situation, in which we have a decent estimate of the Hamiltonian, and its parameters need to be characterized and fine-tuned frequently to combat drifting experimental variables. We use a machine learning technique known as meta-learning to learn a more efficient optimizer for this task. We consider training with the nearest-neighbor Ising model and study the trained model's generalizability to other Hamiltonian models and larger system sizes. We observe that the meta-optimizer outperforms other optimization methods in average loss over test samples. This advantage follows from the meta-optimizer being less likely to get stuck in local minima, which highly skews the distribution of the final loss of the other optimizers. In general, meta-learning decreases the number of calls to the experiment and reduces the needed classical computational resources.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Condensed Matter - Quantum Gases,Physics - Atomic Physics,Quantum Physics}
+}
+
 @article{bitarPathIntegralsDiscrete1991,
   title = {Path Integrals as Discrete Sums},
   author = {Bitar, Khalil and Khuri, N. N. and Ren, H. C.},
@@ -1001,6 +1214,23 @@
   langid = {english}
 }
 
+@misc{bogatskiySymmetryGroupEquivariant2022,
+  title = {Symmetry {{Group Equivariant Architectures}} for {{Physics}}},
+  author = {Bogatskiy, Alexander and Ganguly, Sanmay and Kipf, Thomas and Kondor, Risi and Miller, David W. and Murnane, Daniel and Offermann, Jan T. and Pettee, Mariel and Shanahan, Phiala and Shimmin, Chase and Thais, Savannah},
+  date = {2022-03-11},
+  number = {arXiv:2203.06153},
+  eprint = {2203.06153},
+  eprinttype = {arxiv},
+  primaryclass = {astro-ph, physics:hep-ex, physics:hep-ph},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/2203.06153},
+  urldate = {2022-06-22},
+  abstract = {Physical theories grounded in mathematical symmetries are an essential component of our understanding of a wide range of properties of the universe. Similarly, in the domain of machine learning, an awareness of symmetries such as rotation or permutation invariance has driven impressive performance breakthroughs in computer vision, natural language processing, and other important applications. In this report, we argue that both the physics community and the broader machine learning community have much to understand and potentially to gain from a deeper investment in research concerning symmetry group equivariant machine learning architectures. For some applications, the introduction of symmetries into the fundamental structural design can yield models that are more economical (i.e. contain fewer, but more expressive, learned parameters), interpretable (i.e. more explainable or directly mappable to physical quantities), and/or trainable (i.e. more efficient in both data and computational requirements). We discuss various figures of merit for evaluating these models as well as some potential benefits and limitations of these methods for a variety of physics applications. Research and investment into these approaches will lay the foundation for future architectures that are potentially more robust under new computational paradigms and will provide a richer description of the physical systems to which they are applied.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Astrophysics - Instrumentation and Methods for Astrophysics,Computer Science - Artificial Intelligence,Computer Science - Machine Learning,High Energy Physics - Experiment,High Energy Physics - Phenomenology}
+}
+
 @article{boixoEigenpathTraversalPhase2009,
   title = {Eigenpath Traversal by Phase Randomization},
   author = {Boixo, Sergio and Knill, Emanuel and Somma, Rolando},
@@ -1009,6 +1239,22 @@
   volume = {9},
   doi = {10.26421/QIC9.9-10-7},
   abstract = {A computation in adiabatic quantum computing is implemented by traversing a path of nondegenerate eigenstates of a continuous family of Hamiltonians. We introduce a method that traverses a discretized form of the path: At each step we apply the instantaneous Hamiltonian for a random time. The resulting decoherence approximates a projective measurement onto the desired eigenstate, achieving a version of the quantum Zeno effect. If negative evolution times can be implemented with constant overhead, then the average absolute evolution time required by our method is O(L\^2/{$\Delta$}) for constant error probability, where L is the length of the path of eigenstates and {$\Delta$} is the minimum spectral gap of the Hamiltonian. The dependence of the cost on {$\Delta$} is optimal. Making explicit the dependence on the path length is useful for cases where L is much less than the general bound. The complexity of our method has a logarithmic improvement over previous algorithms of this type. The same cost applies to the discrete-time case, where a family of unitary operators is given and each unitary and its inverse can be used. Restriction to positive evolution times incurs an error that decreases exponentially with the cost. Applications of this method to unstructured search and quantum sampling are considered. In particular, we discuss the quantum simulated annealing algorithm for solving combinatorial optimization problems. This algorithm provides a quadratic speed-up in the gap of the stochastic matrix over its classical counterpart implemented via Markov chain Monte Carlo.}
+}
+
+@unpublished{boixoFastQuantumAlgorithms2010,
+  title = {Fast Quantum Algorithms for Traversing Paths of Eigenstates},
+  author = {Boixo, S. and Knill, E. and Somma, R. D.},
+  date = {2010-05-17},
+  shortjournal = {ArXiv10053034 Quant-Ph},
+  eprint = {1005.3034},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/1005.3034},
+  urldate = {2022-05-09},
+  abstract = {Consider a path of non-degenerate eigenstates of unitary operators or Hamiltonians with minimum eigenvalue gap G. The eigenpath traversal problem is to transform one or more copies of the initial to the final eigenstate. Solutions to this problem have applications ranging from quantum physics simulation to optimization. For Hamiltonians, the conventional way of doing this is by applying the adiabatic theorem. We give ``digital'' methods for performing the transformation that require no assumption on path continuity or differentiability other than the absence of large jumps. Given sufficient information about eigenvalues and overlaps between states on the path, the transformation can be accomplished with complexity O(L/G log(L/e)), where L is the angular length of the path and e is a specified bound on the error of the output state. We show that the required information can be obtained in a first set of transformations, whose complexity per state transformed has an additional factor that depends logarithmically on a maximum angular velocity along the path. This velocity is averaged over constant angular distances and does not require continuity. Our methods have substantially better behavior than conventional adiabatic algorithms, with fewer conditions on the path. They also improve on the previously best digital methods and demonstrate that path length and the gap are the primary parameters that determine the complexity of state transformation along a path.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
 }
 
 @article{boixoNecessaryConditionQuantum2010,
@@ -1030,7 +1276,7 @@
   keywords = {Condensed Matter - Other Condensed Matter,Quantum Physics}
 }
 
-@article{boulandComplexityClassificationTwoqubit2016,
+@unpublished{boulandComplexityClassificationTwoqubit2016,
   title = {Complexity Classification of Two-Qubit Commuting Hamiltonians},
   author = {Bouland, Adam and Man\v{c}inska, Laura and Zhang, Xue},
   date = {2016-02-12},
@@ -1046,7 +1292,7 @@
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
 }
 
-@article{boulandComputationalPseudorandomnessWormhole2019,
+@unpublished{boulandComputationalPseudorandomnessWormhole2019,
   title = {Computational Pseudorandomness, the Wormhole Growth Paradox, and Constraints on the {{AdS}}/{{CFT}} Duality},
   author = {Bouland, Adam and Fefferman, Bill and Vazirani, Umesh},
   date = {2019-10-31},
@@ -1079,7 +1325,7 @@
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
 }
 
-@article{bradyBehaviorAnalogQuantum2021,
+@unpublished{bradyBehaviorAnalogQuantum2021,
   title = {Behavior of {{Analog Quantum Algorithms}}},
   author = {Brady, Lucas T. and Kocia, Lucas and Bienias, Przemyslaw and Bapat, Aniruddha and Kharkov, Yaroslav and Gorshkov, Alexey V.},
   date = {2021-07-02},
@@ -1207,7 +1453,7 @@
   keywords = {Computer Science - Computational Complexity,Quantum information,Quantum Physics,Quantum simulation,Qubits}
 }
 
-@article{bravyiComplexityQuantumPartition2021,
+@unpublished{bravyiComplexityQuantumPartition2021,
   title = {On the Complexity of Quantum Partition Functions},
   author = {Bravyi, Sergey and Chowdhury, Anirban and Gosset, David and Wocjan, Pawel},
   date = {2021-10-28},
@@ -1222,7 +1468,7 @@
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
 }
 
-@article{bravyiComplexityStoquasticLocal2007,
+@unpublished{bravyiComplexityStoquasticLocal2007,
   title = {The {{Complexity}} of {{Stoquastic Local Hamiltonian Problems}}},
   author = {Bravyi, Sergey and DiVincenzo, David P. and Oliveira, Roberto I. and Terhal, Barbara M.},
   date = {2007-10-02},
@@ -1306,6 +1552,25 @@
   abstract = {We consider a family of quantum spin systems which includes as special cases the ferromagnetic XY model and ferromagnetic Ising model on any graph, with or without a transverse magnetic field. We prove that the partition function of any model in this family can be efficiently approximated to a given relative error E using a classical randomized algorithm with runtime polynomial in 1/E, system size, and inverse temperature. As a consequence we obtain a polynomial time algorithm which approximates the free energy or ground energy to a given additive error. We first show how to approximate the partition function by the perfect matching sum of a finite graph with positive edge weights. Although the perfect matching sum is not known to be efficiently approximable in general, the graphs obtained by our method have a special structure which facilitates efficient approximation via a randomized algorithm due to Jerrum and Sinclair.},
   archiveprefix = {arXiv},
   keywords = {Computer Science - Computational Complexity,Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
+}
+
+@article{bravyiQuantumAdvantageShallow2018,
+  title = {Quantum Advantage with Shallow Circuits},
+  author = {Bravyi, Sergey and Gosset, David and Koenig, Robert},
+  date = {2018-10-19},
+  journaltitle = {Science},
+  volume = {362},
+  number = {6412},
+  eprint = {1704.00690},
+  eprinttype = {arxiv},
+  pages = {308--311},
+  issn = {0036-8075, 1095-9203},
+  doi = {10.1126/science.aar3106},
+  url = {http://arxiv.org/abs/1704.00690},
+  urldate = {2022-03-25},
+  abstract = {We prove that constant-depth quantum circuits are more powerful than their classical counterparts. To this end we introduce a non-oracular version of the Bernstein-Vazirani problem which we call the 2D Hidden Linear Function problem. An instance of the problem is specified by a quadratic form q that maps n-bit strings to integers modulo four. The goal is to identify a linear boolean function which describes the action of q on a certain subset of n-bit strings. We prove that any classical probabilistic circuit composed of bounded fan-in gates that solves the 2D Hidden Linear Function problem with high probability must have depth logarithmic in n. In contrast, we show that this problem can be solved with certainty by a constant-depth quantum circuit composed of one- and two-qubit gates acting locally on a two-dimensional grid.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computational Complexity,Quantum Physics}
 }
 
 @article{bravyiSimulationManyBodyHamiltonians2008,
@@ -1415,6 +1680,23 @@
   keywords = {Computer Science - Cryptography and Security,Quantum Physics}
 }
 
+@unpublished{brothierCanonicalQuantization1dimensional2019,
+  title = {Canonical Quantization of 1+1-Dimensional {{Yang-Mills}} Theory: {{An}} Operator-Algebraic Approach},
+  shorttitle = {Canonical Quantization of 1+1-Dimensional {{Yang-Mills}} Theory},
+  author = {Brothier, Arnaud and Stottmeister, Alexander},
+  date = {2019-07-11},
+  shortjournal = {ArXiv190705549 Hep-Th Physicsmath-Ph Physicsquant-Ph},
+  eprint = {1907.05549},
+  eprinttype = {arxiv},
+  primaryclass = {hep-th, physics:math-ph, physics:quant-ph},
+  url = {http://arxiv.org/abs/1907.05549},
+  urldate = {2022-03-09},
+  abstract = {We present a mathematically rigorous canonical quantization of Yang-Mills theory in 1+1 dimensions (YM1`1) by operator-algebraic methods. The latter are based on Hamiltonian lattice gauge theory and multi-scale analysis via inductive limits of C\r{}-algebras which are applicable in arbitrary dimensions. The major step, restricted to one spatial dimension, is the explicitly construction of the spatially-localized von Neumann algebras of time-zero fields in the time gauge in representations associated with scaling limits of Gibbs states of the KogutSusskind Hamiltonian. We relate our work to existing results about YM1`1 and its counterpart in Euclidean quantum field theory (YM2). In particular, we show that the operator-algebraic approach offers a unifying perspective on results about YM1`1 obtained by Dimock as well as Driver and Hall, especially regarding the existence of dynamics. Although our constructions work for non-abelian gauge theory, we obtain the most explicit results in the abelian case by applying the results of our recent companion article. In view of the latter, we also discuss relations with the construction of unitary representations of Thompson's groups by Jones. To understand the scaling limits arising from our construction, we explain our findings via a rigorous adaptation of the Wilson-Kadanoff renormalization group, which connects our construction with the multi-scale entanglement renormalization ansatz (MERA). Finally, we discuss potential generalizations and extensions to higher dimensions (d ` 1 \v{e} 3).},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {81T13; 81T2; 81T40; 46L60,High Energy Physics - Theory,Mathematical Physics,Mathematics - Operator Algebras,Quantum Physics}
+}
+
 @article{brownComplexityActionBlack2016,
   title = {Complexity, Action, and Black Holes},
   author = {Brown, Adam R. and Roberts, Daniel A. and Susskind, Leonard and Swingle, Brian and Zhao, Ying},
@@ -1450,6 +1732,21 @@
   urldate = {2021-03-12},
   abstract = {A number of elegant approaches have been developed for the identification of quantum circuits which can be efficiently simulated on a classical computer. Recently, these methods have been employed to demonstrate the classical simulability of the quantum Fourier transform (QFT). Here we show that one can demonstrate a number of simulability results for QFT circuits in a straightforward manner using Griffiths and Niu's semi-classical QFT construction (Griffiths and Niu 1996 Phys. Rev. Lett. 76 3228). We use this to analyse the simulability properties of the QFT with a variety of classes of entangled input states. We then discuss the consequences of these results in the context of Shor's factorization algorithm.},
   archiveprefix = {arXiv},
+  langid = {english}
+}
+
+@article{brownQuantumComplexityNegative2017,
+  title = {Quantum Complexity and Negative Curvature},
+  author = {Brown, Adam R. and Susskind, Leonard and Zhao, Ying},
+  date = {2017-02-22},
+  journaltitle = {Phys. Rev. D},
+  volume = {95},
+  number = {4},
+  pages = {045010},
+  issn = {2470-0010, 2470-0029},
+  doi = {10.1103/PhysRevD.95.045010},
+  url = {https://link.aps.org/doi/10.1103/PhysRevD.95.045010},
+  urldate = {2022-03-06},
   langid = {english}
 }
 
@@ -1582,6 +1879,25 @@
   keywords = {Quantum Physics}
 }
 
+@article{caoQuantumImaginaryTime2022,
+  title = {Quantum Imaginary Time Evolution Steered by Reinforcement Learning},
+  author = {Cao, Chenfeng and An, Zheng and Hou, Shi-Yao and Zhou, D. L. and Zeng, Bei},
+  date = {2022-03-14},
+  journaltitle = {Commun Phys},
+  volume = {5},
+  number = {1},
+  pages = {1--7},
+  publisher = {{Nature Publishing Group}},
+  issn = {2399-3650},
+  doi = {10.1038/s42005-022-00837-y},
+  url = {https://www.nature.com/articles/s42005-022-00837-y},
+  urldate = {2022-06-07},
+  abstract = {The quantum imaginary time evolution is a powerful algorithm for preparing the ground and thermal states on near-term quantum devices. However, algorithmic errors induced by Trotterization and local approximation severely hinder its performance. Here we propose a deep reinforcement learning-based method to steer the evolution and mitigate these errors. In our scheme, the well-trained agent can find the subtle evolution path where most algorithmic errors cancel out, enhancing the fidelity significantly. We verified the method's validity with the transverse-field Ising model and the Sherrington-Kirkpatrick model. Numerical calculations and experiments on a nuclear magnetic resonance quantum computer illustrate the efficacy. The philosophy of our method, eliminating errors with errors, sheds light on error reduction on near-term quantum devices.},
+  issue = {1},
+  langid = {english},
+  keywords = {Information theory and computation,Quantum information}
+}
+
 @article{carleoSolvingQuantumManyBody2017,
   ids = {carleoSolvingQuantumManybody2017},
   title = {Solving the {{Quantum Many-Body Problem}} with {{Artificial Neural Networks}}},
@@ -1643,7 +1959,23 @@
   keywords = {Condensed Matter - Mesoscale and Nanoscale Physics,Condensed Matter - Quantum Gases,High Energy Physics - Phenomenology,High Energy Physics - Theory,Quantum Physics}
 }
 
-@article{chaillouxNoteQuantumQuery2018,
+@unpublished{cataniWhyInterferencePhenomena2021,
+  title = {Why Interference Phenomena Do Not Capture the Essence of Quantum Theory},
+  author = {Catani, Lorenzo and Leifer, Matthew and Schmid, David and Spekkens, Robert W.},
+  date = {2021-11-26},
+  shortjournal = {ArXiv211113727 Quant-Ph},
+  eprint = {2111.13727},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/2111.13727},
+  urldate = {2022-02-24},
+  abstract = {Quantum interference phenomena are widely viewed as posing a challenge to the classical worldview. Feynman even went so far as to proclaim that they are the only mystery and the basic peculiarity of quantum mechanics. Many have also argued that such phenomena force us to accept a number of radical interpretational conclusions, including: that a photon is neither a particle nor a wave but rather a schizophrenic sort of entity that toggles between the two possibilities, that reality is observer-dependent, and that systems either do not have properties prior to measurements or else have properties that are subject to nonlocal or backwards-in-time causal influences. In this work, we show that such conclusions are not, in fact, forced on us by the phenomena. We do so by describing an alternative to quantum theory, a statistical theory of a classical discrete field (the `toy field theory') that reproduces the relevant phenomenology of quantum interference while rejecting these radical interpretational claims. It also reproduces a number of related interference experiments that are thought to support these interpretational claims, such as the Elitzur-Vaidman bomb tester, Wheeler's delayed-choice experiment, and the quantum eraser experiment. The systems in the toy field theory are field modes, each of which possesses, at all times, both a particle-like property (a discrete occupation number) and a wave-like property (a discrete phase). Although these two properties are jointly possessed, the theory stipulates that they cannot be jointly known. The phenomenology that is generally cited in favour of nonlocal or backwards-in-time causal influences ends up being explained in terms of inferences about distant or past systems, and all that is observer-dependent is the observer's knowledge of reality, not reality itself.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
+@unpublished{chaillouxNoteQuantumQuery2018,
   title = {A Note on the Quantum Query Complexity of Permutation Symmetric Functions},
   author = {Chailloux, Andr\'e},
   date = {2018-10-03},
@@ -1706,6 +2038,21 @@
   abstract = {Quantum walk models have been used as an algorithmic tool for quantum computation and to describe various physical processes. This paper revisits the relationship between relativistic quantum mechanics and the quantum walks. We show the similarities of the mathematical structure of the decoupled and coupled form of the discrete-time quantum walk to that of the Klein-Gordon and Dirac equations, respectively. In the latter case, the coin emerges as an analog of the spinor degree of freedom. Discrete-time quantum walk as a coupled form of the continuous-time quantum walk is also shown by transforming the decoupled form of the discrete-time quantum walk to the Schrodinger form. By showing the coin to be a means to make the walk reversible, and that the Dirac-like structure is a consequence of the coin use, our work suggests that the relativistic causal structure is a consequence of conservation of information. However, decoherence (modelled by projective measurements on position space) generates entropy that increases with time, making the walk irreversible and thereby producing an arrow of time. Lieb-Robinson bound is used to highlight the causal structure of the quantum walk to put in perspective the relativistic structure of quantum walk, maximum speed of the walk propagation and the earlier findings related to the finite spread of the walk probability distribution. We also present a two-dimensional quantum walk model on a two state system to which the study can be extended.},
   archiveprefix = {arXiv},
   langid = {english},
+  keywords = {Quantum Physics}
+}
+
+@misc{chatterjeeGeneralizedCoherentStates2017,
+  title = {Generalized {{Coherent States}}, {{Reproducing Kernels}}, and {{Quantum Support Vector Machines}}},
+  author = {Chatterjee, Rupak and Yu, Ting},
+  date = {2017-02-02},
+  eprint = {1612.03713},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  doi = {10.26421/QIC17.15-16},
+  url = {http://arxiv.org/abs/1612.03713},
+  urldate = {2022-06-26},
+  abstract = {The support vector machine (SVM) is a popular machine learning classification method which produces a nonlinear decision boundary in a feature space by constructing linear boundaries in a transformed Hilbert space. It is well known that these algorithms when executed on a classical computer do not scale well with the size of the feature space both in terms of data points and dimensionality. One of the most significant limitations of classical algorithms using non-linear kernels is that the kernel function has to be evaluated for all pairs of input feature vectors which themselves may be of substantially high dimension. This can lead to computationally excessive times during training and during the prediction process for a new data point. Here, we propose using both canonical and generalized coherent states to rapidly calculate specific nonlinear kernel functions. The key link will be the reproducing kernel Hilbert space (RKHS) property for SVMs that naturally arise from canonical and generalized coherent states. Specifically, we discuss the fast evaluation of radial kernels through a positive operator valued measure (POVM) on a quantum optical system based on canonical coherent states. A similar procedure may also lead to fast calculations of kernels not usually used in classical algorithms such as those arising from generalized coherent states.},
+  archiveprefix = {arXiv},
   keywords = {Quantum Physics}
 }
 
@@ -1798,7 +2145,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{childsHighprecisionQuantumAlgorithms2020,
+@unpublished{childsHighprecisionQuantumAlgorithms2020,
   title = {High-Precision Quantum Algorithms for Partial Differential Equations},
   author = {Childs, Andrew M. and Liu, Jin-Peng and Ostrander, Aaron},
   date = {2020-02-18},
@@ -2000,6 +2347,20 @@
   langid = {english}
 }
 
+@book{chungSpectralGraphTheory1997,
+  title = {Spectral Graph Theory},
+  author = {Chung, Fan R. K.},
+  date = {1997},
+  series = {Regional Conference Series in Mathematics},
+  number = {no. 92},
+  publisher = {{Published for the Conference Board of the mathematical sciences by the American Mathematical Society}},
+  location = {{Providence, R.I}},
+  isbn = {978-0-8218-0315-8},
+  langid = {english},
+  pagetotal = {207},
+  keywords = {Congresses,Eigenvalues,Graph theory}
+}
+
 @article{ciracColdAtomSimulation2010,
   title = {Cold Atom Simulation of Interacting Relativistic Quantum Field Theories},
   author = {Cirac, J. Ignacio and Maraner, Paolo and Pachos, Jiannis K.},
@@ -2034,7 +2395,23 @@
   abstract = {A quantum computer can be implemented with cold ions confined in a linear trap and interacting with laser beams. Quantum gates involving any pair, triplet, or subset of ions can be realized by coupling the ions through the collective quantized motion. In this system decoherence is negligible, and the measurement (readout of the quantum register) can be carried out with a high efficiency.}
 }
 
-@article{cleveEfficientQuantumAlgorithms2019,
+@article{cleveEfficientDiscretetimeSimulations2009,
+  title = {Efficient Discrete-Time Simulations of Continuous-Time Quantum Query Algorithms},
+  author = {Cleve, R. and Gottesman, D. and Mosca, M. and Somma, R. D. and Yonge-Mallo, D. L.},
+  date = {2009},
+  journaltitle = {Proc. 41st Annu. ACM Symp. Symp. Theory Comput. - STOC 09},
+  eprint = {0811.4428},
+  eprinttype = {arxiv},
+  pages = {409},
+  doi = {10.1145/1536414.1536471},
+  url = {http://arxiv.org/abs/0811.4428},
+  urldate = {2022-04-09},
+  abstract = {The continuous-time query model is a variant of the discrete query model in which queries can be interleaved with known operations (called "driving operations") continuously in time. Interesting algorithms have been discovered in this model, such as an algorithm for evaluating nand trees more efficiently than any classical algorithm. Subsequent work has shown that there also exists an efficient algorithm for nand trees in the discrete query model; however, there is no efficient conversion known for continuous-time query algorithms for arbitrary problems. We show that any quantum algorithm in the continuous-time query model whose total query time is T can be simulated by a quantum algorithm in the discrete query model that makes O[T log(T) / log(log(T))] queries. This is the first upper bound that is independent of the driving operations (i.e., it holds even if the norm of the driving Hamiltonian is very large). A corollary is that any lower bound of T queries for a problem in the discrete-time query model immediately carries over to a lower bound of \textbackslash Omega[T log(log(T))/log (T)] in the continuous-time query model.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
+@unpublished{cleveEfficientQuantumAlgorithms2019,
   title = {Efficient {{Quantum Algorithms}} for {{Simulating Lindblad Evolution}}},
   author = {Cleve, Richard and Wang, Chunhao},
   date = {2019-01-03},
@@ -2049,7 +2426,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{cleveFastParallelCircuits2000,
+@unpublished{cleveFastParallelCircuits2000,
   title = {Fast Parallel Circuits for the Quantum {{Fourier}} Transform},
   author = {Cleve, Richard and Watrous, John},
   date = {2000-06-01},
@@ -2102,6 +2479,26 @@
   keywords = {Condensed Matter - Strongly Correlated Electrons}
 }
 
+@article{congQuantumConvolutionalNeural2019,
+  title = {Quantum {{Convolutional Neural Networks}}},
+  author = {Cong, Iris and Choi, Soonwon and Lukin, Mikhail D.},
+  date = {2019-12},
+  journaltitle = {Nat. Phys.},
+  volume = {15},
+  number = {12},
+  eprint = {1810.03787},
+  eprinttype = {arxiv},
+  primaryclass = {cond-mat, physics:quant-ph},
+  pages = {1273--1278},
+  issn = {1745-2473, 1745-2481},
+  doi = {10.1038/s41567-019-0648-8},
+  url = {http://arxiv.org/abs/1810.03787},
+  urldate = {2022-06-27},
+  abstract = {We introduce and analyze a novel quantum machine learning model motivated by convolutional neural networks. Our quantum convolutional neural network (QCNN) makes use of only \$O(\textbackslash log(N))\$ variational parameters for input sizes of \$N\$ qubits, allowing for its efficient training and implementation on realistic, near-term quantum devices. The QCNN architecture combines the multi-scale entanglement renormalization ansatz and quantum error correction. We explicitly illustrate its potential with two examples. First, QCNN is used to accurately recognize quantum states associated with 1D symmetry-protected topological phases. We numerically demonstrate that a QCNN trained on a small set of exactly solvable points can reproduce the phase diagram over the entire parameter regime and also provide an exact, analytical QCNN solution. As a second application, we utilize QCNNs to devise a quantum error correction scheme optimized for a given error model. We provide a generic framework to simultaneously optimize both encoding and decoding procedures and find that the resultant scheme significantly outperforms known quantum codes of comparable complexity. Finally, potential experimental realization and generalizations of QCNNs are discussed.},
+  archiveprefix = {arXiv},
+  keywords = {Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
+}
+
 @book{cormenIntroductionAlgorithms2009,
   title = {Introduction to Algorithms},
   editor = {Cormen, Thomas H.},
@@ -2112,6 +2509,22 @@
   isbn = {978-0-262-03384-8 978-0-262-53305-8},
   pagetotal = {1292},
   keywords = {Computer algorithms,Computer programming}
+}
+
+@article{cortesSupportvectorNetworks1995,
+  title = {Support-Vector Networks},
+  author = {Cortes, Corinna and Vapnik, Vladimir},
+  date = {1995-09},
+  journaltitle = {Mach Learn},
+  volume = {20},
+  number = {3},
+  pages = {273--297},
+  issn = {0885-6125, 1573-0565},
+  doi = {10.1007/BF00994018},
+  url = {http://link.springer.com/10.1007/BF00994018},
+  urldate = {2022-06-27},
+  abstract = {The support-vector network is a new leaming machine for two-group classification problems. The machine conceptually implements the following idea: input vectors are non-linearly mapped to a very highdimension feature space. In this feature space a linear decision surface is constructed. Special properties of the decision surface ensures high generalization ability of the learning machine. The idea behind the support-vector network was previously implemented for the restricted case where the training data can be separated without errors. We here extend this result to non-separable training data.},
+  langid = {english}
 }
 
 @article{creutzConfinementCriticalDimensionality1979,
@@ -2147,7 +2560,7 @@
   keywords = {Computer Science - Data Structures and Algorithms,Condensed Matter - Statistical Mechanics,Quantum Physics}
 }
 
-@article{cubittUniversalQuantumHamiltonians2017,
+@unpublished{cubittUniversalQuantumHamiltonians2017,
   title = {Universal {{Quantum Hamiltonians}}},
   author = {Cubitt, Toby and Montanaro, Ashley and Piddock, Stephen},
   date = {2017-01-18},
@@ -2200,6 +2613,20 @@
   keywords = {Quantum Physics}
 }
 
+@unpublished{dawsonSolovayKitaevAlgorithm2005,
+  title = {The {{Solovay-Kitaev}} Algorithm},
+  author = {Dawson, Christopher M. and Nielsen, Michael A.},
+  date = {2005-08-22},
+  shortjournal = {ArXivquant-Ph0505030},
+  eprint = {quant-ph/0505030},
+  eprinttype = {arxiv},
+  url = {http://arxiv.org/abs/quant-ph/0505030},
+  urldate = {2022-03-11},
+  abstract = {This pedagogical review presents the proof of the Solovay-Kitaev theorem in the form of an efficient classical algorithm for compiling an arbitrary single-qubit gate into a sequence of gates from a fixed and finite set. The algorithm can be used, for example, to compile Shor's algorithm, which uses rotations of \$\textbackslash pi / 2\^k\$, into an efficient fault-tolerant form using only Hadamard, controlled-\{\textbackslash sc not\}, and \$\textbackslash pi / 8\$ gates. The algorithm runs in \$O(\textbackslash log\^\{2.71\}(1/\textbackslash epsilon))\$ time, and produces as output a sequence of \$O(\textbackslash log\^\{3.97\}(1/\textbackslash epsilon))\$ quantum gates which is guaranteed to approximate the desired quantum gate to an accuracy within \$\textbackslash epsilon {$>$} 0\$. We also explain how the algorithm can be generalized to apply to multi-qubit gates and to gates from \$SU(d)\$.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
 @article{deshpandeDynamicalPhaseTransitions2018,
   title = {Dynamical Phase Transitions in Sampling Complexity},
   author = {Deshpande, Abhinav and Fefferman, Bill and Tran, Minh C. and Foss-Feig, Michael and Gorshkov, Alexey V.},
@@ -2220,7 +2647,7 @@
   keywords = {Computer Science - Computational Complexity,Condensed Matter - Quantum Gases,Quantum Physics}
 }
 
-@article{deshpandeImportanceSpectralGap2020,
+@unpublished{deshpandeImportanceSpectralGap2020,
   title = {The Importance of the Spectral Gap in Estimating Ground-State Energies},
   author = {Deshpande, Abhinav and Gorshkov, Alexey V. and Fefferman, Bill},
   date = {2020-07-22},
@@ -2297,6 +2724,26 @@
   urldate = {2021-04-13},
   archiveprefix = {arXiv},
   langid = {english}
+}
+
+@article{dohertyIdentifyingPhasesQuantum2009,
+  title = {Identifying Phases of Quantum Many-Body Systems That Are Universal for Quantum Computation},
+  author = {Doherty, Andrew C. and Bartlett, Stephen D.},
+  date = {2009-07-10},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {103},
+  number = {2},
+  eprint = {0802.4314},
+  eprinttype = {arxiv},
+  pages = {020506},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.103.020506},
+  url = {http://arxiv.org/abs/0802.4314},
+  urldate = {2022-02-26},
+  abstract = {Quantum computation can proceed solely through single-qubit measurements on an appropriate quantum state, such as the ground state of an interacting many-body system. We investigate a simple spin-lattice system based on the cluster-state model, and by using nonlocal correlation functions that quantify the fidelity of quantum gates performed between distant qubits, we demonstrate that it possesses a quantum (zero-temperature) phase transition between a disordered phase and an ordered "cluster phase" in which it is possible to perform a universal set of quantum gates.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
 }
 
 @article{doucotDiscreteNonAbelianGauge2004,
@@ -2467,7 +2914,7 @@
   langid = {english}
 }
 
-@article{eisertAreaLawsEntanglement2010,
+@unpublished{eisertAreaLawsEntanglement2010,
   title = {Area Laws for the Entanglement Entropy - a Review},
   author = {Eisert, J. and Cramer, M. and Plenio, M. B.},
   date = {2010-02-12},
@@ -2501,6 +2948,21 @@
   langid = {english}
 }
 
+@misc{farhiClassificationQuantumNeural2018,
+  title = {Classification with {{Quantum Neural Networks}} on {{Near Term Processors}}},
+  author = {Farhi, Edward and Neven, Hartmut},
+  date = {2018-08-30},
+  eprint = {1802.06002},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/1802.06002},
+  urldate = {2022-06-28},
+  abstract = {We introduce a quantum neural network, QNN, that can represent labeled data, classical or quantum, and be trained by supervised learning. The quantum circuit consists of a sequence of parameter dependent unitary transformations which acts on an input quantum state. For binary classification a single Pauli operator is measured on a designated readout qubit. The measured output is the quantum neural network's predictor of the binary label of the input state. First we look at classifying classical data sets which consist of n-bit strings with binary labels. The input quantum state is an n-bit computational basis state corresponding to a sample string. We show how to design a circuit made from two qubit unitaries that can correctly represent the label of any Boolean function of n bits. For certain label functions the circuit is exponentially long. We introduce parameter dependent unitaries that can be adapted by supervised learning of labeled data. We study an example of real world data consisting of downsampled images of handwritten digits each of which has been labeled as one of two distinct digits. We show through classical simulation that parameters can be found that allow the QNN to learn to correctly distinguish the two data sets. We then discuss presenting the data as quantum superpositions of computational basis states corresponding to different label values. Here we show through simulation that learning is possible. We consider using our QNN to learn the label of a general quantum state. By example we show that this can be done. Our work is exploratory and relies on the classical simulation of small quantum systems. The QNN proposed here was designed with near-term quantum processors in mind. Therefore it will be possible to run this QNN on a near term gate model quantum computer where its power can be explored beyond what can be explored with simulation.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
 @article{farhiFunctionalIntegralConstructed1992,
   title = {The Functional Integral Constructed Directly from the Hamiltonian},
   author = {Farhi, Edward and Gutmann, Sam},
@@ -2516,7 +2978,7 @@
   langid = {english}
 }
 
-@article{farhiQuantumApproximateOptimization2014,
+@unpublished{farhiQuantumApproximateOptimization2014,
   title = {A {{Quantum Approximate Optimization Algorithm}}},
   author = {Farhi, Edward and Goldstone, Jeffrey and Gutmann, Sam},
   date = {2014-11-14},
@@ -2528,7 +2990,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{farhiQuantumComputationAdiabatic2000,
+@unpublished{farhiQuantumComputationAdiabatic2000,
   title = {Quantum {{Computation}} by {{Adiabatic Evolution}}},
   author = {Farhi, Edward and Goldstone, Jeffrey and Gutmann, Sam and Sipser, Michael},
   date = {2000-01-28},
@@ -2560,7 +3022,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{farhiQuantumSupremacyQuantum2016,
+@unpublished{farhiQuantumSupremacyQuantum2016,
   title = {Quantum {{Supremacy}} through the {{Quantum Approximate Optimization Algorithm}}},
   author = {Farhi, Edward and Harrow, Aram W},
   date = {2016},
@@ -2589,7 +3051,7 @@
   langid = {english}
 }
 
-@article{feffermanPowerQuantumFourier2015,
+@unpublished{feffermanPowerQuantumFourier2015,
   title = {The {{Power}} of {{Quantum Fourier Sampling}}},
   author = {Fefferman, Bill and Umans, Chris},
   date = {2015-07-20},
@@ -2808,6 +3270,25 @@
   keywords = {Condensed Matter - Mesoscale and Nanoscale Physics,Condensed Matter - Strongly Correlated Electrons}
 }
 
+@article{gaoQuantumSupremacySimulating2017,
+  title = {Quantum {{Supremacy}} for {{Simulating A Translation-Invariant Ising Spin Model}}},
+  author = {Gao, Xun and Wang, Sheng-Tao and Duan, Lu-Ming},
+  date = {2017-01-27},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {118},
+  number = {4},
+  eprint = {1607.04947},
+  eprinttype = {arxiv},
+  pages = {040502},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.118.040502},
+  url = {http://arxiv.org/abs/1607.04947},
+  urldate = {2022-03-28},
+  abstract = {We introduce an intermediate quantum computing model built from translation-invariant Ising-interacting spins. Despite being non-universal, the model cannot be classically efficiently simulated unless the polynomial hierarchy collapses. Equipped with the intrinsic single-instance-hardness property, a single fixed unitary evolution in our model is sufficient to produce classically intractable results, compared to several other models that rely on implementation of an ensemble of different unitaries (instances). We propose a feasible experimental scheme to implement our Hamiltonian model using cold atoms trapped in a square optical lattice. We formulate a procedure to certify the correct functioning of this quantum machine. The certification requires only a polynomial number of local measurements assuming measurement imperfections are sufficiently small.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
 @book{gattringerQuantumChromodynamicsLattice2010,
   title = {Quantum {{Chromodynamics}} on the {{Lattice}}},
   author = {Gattringer, Christof and Lang, Christian B.},
@@ -2874,6 +3355,22 @@
   keywords = {Computer Science - Computational Complexity,Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
 }
 
+@article{ghoshJourneyGraphKernels2018,
+  title = {The Journey of Graph Kernels through Two Decades},
+  author = {Ghosh, Swarnendu and Das, Nibaran and Gon\c{c}alves, Teresa and Quaresma, Paulo and Kundu, Mahantapas},
+  date = {2018-02-01},
+  journaltitle = {Computer Science Review},
+  volume = {27},
+  pages = {88--111},
+  issn = {1574-0137},
+  doi = {10.1016/j.cosrev.2017.11.002},
+  url = {https://www.sciencedirect.com/science/article/pii/S1574013717301429},
+  urldate = {2022-06-28},
+  abstract = {In the real world all events are connected. There is a hidden network of dependencies that governs behavior of natural processes. Without much argument it can be said that, of all the known data-structures, graphs are naturally suitable to model such information. But to learn to use graph data structure is a tedious job as most operations on graphs are computationally expensive, so exploring fast machine learning techniques for graph data has been an active area of research and a family of algorithms called kernel based approaches has been famous among researchers of the machine learning domain. With the help of support vector machines, kernel based methods work very well for learning with Gaussian processes. In this survey we will explore various kernels that operate on graph representations. Starting from the basics of kernel based learning we will travel through the history of graph kernels from its first appearance to discussion of current state of the art techniques in practice.},
+  langid = {english},
+  keywords = {Graph kernels,Graph similarity,Isomorphism,Support vector machines}
+}
+
 @article{gilyenQuantumSingularValue2019,
   title = {Quantum Singular Value Transformation and beyond: Exponential Improvements for Quantum Matrix Arithmetics},
   shorttitle = {Quantum Singular Value Transformation and Beyond},
@@ -2892,7 +3389,28 @@
   keywords = {Computer Science - Emerging Technologies,Quantum Physics}
 }
 
-@article{girvinIntroductionQuantumError2021,
+@article{giovannettiQuantumRandomAccess2008,
+  title = {Quantum Random Access Memory},
+  author = {Giovannetti, Vittorio and Lloyd, Seth and Maccone, Lorenzo},
+  date = {2008-04-21},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {100},
+  number = {16},
+  eprint = {0708.1879},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {160501},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.100.160501},
+  url = {http://arxiv.org/abs/0708.1879},
+  urldate = {2022-06-27},
+  abstract = {A random access memory (RAM) uses n bits to randomly address N=2\^n distinct memory cells. A quantum random access memory (qRAM) uses n qubits to address any quantum superposition of N memory cells. We present an architecture that exponentially reduces the requirements for a memory call: O(log N) switches need be thrown instead of the N used in conventional (classical or quantum) RAM designs. This yields a more robust qRAM algorithm, as it in general requires entanglement among exponentially less gates, and leads to an exponential decrease in the power needed for addressing. A quantum optical implementation is presented.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
+@unpublished{girvinIntroductionQuantumError2021,
   title = {Introduction to {{Quantum Error Correction}} and {{Fault Tolerance}}},
   author = {Girvin, Steven M.},
   date = {2021-11-16},
@@ -2925,7 +3443,7 @@
   archiveprefix = {arXiv}
 }
 
-@article{glickCovariantQuantumKernels2021,
+@unpublished{glickCovariantQuantumKernels2021,
   title = {Covariant Quantum Kernels for Data with Group Structure},
   author = {Glick, Jennifer R. and Gujarati, Tanvi P. and Corcoles, Antonio D. and Kim, Youngseok and Kandala, Abhinav and Gambetta, Jay M. and Temme, Kristan},
   date = {2021-05-07},
@@ -2970,6 +3488,38 @@
   abstract = {In the long-time pursuit of the solution to calculate the partition function (or free energy) of condensed matter, Monte-Carlo-based nested sampling should be the state-of-the-art method, and very recently, we established a direct integral approach that works at least four orders faster. In present work, the above two methods were applied to solid argon at temperatures up to \$300\$K, and the derived internal energy and pressure were compared with the molecular dynamics simulation as well as experimental measurements, showing that the calculation precision of our approach is about 10 times higher than that of the nested sampling method.},
   archiveprefix = {arXiv},
   keywords = {Condensed Matter - Statistical Mechanics,Physics - Computational Physics}
+}
+
+@article{gongQuantumWalksProgrammable2021,
+  title = {Quantum Walks on a Programmable Two-Dimensional 62-Qubit Superconducting Processor},
+  author = {Gong, Ming and Wang, Shiyu and Zha, Chen and Chen, Ming-Cheng and Huang, He-Liang and Wu, Yulin and Zhu, Qingling and Zhao, Youwei and Li, Shaowei and Guo, Shaojun and Qian, Haoran and Ye, Yangsen and Chen, Fusheng and Ying, Chong and Yu, Jiale and Fan, Daojin and Wu, Dachao and Su, Hong and Deng, Hui and Rong, Hao and Zhang, Kaili and Cao, Sirui and Lin, Jin and Xu, Yu and Sun, Lihua and Guo, Cheng and Li, Na and Liang, Futian and Bastidas, V. M. and Nemoto, Kae and Munro, W. J. and Huo, Yong-Heng and Lu, Chao-Yang and Peng, Cheng-Zhi and Zhu, Xiaobo and Pan, Jian-Wei},
+  date = {2021-05-28},
+  journaltitle = {Science},
+  volume = {372},
+  number = {6545},
+  pages = {948--952},
+  issn = {0036-8075, 1095-9203},
+  doi = {10.1126/science.abg7812},
+  url = {https://www.science.org/doi/10.1126/science.abg7812},
+  urldate = {2022-02-26},
+  abstract = {Simulating quantum walkers                            Quantum walks are the quantum mechanical analogs of classical random walks, describing the propagation of a quantum walker across a lattice, and find application in developing algorithms for simulating quantum many-body systems. Gong               et al.               used an 8-by-8 two-dimensional (2D) superconducting qubit square lattice containing 62 functional qubits to show how multiple (two) walkers traverse a 2D qubit array, interfering as they go. The authors were also able to program the paths that the walkers follow, demonstrating a Mach-Zehnder interferometer in which a single or multiple quantum walkers coherently traverse two paths before interfering and exiting at a single port. The results illustrate the potential for superconducting-based quantum processors in simulating large-scale quantum systems.                                         Science               , abg7812, this issue p.               948                        ,              A 62-qubit processor is used to simulate the propagation of quantum walkers across a two-dimensional lattice.           ,              Quantum walks are the quantum mechanical analog of classical random walks and an extremely powerful tool in quantum simulations, quantum search algorithms, and even for universal quantum computing. In our work, we have designed and fabricated an 8-by-8 two-dimensional square superconducting qubit array composed of 62 functional qubits. We used this device to demonstrate high-fidelity single- and two-particle quantum walks. Furthermore, with the high programmability of the quantum processor, we implemented a Mach-Zehnder interferometer where the quantum walker coherently traverses in two paths before interfering and exiting. By tuning the disorders on the evolution paths, we observed interference fringes with single and double walkers. Our work is a milestone in the field, bringing future larger-scale quantum applications closer to realization for noisy intermediate-scale quantum processors.},
+  langid = {english}
+}
+
+@article{gooldRoleQuantumInformation2016,
+  title = {The Role of Quantum Information in Thermodynamics\textemdash a Topical Review},
+  author = {Goold, John and Huber, Marcus and Riera, Arnau and del Rio, L\'idia and Skrzypczyk, Paul},
+  date = {2016-04-08},
+  journaltitle = {J. Phys. A: Math. Theor.},
+  volume = {49},
+  number = {14},
+  pages = {143001},
+  issn = {1751-8113, 1751-8121},
+  doi = {10.1088/1751-8113/49/14/143001},
+  url = {https://iopscience.iop.org/article/10.1088/1751-8113/49/14/143001},
+  urldate = {2022-03-05},
+  abstract = {This topical review article gives an overview of the interplay between quantum information theory and thermodynamics of quantum systems. We focus on several trending topics including the foundations of statistical mechanics, resource theories, entanglement in thermodynamic settings, fluctuation theorems and thermal machines. This is not a comprehensive review of the diverse field of quantum thermodynamics; rather, it is a convenient entry point for the thermo-curious information theorist. Furthermore this review should facilitate the unification and understanding of different interdisciplinary approaches emerging in research groups around the world.},
+  langid = {english}
 }
 
 @article{gossetCorrelationLengthGap2016,
@@ -3025,7 +3575,7 @@
   langid = {english}
 }
 
-@article{gottesmanHeisenbergRepresentationQuantum1998,
+@unpublished{gottesmanHeisenbergRepresentationQuantum1998,
   title = {The {{Heisenberg Representation}} of {{Quantum Computers}}},
   author = {Gottesman, Daniel},
   date = {1998-07-01},
@@ -3039,7 +3589,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{gottesmanStabilizerCodesQuantum1997,
+@unpublished{gottesmanStabilizerCodesQuantum1997,
   title = {Stabilizer {{Codes}} and {{Quantum Error Correction}}},
   author = {Gottesman, Daniel},
   date = {1997-05-28},
@@ -3099,7 +3649,17 @@
   abstract = {Quantum mechanics can speed up a range of search applications over unsorted data. For example, imagine a phone directory containing N names arranged in completely random order. To find someone's phone number with a probability of 50\%, any classical algorithm (whether deterministic or probabilistic) will need to access the database a minimum of 0.5N times. Quantum mechanical systems can be in a superposition of states and simultaneously examine multiple names. By properly adjusting the phases of various operations, successful computations reinforce each other while others interfere randomly. As a result, the desired phone number can be obtained in only O({$\surd$}N) accesses to the database.}
 }
 
-@article{guMajoranaFermionsSensitivity2019,
+@article{guLatticeBosonicModel2006,
+  title = {A Lattice Bosonic Model as a Quantum Theory of Gravity},
+  author = {Gu, Zheng-Cheng and Wen, Xiao-Gang},
+  date = {2006-06-23},
+  url = {https://arxiv.org/abs/gr-qc/0606100v1},
+  urldate = {2022-02-26},
+  abstract = {A local quantum bosonic model on a lattice is constructed whose low energy excitations are gravitons described by linearized Einstein action. Thus the bosonic model is a quantum theory of gravity, at least at the linear level. We find that the compactification and the discretization of metric tenor are crucial in obtaining a quantum theory of gravity.},
+  langid = {english}
+}
+
+@unpublished{guMajoranaFermionsSensitivity2019,
   title = {Majorana Fermions and the {{Sensitivity Conjecture}}},
   author = {Gu, Yingfei and Qi, Xiao-Liang},
   date = {2019-08-17},
@@ -3159,9 +3719,10 @@
   issn = {0097-5397, 1095-7111},
   doi = {10.1137/18M1231511},
   url = {http://arxiv.org/abs/1801.03922},
-  urldate = {2021-12-04},
-  abstract = {We study the problem of simulating the time evolution of a lattice Hamiltonian, where the qubits are laid out on a lattice and the Hamiltonian only includes geometrically local interactions (i.e., a qubit may only interact with qubits in its vicinity). This class of Hamiltonians is very general and is believed to capture fundamental interactions of physics. Our algorithm simulates the time evolution of such a Hamiltonian on \$n\$ qubits for time \$T\$ up to error \$\textbackslash epsilon\$ using \$\textbackslash mathcal O( nT \textbackslash mathrm\{polylog\} (nT/\textbackslash epsilon))\$ gates with depth \$\textbackslash mathcal O(T \textbackslash mathrm\{polylog\} (nT/\textbackslash epsilon))\$. Our algorithm is the first simulation algorithm that achieves gate cost quasilinear in \$nT\$ and polylogarithmic in \$1/\textbackslash epsilon\$. Our algorithm also readily generalizes to time-dependent Hamiltonians and yields an algorithm with similar gate count for any piecewise slowly varying time-dependent bounded local Hamiltonian. We also prove a matching lower bound on the gate count of such a simulation, showing that any quantum algorithm that can simulate a piecewise constant bounded local Hamiltonian in one dimension to constant error requires \$\textbackslash tilde \textbackslash Omega(nT)\$ gates in the worst case. The lower bound holds even if we only require the output state to be correct on local measurements. To our best knowledge, this is the first nontrivial lower bound on the gate complexity of the simulation problem. Our algorithm is based on a decomposition of the time-evolution unitary into a product of small unitaries using Lieb-Robinson bounds. In the appendix, we prove a Lieb-Robinson bound tailored to Hamiltonians with small commutators between local terms, giving zero Lieb-Robinson velocity in the limit of commuting Hamiltonians. This improves the performance of our algorithm when the Hamiltonian is close to commuting.},
+  urldate = {2022-03-07},
+  abstract = {We study the problem of simulating the time evolution of a lattice Hamiltonian, where the qubits are laid out on a lattice and the Hamiltonian only includes geometrically local interactions (i.e., a qubit may only interact with qubits in its vicinity). This class of Hamiltonians is very general and is believed to capture fundamental interactions of physics.},
   archiveprefix = {arXiv},
+  langid = {english},
   keywords = {Quantum Physics}
 }
 
@@ -3184,7 +3745,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{haferkampLinearGrowthQuantum2021,
+@unpublished{haferkampLinearGrowthQuantum2021,
   title = {Linear Growth of Quantum Circuit Complexity},
   author = {Haferkamp, Jonas and Faist, Philippe and Kothakonda, Naga B. T. and Eisert, Jens and Halpern, Nicole Yunger},
   date = {2021-12-22},
@@ -3232,6 +3793,30 @@
   langid = {english}
 }
 
+@unpublished{haldarVariationalWavefunctionsSachdevYeKitaev2021,
+  title = {Variational Wavefunctions for {{Sachdev-Ye-Kitaev}} Models},
+  author = {Haldar, Arijit and Tavakol, Omid and Scaffidi, Thomas},
+  date = {2021-04-14},
+  shortjournal = {ArXiv200903924 Cond-Mat Physicshep-Th Physicsquant-Ph},
+  eprint = {2009.03924},
+  eprinttype = {arxiv},
+  primaryclass = {cond-mat, physics:hep-th, physics:quant-ph},
+  doi = {10.1103/PhysRevResearch.3.023020},
+  url = {http://arxiv.org/abs/2009.03924},
+  urldate = {2022-03-24},
+  abstract = {Given a class of \$q\$-local Hamiltonians, is it possible to find a simple variational state whose energy is a finite fraction of the ground state energy in the thermodynamic limit? Whereas product states often provide an affirmative answer in the case of bosonic (or qubit) models, we show that Gaussian states fail dramatically in the fermionic case, like for the Sachdev-Ye-Kitaev (SYK) models. This prompts us to propose a new class of wavefunctions for SYK models inspired by the variational coupled cluster algorithm. We introduce a static ("0+0D") large-\$N\$ field theory to study the energy, two-point correlators, and entanglement properties of these states. Most importantly, we demonstrate a finite disorder-averaged approximation ratio of \$r \textbackslash approx 0.62\$ between the variational and ground state energy of SYK for \$q=4\$. Moreover, the variational states provide an exact description of spontaneous symmetry breaking in a related two-flavor SYK model.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computational Complexity,Condensed Matter - Strongly Correlated Electrons,High Energy Physics - Theory,Quantum Physics}
+}
+
+@thesis{halpernQuantumSteampunkQuantum2018,
+  title = {Quantum Steampunk: {{Quantum}} Information, Thermodynamics, Their Intersection, and Applications Thereof across Physics},
+  author = {Halpern, Nicole Yunger},
+  date = {2018-05-25},
+  institution = {{CALIFORNIA INSTITUTE OF TECHNOLOGY}},
+  location = {{Pasadena, California}}
+}
+
 @article{hardyAsymptoticFormulaaeCombinatory1918,
   title = {Asymptotic {{Formula\ae}} in {{Combinatory Analysis}}},
   author = {Hardy, G. H. and Ramanujan, S.},
@@ -3244,6 +3829,40 @@
   doi = {10.1112/plms/s2-17.1.75},
   url = {https://doi.org/10.1112/plms/s2-17.1.75},
   urldate = {2020-12-16}
+}
+
+@misc{harrowApplicationsCoherentClassical2005,
+  title = {Applications of Coherent Classical Communication and the {{Schur}} Transform to Quantum Information Theory},
+  author = {Harrow, Aram W.},
+  date = {2005-12-30},
+  eprint = {quant-ph/0512255},
+  eprinttype = {arxiv},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/quant-ph/0512255},
+  urldate = {2022-06-27},
+  abstract = {Quantum mechanics has led not only to new physical theories, but also a new understanding of information and computation. Quantum information began by yielding new methods for achieving classical tasks such as factoring and key distribution but also suggests a completely new set of quantum problems, such as sending quantum information over quantum channels or efficiently performing particular basis changes on a quantum computer. This thesis contributes two new, purely quantum, tools to quantum information theory--coherent classical communication in the first half and an efficient quantum circuit for the Schur transform in the second half.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
+@article{harrowQuantumAlgorithmSolving2009,
+  title = {Quantum Algorithm for Solving Linear Systems of Equations},
+  author = {Harrow, Aram W. and Hassidim, Avinatan and Lloyd, Seth},
+  date = {2009-10-07},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {103},
+  number = {15},
+  eprint = {0811.3171},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {150502},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.103.150502},
+  url = {http://arxiv.org/abs/0811.3171},
+  urldate = {2022-06-25},
+  abstract = {Solving linear systems of equations is a common problem that arises both on its own and as a subroutine in more complex problems: given a matrix A and a vector b, find a vector x such that Ax=b. We consider the case where one doesn't need to know the solution x itself, but rather an approximation of the expectation value of some operator associated with x, e.g., x'Mx for some matrix M. In this case, when A is sparse, N by N and has condition number kappa, classical algorithms can find x and estimate x'Mx in O(N sqrt(kappa)) time. Here, we exhibit a quantum algorithm for this task that runs in poly(log N, kappa) time, an exponential improvement over the best classical algorithm.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
 }
 
 @article{harrowQuantumComputationalSupremacy2017,
@@ -3288,15 +3907,20 @@
 @article{hastingsLiebSchultzMattisHigherDimensions2004,
   title = {Lieb-{{Schultz-Mattis}} in {{Higher Dimensions}}},
   author = {Hastings, M. B.},
-  date = {2004-02-09},
-  shortjournal = {ArXivcond-Mat0305505},
+  date = {2004-03-29},
+  journaltitle = {Phys. Rev. B},
+  volume = {69},
+  number = {10},
   eprint = {cond-mat/0305505},
   eprinttype = {arxiv},
+  pages = {104431},
+  issn = {1098-0121, 1550-235X},
   doi = {10.1103/PhysRevB.69.104431},
   url = {http://arxiv.org/abs/cond-mat/0305505},
-  urldate = {2021-12-30},
+  urldate = {2022-03-06},
   abstract = {A generalization of the Lieb-Schultz-Mattis theorem to higher dimensional spin systems is shown. The physical motivation for the result is that such spin systems typically either have long-range order, in which case there are gapless modes, or have only short-range correlations, in which case there are topological excitations. The result uses a set of loop operators, analogous to those used in gauge theories, defined in terms of the spin operators of the theory. We also obtain various cluster bounds on expectation values for gapped systems. These bounds are used, under the assumption of a gap, to rule out the first case of long-range order, after which we show the existence of a topological excitation. Compared to the ground state, the topologically excited state has, up to a small error, the same expectation values for all operators acting within any local region, but it has a different momentum.},
   archiveprefix = {arXiv},
+  langid = {english},
   keywords = {Condensed Matter - Strongly Correlated Electrons,High Energy Physics - Theory,Mathematical Physics}
 }
 
@@ -3317,7 +3941,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{hastingsPowerAdiabaticQuantum2020,
+@unpublished{hastingsPowerAdiabaticQuantum2020,
   title = {The {{Power}} of {{Adiabatic Quantum Computation}} with {{No Sign Problem}}},
   author = {Hastings, M. B.},
   date = {2020-05-07},
@@ -3366,6 +3990,13 @@
   urldate = {2021-05-02},
   abstract = {We present a method of exact estimation of the decay rate of the ``average sign'' which appears in the world-line quantum Monte Carlo calculations for frustrated spin systems. We observe the dependence of the negative-sign problem on the spin representation for the antiferromagnetic XXZ model on a triangular lattice.},
   langid = {english}
+}
+
+@article{hausslerConvolutionKernelsDiscrete1999,
+  title = {Convolution Kernels on Discrete Structures},
+  author = {Haussler, David},
+  date = {1999},
+  journaltitle = {UCSC-CRL-99-10}
 }
 
 @article{havlicekSupervisedLearningQuantum2019,
@@ -3456,7 +4087,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{huangAlibabaCloudQuantum2019,
+@unpublished{huangAlibabaCloudQuantum2019,
   title = {Alibaba {{Cloud Quantum Development Platform}}: {{Applications}} to {{Quantum Algorithm Design}}},
   shorttitle = {Alibaba {{Cloud Quantum Development Platform}}},
   author = {Huang, Cupjin and Szegedy, Mario and Zhang, Fang and Gao, Xun and Chen, Jianxin and Shi, Yaoyun},
@@ -3473,7 +4104,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{huangExplicitLowerBounds2018,
+@unpublished{huangExplicitLowerBounds2018,
   title = {Explicit Lower Bounds on Strong Quantum Simulation},
   author = {Huang, Cupjin and Newman, Michael and Szegedy, Mario},
   date = {2018-04-30},
@@ -3488,7 +4119,7 @@
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
 }
 
-@article{huangInducedSubgraphsHypercubes2019,
+@unpublished{huangInducedSubgraphsHypercubes2019,
   title = {Induced Subgraphs of Hypercubes and a Proof of the {{Sensitivity Conjecture}}},
   author = {Huang, Hao},
   date = {2019-08-29},
@@ -3504,7 +4135,7 @@
   keywords = {Computer Science - Computational Complexity,Mathematics - Combinatorics}
 }
 
-@article{huangProvablyEfficientMachine2021,
+@unpublished{huangProvablyEfficientMachine2021,
   title = {Provably Efficient Machine Learning for Quantum Many-Body Problems},
   author = {Huang, Hsin-Yuan and Kueng, Richard and Torlai, Giacomo and Albert, Victor V. and Preskill, John},
   date = {2021-07-17},
@@ -3555,7 +4186,7 @@
   langid = {english}
 }
 
-@article{janeSimulationQuantumDynamics2002,
+@unpublished{janeSimulationQuantumDynamics2002,
   title = {Simulation of Quantum Dynamics with Quantum Optical Systems},
   author = {Jan\'e, E. and Vidal, G. and D\"ur, W. and Zoller, P. and Cirac, J. I.},
   date = {2002-07-02},
@@ -3637,7 +4268,7 @@
   keywords = {High Energy Physics - Lattice,Quantum Physics}
 }
 
-@article{jiMIPRE2020,
+@unpublished{jiMIPRE2020,
   title = {{{MIP}}*={{RE}}},
   author = {Ji, Zhengfeng and Natarajan, Anand and Vidick, Thomas and Wright, John and Yuen, Henry},
   date = {2020-09-29},
@@ -3671,7 +4302,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{jordanPermutationalQuantumComputing2009,
+@unpublished{jordanPermutationalQuantumComputing2009,
   title = {Permutational {{Quantum Computing}}},
   author = {Jordan, Stephen P.},
   date = {2009-06-13},
@@ -3737,7 +4368,23 @@
   keywords = {Quantum Physics}
 }
 
-@article{kalaiGaussianNoiseSensitivity2014,
+@article{jumperHighlyAccurateProtein2021,
+  title = {Highly Accurate Protein Structure Prediction with {{AlphaFold}}},
+  author = {Jumper, John and Evans, Richard and Pritzel, Alexander and Green, Tim and Figurnov, Michael and Ronneberger, Olaf and Tunyasuvunakool, Kathryn and Bates, Russ and \v{Z}\'idek, Augustin and Potapenko, Anna and Bridgland, Alex and Meyer, Clemens and Kohl, Simon A. A. and Ballard, Andrew J. and Cowie, Andrew and Romera-Paredes, Bernardino and Nikolov, Stanislav and Jain, Rishub and Adler, Jonas and Back, Trevor and Petersen, Stig and Reiman, David and Clancy, Ellen and Zielinski, Michal and Steinegger, Martin and Pacholska, Michalina and Berghammer, Tamas and Bodenstein, Sebastian and Silver, David and Vinyals, Oriol and Senior, Andrew W. and Kavukcuoglu, Koray and Kohli, Pushmeet and Hassabis, Demis},
+  date = {2021-08-26},
+  journaltitle = {Nature},
+  volume = {596},
+  number = {7873},
+  pages = {583--589},
+  issn = {0028-0836, 1476-4687},
+  doi = {10.1038/s41586-021-03819-2},
+  url = {https://www.nature.com/articles/s41586-021-03819-2},
+  urldate = {2022-06-23},
+  abstract = {Abstract                            Proteins are essential to life, and understanding their structure can facilitate a mechanistic understanding of their function. Through an enormous experimental effort               1\textendash 4               , the structures of around 100,000 unique proteins have been determined               5               , but this represents a small fraction of the billions of known protein sequences               6,7               . Structural coverage is bottlenecked by the months to years of painstaking effort required to determine a single protein structure. Accurate computational approaches are needed to address this gap and to enable large-scale structural bioinformatics. Predicting the three-dimensional structure that a protein will adopt based solely on its amino acid sequence\textemdash the structure prediction component of the `protein folding problem'               8               \textemdash has been an important open research problem for more than 50~years               9               . Despite recent progress               10\textendash 14               , existing methods fall far~short of atomic accuracy, especially when no homologous structure is available. Here we provide the first computational method that can regularly predict protein structures with atomic accuracy even in cases in which no similar structure is known. We validated an entirely redesigned version of our neural network-based model, AlphaFold, in the challenging 14th Critical Assessment of protein Structure Prediction (CASP14)               15               , demonstrating accuracy competitive with experimental structures in a majority of cases and greatly outperforming other methods. Underpinning the latest version of AlphaFold is a novel machine learning approach that incorporates physical and biological knowledge about protein structure, leveraging multi-sequence alignments, into the design of the deep learning algorithm.},
+  langid = {english}
+}
+
+@unpublished{kalaiGaussianNoiseSensitivity2014,
   title = {Gaussian {{Noise Sensitivity}} and {{BosonSampling}}},
   author = {Kalai, Gil and Kindler, Guy},
   date = {2014-11-08},
@@ -4001,6 +4648,65 @@
   langid = {english}
 }
 
+@article{knillTheoryQuantumErrorCorrecting2000,
+  title = {A {{Theory}} of {{Quantum Error-Correcting Codes}}},
+  author = {Knill, Emanuel and Laflamme, Raymond},
+  date = {2000-03-13},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {84},
+  number = {11},
+  eprint = {quant-ph/9604034},
+  eprinttype = {arxiv},
+  pages = {2525--2528},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.84.2525},
+  url = {http://arxiv.org/abs/quant-ph/9604034},
+  urldate = {2022-03-07},
+  abstract = {Quantum Error Correction will be necessary for preserving coherent states against noise and other unwanted interactions in quantum computation and communication. We develop a general theory of quantum error correction based on encoding states into larger Hilbert spaces subject to known interactions. We obtain necessary and sufficient conditions for the perfect recovery of an encoded state after its degradation by an interaction. The conditions depend only on the behavior of the logical states. We use them to give a recovery operator independent definition of error-correcting codes. We relate this definition to four others: The existence of a left inverse of the interaction, an explicit representation of the error syndrome using tensor products, perfect recovery of the completely entangled state, and an information theoretic identity. Two notions of fidelity and error for imperfect recovery are introduced, one for pure and the other for entangled states. The latter is more appropriate when using codes in a quantum memory or in applications of quantum teleportation to communication. We show that the error for entangled states is bounded linearly by the error for pure states. A formal definition of independent interactions for qubits is given. This leads to lower bounds on the number of qubits required to correct e errors and a formal proof that the classical bounds on the probability of error of e-error-correcting codes applies to e-errorcorrecting quantum codes, provided that the interaction is dominated by an identity component.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
+@article{koenigMatrixProductApproximations2016,
+  title = {Matrix Product Approximations to Multipoint Functions in Two-Dimensional Conformal Field Theory},
+  author = {Koenig, Robert and Scholz, Volkher B.},
+  date = {2016-09-14},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {117},
+  number = {12},
+  eprint = {1601.00470},
+  eprinttype = {arxiv},
+  pages = {121601},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.117.121601},
+  url = {http://arxiv.org/abs/1601.00470},
+  urldate = {2022-03-29},
+  abstract = {Matrix product states (MPS) illustrate the suitability of tensor networks for the description of interacting many-body systems: ground states of gapped \$1\$-D systems are approximable by MPS as shown by Hastings [J. Stat. Mech. Theor. Exp., P08024 (2007)]. In contrast, whether MPS and more general tensor networks can accurately reproduce correlations in critical quantum systems, respectively quantum field theories, has not been established rigorously. Ample evidence exists: entropic considerations provide restrictions on the form of suitable Ansatz states, and numerical studies show that certain tensor networks can indeed approximate the associated correlation functions. Here we provide a complete positive answer to this question in the case of MPS and \$2D\$ conformal field theory: we give quantitative estimates for the approximation error when approximating correlation functions by MPS. Our work is constructive and yields an explicit MPS, thus providing both suitable initial values as well as a rigorous justification of variational methods.},
+  archiveprefix = {arXiv},
+  keywords = {Condensed Matter - Strongly Correlated Electrons,Mathematical Physics,Quantum Physics}
+}
+
+@article{koenigQuantumSpinHall2008,
+  title = {The {{Quantum Spin Hall Effect}}: {{Theory}} and {{Experiment}}},
+  shorttitle = {The {{Quantum Spin Hall Effect}}},
+  author = {Koenig, Markus and Buhmann, Hartmut and Molenkamp, Laurens W. and Hughes, Taylor L. and Liu, Chao-Xing and Qi, Xiao-Liang and Zhang, Shou-Cheng},
+  date = {2008-03-15},
+  journaltitle = {J. Phys. Soc. Jpn.},
+  volume = {77},
+  number = {3},
+  eprint = {0801.0901},
+  eprinttype = {arxiv},
+  pages = {031007},
+  issn = {0031-9015, 1347-4073},
+  doi = {10.1143/JPSJ.77.031007},
+  url = {http://arxiv.org/abs/0801.0901},
+  urldate = {2022-04-11},
+  abstract = {The search for topologically non-trivial states of matter has become an important goal for condensed matter physics. Recently, a new class of topological insulators has been proposed. These topological insulators have an insulating gap in the bulk, but have topologically protected edge states due to the time reversal symmetry. In two dimensions the helical edge states give rise to the quantum spin Hall (QSH) effect, in the absence of any external magnetic field. Here we review a recent theory which predicts that the QSH state can be realized in HgTe/CdTe semiconductor quantum wells. By varying the thickness of the quantum well, the band structure changes from a normal to an "inverted" type at a critical thickness \$d\_c\$. We present an analytical solution of the helical edge states and explicitly demonstrate their topological stability. We also review the recent experimental observation of the QSH state in HgTe/(Hg,Cd)Te quantum wells. We review both the fabrication of the sample and the experimental setup. For thin quantum wells with well width \$d\_\{QW\}{$<$} 6.3\$ nm, the insulating regime shows the conventional behavior of vanishingly small conductance at low temperature. However, for thicker quantum wells (\$d\_\{QW\}{$>$} 6.3\$ nm), the nominally insulating regime shows a plateau of residual conductance close to \$2e\^2/h\$. The residual conductance is independent of the sample width, indicating that it is caused by edge states. Furthermore, the residual conductance is destroyed by a small external magnetic field. The quantum phase transition at the critical thickness, \$d\_c= 6.3\$ nm, is also independently determined from the occurrence of a magnetic field induced insulator to metal transition.},
+  archiveprefix = {arXiv},
+  keywords = {Condensed Matter - Mesoscale and Nanoscale Physics}
+}
+
 @article{kogutHamiltonianFormulationWilson1975,
   title = {Hamiltonian Formulation of {{Wilson}}'s Lattice Gauge Theories},
   author = {Kogut, John and Susskind, Leonard},
@@ -4075,7 +4781,25 @@
   langid = {english}
 }
 
+@inproceedings{kondorGraphletSpectrum2009,
+  title = {The Graphlet Spectrum},
+  booktitle = {Proceedings of the 26th {{Annual International Conference}} on {{Machine Learning}} - {{ICML}} '09},
+  author = {Kondor, Risi and Shervashidze, Nino and Borgwardt, Karsten M.},
+  date = {2009},
+  pages = {1--8},
+  publisher = {{ACM Press}},
+  location = {{Montreal, Quebec, Canada}},
+  doi = {10.1145/1553374.1553443},
+  url = {http://portal.acm.org/citation.cfm?doid=1553374.1553443},
+  urldate = {2022-06-22},
+  abstract = {Current graph kernels suffer from two limitations: graph kernels based on counting particular types of subgraphs ignore the relative position of these subgraphs to each other, while graph kernels based on algebraic methods are limited to graphs without node labels. In this paper we present the graphlet spectrum, a system of graph invariants derived by means of group representation theory that capture information about the number as well as the position of labeled subgraphs in a given graph. In our experimental evaluation the graphlet spectrum outperforms state-of-the-art graph kernels.},
+  eventtitle = {The 26th {{Annual International Conference}}},
+  isbn = {978-1-60558-516-1},
+  langid = {english}
+}
+
 @thesis{kondorGroupTheoreticalMethods2008,
+  type = {Thesis},
   title = {Group Theoretical Methods in Machine Learning},
   author = {Kondor, Risi},
   date = {2008},
@@ -4092,6 +4816,26 @@
   publisher = {{Curran Associates, Inc.}},
   url = {https://proceedings.neurips.cc/paper/2016/hash/6d3a1e06d6a06349436bc054313b648c-Abstract.html},
   urldate = {2022-02-21}
+}
+
+@article{kriegeSurveyGraphKernels2020,
+  title = {A {{Survey}} on {{Graph Kernels}}},
+  author = {Kriege, Nils M. and Johansson, Fredrik D. and Morris, Christopher},
+  date = {2020-12},
+  journaltitle = {Appl Netw Sci},
+  volume = {5},
+  number = {1},
+  eprint = {1903.11835},
+  eprinttype = {arxiv},
+  primaryclass = {cs, stat},
+  pages = {6},
+  issn = {2364-8228},
+  doi = {10.1007/s41109-019-0195-3},
+  url = {http://arxiv.org/abs/1903.11835},
+  urldate = {2022-06-21},
+  abstract = {Graph kernels have become an established and widely-used technique for solving classification tasks on graphs. This survey gives a comprehensive overview of techniques for kernel-based graph classification developed in the past 15 years. We describe and categorize graph kernels based on properties inherent to their design, such as the nature of their extracted graph features, their method of computation and their applicability to problems in practice. In an extensive experimental evaluation, we study the classification accuracy of a large suite of graph kernels on established benchmarks as well as new datasets. We compare the performance of popular kernels with several baseline methods and study the effect of applying a Gaussian RBF kernel to the metric induced by a graph kernel. In doing so, we find that simple baselines become competitive after this transformation on some datasets. Moreover, we study the extent to which existing graph kernels agree in their predictions (and prediction errors) and obtain a data-driven categorization of kernels as result. Finally, based on our experimental results, we derive a practitioner's guide to kernel-based graph classification.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning}
 }
 
 @article{kuhnQuantumSimulationSchwinger2014,
@@ -4264,7 +5008,7 @@
   abstract = {The problems of an Ising model in a magnetic field and a lattice gas are proved mathematically equivalent. From this equivalence an example of a two-dimensional lattice gas is given for which the phase transition regions in the p-v diagram is exactly calculated.}
 }
 
-@article{lewisQubitModelLattice2019,
+@unpublished{lewisQubitModelLattice2019,
   title = {A Qubit Model for {{U}}(1) Lattice Gauge Theory},
   author = {Lewis, Randy and Woloshyn, R. M.},
   date = {2019-05-23},
@@ -4395,7 +5139,27 @@
   langid = {english}
 }
 
-@article{liuStoqMAMeetsDistribution2021,
+@article{liuRigorousRobustQuantum2021,
+  title = {A Rigorous and Robust Quantum Speed-up in Supervised Machine Learning},
+  author = {Liu, Yunchao and Arunachalam, Srinivasan and Temme, Kristan},
+  date = {2021-09},
+  journaltitle = {Nat. Phys.},
+  volume = {17},
+  number = {9},
+  eprint = {2010.02174},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {1013--1017},
+  issn = {1745-2473, 1745-2481},
+  doi = {10.1038/s41567-021-01287-z},
+  url = {http://arxiv.org/abs/2010.02174},
+  urldate = {2022-06-19},
+  abstract = {Over the past few years several quantum machine learning algorithms were proposed that promise quantum speed-ups over their classical counterparts. Most of these learning algorithms either assume quantum access to data -- making it unclear if quantum speed-ups still exist without making these strong assumptions, or are heuristic in nature with no provable advantage over classical algorithms. In this paper, we establish a rigorous quantum speed-up for supervised classification using a general-purpose quantum learning algorithm that only requires classical access to data. Our quantum classifier is a conventional support vector machine that uses a fault-tolerant quantum computer to estimate a kernel function. Data samples are mapped to a quantum feature space and the kernel entries can be estimated as the transition amplitude of a quantum circuit. We construct a family of datasets and show that no classical learner can classify the data inverse-polynomially better than random guessing, assuming the widely-believed hardness of the discrete logarithm problem. Meanwhile, the quantum classifier achieves high accuracy and is robust against additive errors in the kernel entries that arise from finite sampling statistics.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning,Quantum Physics}
+}
+
+@unpublished{liuStoqMAMeetsDistribution2021,
   title = {{{StoqMA}} Meets Distribution Testing},
   author = {Liu, Yupan},
   date = {2021-06-22},
@@ -4409,6 +5173,24 @@
   abstract = {\$\textbackslash mathsf\{StoqMA\}\$ captures the computational hardness of approximating the ground energy of local Hamiltonians that do not suffer the so-called sign problem. We provide a novel connection between \$\textbackslash mathsf\{StoqMA\}\$ and distribution testing via reversible circuits. First, we prove that easy-witness \$\textbackslash mathsf\{StoqMA\}\$ (viz. \$\textbackslash mathsf\{eStoqMA\}\$, a sub-class of \$\textbackslash mathsf\{StoqMA\}\$) is contained in \$\textbackslash mathsf\{MA\}\$. Easy witness is a generalization of a subset state such that the associated set's membership can be efficiently verifiable, and all non-zero coordinates are not necessarily uniform. This sub-class \$\textbackslash mathsf\{eStoqMA\}\$ contains \$\textbackslash mathsf\{StoqMA\}\$ with perfect completeness (\$\textbackslash mathsf\{StoqMA\}\_1\$), which further signifies a simplified proof for \$\textbackslash mathsf\{StoqMA\}\_1 \textbackslash subseteq \textbackslash mathsf\{MA\}\$ [BBT06, BT10]. Second, by showing distinguishing reversible circuits with ancillary random bits is \$\textbackslash mathsf\{StoqMA\}\$-complete (as a comparison, distinguishing quantum circuits is \$\textbackslash mathsf\{QMA\}\$-complete [JWB05]), we construct soundness error reduction of \$\textbackslash mathsf\{StoqMA\}\$. Additionally, we show that both variants of \$\textbackslash mathsf\{StoqMA\}\$ that without any ancillary random bit and with perfect soundness are contained in \$\textbackslash mathsf\{NP\}\$. Our results make a step towards collapsing the hierarchy \$\textbackslash mathsf\{MA\} \textbackslash subseteq \textbackslash mathsf\{StoqMA\} \textbackslash subseteq \textbackslash mathsf\{SBP\}\$ [BBT06], in which all classes are contained in \$\textbackslash mathsf\{AM\}\$ and collapse to \$\textbackslash mathsf\{NP\}\$ under derandomization assumptions.},
   archiveprefix = {arXiv},
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
+}
+
+@article{lloydQuantumPrincipalComponent2014,
+  title = {Quantum Principal Component Analysis},
+  author = {Lloyd, Seth and Mohseni, Masoud and Rebentrost, Patrick},
+  date = {2014-09},
+  journaltitle = {Nature Phys},
+  volume = {10},
+  number = {9},
+  eprint = {1307.0401},
+  eprinttype = {arxiv},
+  pages = {631--633},
+  issn = {1745-2473, 1745-2481},
+  doi = {10.1038/nphys3029},
+  url = {http://www.nature.com/articles/nphys3029},
+  urldate = {2022-06-27},
+  archiveprefix = {arXiv},
+  langid = {english}
 }
 
 @article{lloydUltimatePhysicalLimits2000,
@@ -4609,6 +5391,46 @@
   keywords = {Quantum Physics}
 }
 
+@article{luQuantumAdversarialMachine2020,
+  title = {Quantum {{Adversarial Machine Learning}}},
+  author = {Lu, Sirui and Duan, Lu-Ming and Deng, Dong-Ling},
+  date = {2020-08-06},
+  journaltitle = {Phys. Rev. Research},
+  volume = {2},
+  number = {3},
+  eprint = {2001.00030},
+  eprinttype = {arxiv},
+  pages = {033212},
+  issn = {2643-1564},
+  doi = {10.1103/PhysRevResearch.2.033212},
+  url = {http://arxiv.org/abs/2001.00030},
+  urldate = {2022-03-04},
+  abstract = {Adversarial machine learning is an emerging field that focuses on studying vulnerabilities of machine learning approaches in adversarial settings and developing techniques accordingly to make learning robust to adversarial manipulations. It plays a vital role in various machine learning applications and has attracted tremendous attention across different communities recently. In this paper, we explore different adversarial scenarios in the context of quantum machine learning. We find that, similar to traditional classifiers based on classical neural networks, quantum learning systems are likewise vulnerable to crafted adversarial examples, independent of whether the input data is classical or quantum. In particular, we find that a quantum classifier that achieves nearly the state-of-the-art accuracy can be conclusively deceived by adversarial examples obtained via adding imperceptible perturbations to the original legitimate samples. This is explicitly demonstrated with quantum adversarial learning in different scenarios, including classifying real-life images (e.g., handwritten digit images in the dataset MNIST), learning phases of matter (such as, ferromagnetic/paramagnetic orders and symmetry protected topological phases), and classifying quantum data. Furthermore, we show that based on the information of the adversarial examples at hand, practical defense strategies can be designed to fight against a number of different attacks. Our results uncover the notable vulnerability of quantum machine learning systems to adversarial perturbations, which not only reveals a novel perspective in bridging machine learning and quantum physics in theory but also provides valuable guidance for practical applications of quantum classifiers based on both near-term and future quantum technologies.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition,Condensed Matter - Disordered Systems and Neural Networks,Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
+}
+
+@article{magniezSearchQuantumWalk2011,
+  title = {Search via {{Quantum Walk}}},
+  author = {Magniez, Fr\'ed\'eric and Nayak, Ashwin and Roland, J\'er\'emie and Santha, Miklos},
+  date = {2011-01},
+  journaltitle = {SIAM J. Comput.},
+  volume = {40},
+  number = {1},
+  eprint = {quant-ph/0608026},
+  eprinttype = {arxiv},
+  pages = {142--164},
+  issn = {0097-5397, 1095-7111},
+  doi = {10.1137/090745854},
+  url = {http://arxiv.org/abs/quant-ph/0608026},
+  urldate = {2022-03-06},
+  abstract = {We propose a new method for designing quantum search algorithms for finding a ``marked'' element in the state space of a classical Markov chain. The algorithm is based on a quantum walk `a la Szegedy (2004) that is defined in terms of the Markov chain. The main new idea is to apply quantum phase estimation to the quantum walk in order to implement an approximate reflection operator. This operator is then used in an amplitude amplification scheme. As a result we considerably expand the scope of the previous approaches of Ambainis (2004) and Szegedy (2004). Our algorithm combines the benefits of these approaches in terms of being able to find marked elements, incurring the smaller cost of the two, and being applicable to a larger class of Markov chains. In addition, it is conceptually simple and avoids some technical difficulties in the previous analyses of several algorithms based on quantum walk.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computational Complexity,Computer Science - Data Structures and Algorithms,Quantum Physics}
+}
+
 @article{mantonSchwingerModelIts1985,
   title = {The {{Schwinger}} Model and Its Axial Anomaly},
   author = {Manton, N.S},
@@ -4658,7 +5480,27 @@
   langid = {english}
 }
 
-@article{marriottQuantumArthurMerlinGames2005,
+@article{marquezinoMixingTimesQuantum2010,
+  title = {Mixing {{Times}} in {{Quantum Walks}} on {{Two-Dimensional Grids}}},
+  author = {Marquezino, F. L. and Portugal, R. and Abal, G.},
+  date = {2010-10-29},
+  journaltitle = {Phys. Rev. A},
+  volume = {82},
+  number = {4},
+  eprint = {1006.4625},
+  eprinttype = {arxiv},
+  pages = {042341},
+  issn = {1050-2947, 1094-1622},
+  doi = {10.1103/PhysRevA.82.042341},
+  url = {http://arxiv.org/abs/1006.4625},
+  urldate = {2022-03-06},
+  abstract = {Mixing properties of discrete-time quantum walks on two-dimensional grids with torus-like boundary conditions are analyzed, focusing on their connection to the complexity of the corresponding abstract search algorithm. In particular, an exact expression for the stationary distribution of the coherent walk over odd-sided lattices is obtained after solving the eigenproblem for the evolution operator for this particular graph. The limiting distribution and mixing time of a quantum walk with a coin operator modified as in the abstract search algorithm are obtained numerically. On the basis of these results, the relation between the mixing time of the modified walk and the running time of the corresponding abstract search algorithm is discussed.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computational Complexity,Quantum Physics}
+}
+
+@unpublished{marriottQuantumArthurMerlinGames2005,
   title = {Quantum {{Arthur-Merlin Games}}},
   author = {Marriott, Chris and Watrous, John},
   date = {2005-06-15},
@@ -4707,7 +5549,7 @@
   langid = {english}
 }
 
-@article{martynGrandUnificationQuantum2021,
+@unpublished{martynGrandUnificationQuantum2021,
   title = {A {{Grand Unification}} of {{Quantum Algorithms}}},
   author = {Martyn, John M and Rossi, Zane M and Tan, Andrew K and Chuang, Isaac L},
   date = {2021},
@@ -4738,6 +5580,29 @@
   keywords = {Quantum Physics}
 }
 
+@incollection{maymounkovKademliaPeertoPeerInformation2002,
+  title = {Kademlia: {{A Peer-to-Peer Information System Based}} on the {{XOR Metric}}},
+  shorttitle = {Kademlia},
+  booktitle = {Peer-to-{{Peer Systems}}},
+  author = {Maymounkov, Petar and Mazi\`eres, David},
+  editor = {Druschel, Peter and Kaashoek, Frans and Rowstron, Antony},
+  options = {useprefix=true},
+  date = {2002},
+  series = {Lecture {{Notes}} in {{Computer Science}}},
+  volume = {2429},
+  pages = {53--65},
+  publisher = {{Springer Berlin Heidelberg}},
+  location = {{Berlin, Heidelberg}},
+  doi = {10.1007/3-540-45748-8_5},
+  url = {http://link.springer.com/10.1007/3-540-45748-8_5},
+  urldate = {2022-05-06},
+  abstract = {We describe a peer-to-peer distributed hash table with provable consistency and performance in a fault-prone environment. Our system routes queries and locates nodes using a novel XOR-based metric topology that simplifies the algorithm and facilitates our proof. The topology has the property that every message exchanged conveys or reinforces useful contact information. The system exploits this information to send parallel, asynchronous query messages that tolerate node failures without imposing timeout delays on users.},
+  editorb = {Goos, Gerhard and Hartmanis, Juris and van Leeuwen, Jan},
+  editorbtype = {redactor},
+  isbn = {978-3-540-44179-3 978-3-540-45748-0},
+  langid = {english}
+}
+
 @article{merminAbsenceFerromagnetismAntiferromagnetism1966,
   title = {Absence of {{Ferromagnetism}} or {{Antiferromagnetism}} in {{One-}} or {{Two-Dimensional Isotropic Heisenberg Models}}},
   author = {Mermin, N. D. and Wagner, H.},
@@ -4753,7 +5618,7 @@
   abstract = {It is rigorously proved that at any nonzero temperature, a one- or two-dimensional isotropic spin-S Heisenberg model with finite-range exchange interaction can be neither ferromagnetic nor antiferromagnetic. The method of proof is capable of excluding a variety of types of ordering in one and two dimensions., This article appears in the following collection:}
 }
 
-@article{mertensEasiestHardProblem2003,
+@unpublished{mertensEasiestHardProblem2003,
   ids = {mertensEasiestHardProblem},
   title = {The {{Easiest Hard Problem}}: {{Number Partitioning}}},
   shorttitle = {The {{Easiest Hard Problem}}},
@@ -4819,6 +5684,26 @@
   keywords = {Coding theory,Computer science,Statistical physics}
 }
 
+@article{mitaraiQuantumCircuitLearning2018,
+  title = {Quantum {{Circuit Learning}}},
+  author = {Mitarai, Kosuke and Negoro, Makoto and Kitagawa, Masahiro and Fujii, Keisuke},
+  date = {2018-09-10},
+  journaltitle = {Phys. Rev. A},
+  volume = {98},
+  number = {3},
+  eprint = {1803.00745},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {032309},
+  issn = {2469-9926, 2469-9934},
+  doi = {10.1103/PhysRevA.98.032309},
+  url = {http://arxiv.org/abs/1803.00745},
+  urldate = {2022-06-28},
+  abstract = {We propose a classical-quantum hybrid algorithm for machine learning on near-term quantum processors, which we call quantum circuit learning. A quantum circuit driven by our framework learns a given task by tuning parameters implemented on it. The iterative optimization of the parameters allows us to circumvent the high-depth circuit. Theoretical investigation shows that a quantum circuit can approximate nonlinear functions, which is further confirmed by numerical simulations. Hybridizing a low-depth quantum circuit and a classical computer for machine learning, the proposed framework paves the way toward applications of near-term quantum devices for quantum machine learning.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
 @article{moligniniAnalyzingTwoDimensional2013,
   title = {Analyzing the Two Dimensional {{Ising}} Model with Conformal Field Theory},
   author = {Molignini, Paolo},
@@ -4827,7 +5712,7 @@
   urldate = {2020-12-16}
 }
 
-@article{mooreQuantumWalksHypercube2001,
+@unpublished{mooreQuantumWalksHypercube2001,
   title = {Quantum {{Walks}} on the {{Hypercube}}},
   author = {Moore, Cristopher and Russell, Alexander},
   date = {2001-04-28},
@@ -4837,6 +5722,26 @@
   abstract = {Recently, it has been shown that one-dimensional quantum walks can mix more quickly than classical random walks, suggesting that quantum Monte Carlo algorithms can outperform their classical counterparts. We study two quantum walks on the n-dimensional hypercube, one in discrete time and one in continuous time. In both cases we show that the quantum walk mixes in (\textbackslash pi/4)n steps, faster than the O(n log n) steps required by the classical walk. In the continuous-time case, the probability distribution is \{\textbackslash em exactly\} uniform at this time. More importantly, these walks expose several subtleties in the definition of mixing time for quantum walks. Even though the continuous-time walk has an O(n) instantaneous mixing time at which it is precisely uniform, it never approaches the uniform distribution when the stopping time is chosen randomly as in [AharonovAKV2001]. Our analysis treats interference between terms of different phase more carefully than is necessary for the walk on the cycle; previous general bounds predict an exponential, rather than linear, mixing time for the hypercube.},
   archiveprefix = {arXiv},
   keywords = {Quantum Physics}
+}
+
+@article{moralesUniversalityQuantumApproximate2020,
+  title = {On the Universality of the Quantum Approximate Optimization Algorithm},
+  author = {Morales, M. E. S. and Biamonte, J. D. and Zimbor\'as, Z.},
+  date = {2020-08-24},
+  journaltitle = {Quantum Inf Process},
+  volume = {19},
+  number = {9},
+  eprint = {1909.03123},
+  eprinttype = {arxiv},
+  pages = {291},
+  issn = {1573-1332},
+  doi = {10.1007/s11128-020-02748-9},
+  url = {https://doi.org/10.1007/s11128-020-02748-9},
+  urldate = {2022-06-27},
+  abstract = {The quantum approximate optimization algorithm (QAOA) is considered to be one of the most promising approaches towards using near-term quantum computers for practical application. In its original form, the algorithm applies two different Hamiltonians, called the mixer and the cost Hamiltonian, in alternation with the goal being to approach the ground state of the cost Hamiltonian. Recently, it has been suggested that one might use such a set-up as a parametric quantum circuit with possibly some other goal than reaching ground states. From this perspective, a recent work (Lloyd, arXiv:1812.11075) argued that for one-dimensional local cost Hamiltonians, composed of nearest neighbour ZZ terms, this set-up is quantum computationally universal and provides a universal gate set, i.e. all unitaries can be reached up to arbitrary precision. In the present paper, we complement this work by giving a complete proof and the precise conditions under which such a one-dimensional QAOA might produce a universal gate set. We further generalize this type of gate-set universality for certain cost Hamiltonians with ZZ and ZZZ terms arranged according to the adjacency structure of certain graphs and hypergraphs.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum computation,Quantum control,Universal quantum gate sets,Variational quantum algorithms}
 }
 
 @article{mottaDeterminingEigenstatesThermal2020,
@@ -4942,7 +5847,7 @@
   keywords = {Condensed Matter - Mesoscale and Nanoscale Physics,Condensed Matter - Strongly Correlated Electrons}
 }
 
-@article{nayakQuantumWalkLine2000,
+@unpublished{nayakQuantumWalkLine2000,
   title = {Quantum {{Walk}} on the {{Line}}},
   author = {Nayak, Ashwin and Vishwanath, Ashvin},
   date = {2000-10-31},
@@ -4974,6 +5879,21 @@
   keywords = {Condensed Matter - Statistical Mechanics,Quantum Physics}
 }
 
+@misc{nestSimulatingQuantumComputers2010,
+  title = {Simulating Quantum Computers with Probabilistic Methods},
+  author = {den Nest, M. Van},
+  date = {2010-04-12},
+  eprint = {0911.1624},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/0911.1624},
+  urldate = {2022-06-27},
+  abstract = {We investigate the boundary between classical and quantum computational power. This work consists of two parts. First we develop new classical simulation algorithms that are centered on sampling methods. Using these techniques we generate new classes of classically simulatable quantum circuits where standard techniques relying on the exact computation of measurement probabilities fail to provide efficient simulations. For example, we show how various concatenations of matchgate, Toffoli, Clifford, bounded-depth, Fourier transform and other circuits are classically simulatable. We also prove that sparse quantum circuits as well as circuits composed of CNOT and exp[iaX] gates can be simulated classically. In a second part, we apply our results to the simulation of quantum algorithms. It is shown that a recent quantum algorithm, concerned with the estimation of Potts model partition functions, can be simulated efficiently classically. Finally, we show that the exponential speed-ups of Simon's and Shor's algorithms crucially depend on the very last stage in these algorithms, dealing with the classical postprocessing of the measurement outcomes. Specifically, we prove that both algorithms would be classically simulatable if the function classically computed in this step had a sufficiently peaked Fourier spectrum.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
 @article{nielsenFermionicCanonicalCommutation,
   title = {The {{Fermionic}} Canonical Commutation Relations and the {{Jordan-Wigner}} Transform},
   author = {Nielsen, Michael A},
@@ -4981,7 +5901,7 @@
   langid = {english}
 }
 
-@article{nielsenGeometricApproachQuantum2005,
+@unpublished{nielsenGeometricApproachQuantum2005,
   title = {A Geometric Approach to Quantum Circuit Lower Bounds},
   author = {Nielsen, Michael A.},
   date = {2005-02-11},
@@ -5055,6 +5975,25 @@
   isbn = {978-0-89791-511-3}
 }
 
+@article{nohEfficientClassicalSimulation2020,
+  title = {Efficient Classical Simulation of Noisy Random Quantum Circuits in One Dimension},
+  author = {Noh, Kyungjoo and Jiang, Liang and Fefferman, Bill},
+  date = {2020-09-11},
+  journaltitle = {Quantum},
+  volume = {4},
+  eprint = {2003.13163},
+  eprinttype = {arxiv},
+  pages = {318},
+  issn = {2521-327X},
+  doi = {10.22331/q-2020-09-11-318},
+  url = {http://arxiv.org/abs/2003.13163},
+  urldate = {2022-04-19},
+  abstract = {Understanding the computational power of noisy intermediate-scale quantum (NISQ) devices is of both fundamental and practical importance to quantum information science. Here, we address the question of whether error-uncorrected noisy quantum computers can provide computational advantage over classical computers. Specifically, we study noisy random circuit sampling in one dimension (or 1D noisy RCS) as a simple model for exploring the effects of noise on the computational power of a noisy quantum device. In particular, we simulate the real-time dynamics of 1D noisy random quantum circuits via matrix product operators (MPOs) and characterize the computational power of the 1D noisy quantum system by using a metric we call MPO entanglement entropy. The latter metric is chosen because it determines the cost of classical MPO simulation. We numerically demonstrate that for the two-qubit gate error rates we considered, there exists a characteristic system size above which adding more qubits does not bring about an exponential growth of the cost of classical MPO simulation of 1D noisy systems. Specifically, we show that above the characteristic system size, there is an optimal circuit depth, independent of the system size, where the MPO entanglement entropy is maximized. Most importantly, the maximum achievable MPO entanglement entropy is bounded by a constant that depends only on the gate error rate, not on the system size. We also provide a heuristic analysis to get the scaling of the maximum achievable MPO entanglement entropy as a function of the gate error rate. The obtained scaling suggests that although the cost of MPO simulation does not increase exponentially in the system size above a certain characteristic system size, it does increase exponentially as the gate error rate decreases, possibly making classical simulation practically not feasible even with state-of-the-art supercomputers.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
 @book{norrisMarkovChains1998,
   title = {Markov Chains},
   author = {Norris, J. R.},
@@ -5079,7 +6018,23 @@
   video = {https://youtube.com/playlist?list=PLm3J0oaFux3YL5qLskC6xQ24JpMwOAeJz}
 }
 
-@article{oliveiraComplexityQuantumSpin2008,
+@unpublished{ogormanElectronicStructureFixed2021,
+  title = {Electronic {{Structure}} in a {{Fixed Basis}} Is {{QMA-complete}}},
+  author = {O'Gorman, Bryan and Irani, Sandy and Whitfield, James and Fefferman, Bill},
+  date = {2021-03-15},
+  shortjournal = {ArXiv210308215 Quant-Ph},
+  eprint = {2103.08215},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/2103.08215},
+  urldate = {2022-03-09},
+  abstract = {Finding the ground state energy of electrons subject to an external electric field is a fundamental problem in computational chemistry. We prove that this electronic-structure problem, when restricted to a fixed single-particle basis and fixed number of electrons, is QMA-complete. Schuch and Verstraete have shown hardness for the electronic-structure problem with an additional site-specific external magnetic field, but without the restriction to a fixed basis [20]. In their reduction, a local Hamiltonian on qubits is encoded in the site-specific magnetic field. In our reduction, the local Hamiltonian is encoded in the choice of spatial orbitals used to discretize the electronic-structure Hamiltonian. As a step in their proof, Schuch and Verstraete show a reduction from the antiferromagnetic Heisenberg Hamiltonian to the FermiHubbard Hamiltonian. We combine this reduction with the fact that the antiferromagnetic Heisenberg Hamiltonian is QMA-hard [18] to observe that the Fermi-Hubbard Hamiltonian on generic graphs is QMA-hard, even when all the hopping coefficients have the same sign. We then reduce from FermiHubbard by showing that an instance of Fermi-Hubbard can be closely approximated by an instance of the Electronic-Structure Hamiltonian in a fixed basis. Finally, we show that estimating the energy of the lowest-energy Slater-determinant state (i.e., the Hartree-Fock state) is NP-complete for the ElectronicStructure Hamiltonian in a fixed basis.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computational Complexity,Quantum Physics}
+}
+
+@unpublished{oliveiraComplexityQuantumSpin2008,
   title = {The Complexity of Quantum Spin Systems on a Two-Dimensional Square Lattice},
   author = {Oliveira, Roberto and Terhal, Barbara M.},
   date = {2008-06-03},
@@ -5179,7 +6134,7 @@
   keywords = {Condensed Matter,Quantum Physics}
 }
 
-@article{osborneHamiltonianComplexity2011,
+@unpublished{osborneHamiltonianComplexity2011,
   title = {Hamiltonian Complexity},
   author = {Osborne, Tobias J.},
   date = {2011-06-29},
@@ -5193,6 +6148,23 @@
   abstract = {In recent years we've seen the birth of a new field known as hamiltonian complexity lying at the crossroads between computer science and theoretical physics. Hamiltonian complexity is directly concerned with the question: how hard is it to simulate a physical system? Here I review the foundational results, guiding problems, and future directions of this emergent field.},
   archiveprefix = {arXiv},
   keywords = {Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
+}
+
+@unpublished{oszmaniecFermionSamplingRobust2021,
+  title = {Fermion {{Sampling}}: A Robust Quantum Computational Advantage Scheme Using Fermionic Linear Optics and Magic Input States},
+  shorttitle = {Fermion {{Sampling}}},
+  author = {Oszmaniec, Micha\l{} and Dangniam, Ninnat and Morales, Mauro E. S. and Zimbor\'as, Zolt\'an},
+  date = {2021-11-23},
+  shortjournal = {ArXiv201215825 Math-Ph Physicsquant-Ph},
+  eprint = {2012.15825},
+  eprinttype = {arxiv},
+  primaryclass = {math-ph, physics:quant-ph},
+  url = {http://arxiv.org/abs/2012.15825},
+  urldate = {2022-02-24},
+  abstract = {Fermionic Linear Optics (FLO) is a restricted model of quantum computation which in its original form is known to be efficiently classically simulable. We show that, when initialized with suitable input states, FLO circuits can be used to demonstrate quantum computational advantage with strong hardness guarantees. Based on this, we propose a quantum advantage scheme which is a fermionic analogue of Boson Sampling: Fermion Sampling with magic input states. We consider in parallel two classes of circuits: particle-number conserving (passive) FLO and active FLO that preserves only fermionic parity and is closely related to Matchgate circuits introduced by Valiant. Mathematically, these classes of circuits can be understood as fermionic representations of the Lie groups \$U(d)\$ and \$SO(2d)\$. This observation allows us to prove our main technical results. We first show anticoncentration for probabilities in random FLO circuits of both kind. Moreover, we prove robust average-case hardness of computation of probabilities. To achieve this, we adapt the worst-to-average-case reduction based on Cayley transform, introduced recently by Movassagh, to representations of low-dimensional Lie groups. Taken together, these findings provide hardness guarantees comparable to the paradigm of Random Circuit Sampling. Importantly, our scheme has also a potential for experimental realization. Both passive and active FLO circuits are relevant for quantum chemistry and many-body physics and have been already implemented in proof-of-principle experiments with superconducting qubit architectures. Preparation of the desired quantum input states can be obtained by a simple quantum circuit acting independently on disjoint blocks of four qubits and using 3 entangling gates per block. We also argue that due to the structured nature of FLO circuits, they can be efficiently certified.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Mathematical Physics,Quantum Physics}
 }
 
 @incollection{pangLargeCliqueHard2021,
@@ -5412,7 +6384,7 @@
   video = {https://youtube.com/playlist?list=PL0ojjrEqIyPy-1RRD8cTD\_lF1hflo89Iu}
 }
 
-@article{preskillQuantumComputing402021,
+@unpublished{preskillQuantumComputing402021,
   title = {Quantum Computing 40 Years Later},
   author = {Preskill, John},
   date = {2021-06-25},
@@ -5428,7 +6400,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{preskillSimulatingQuantumField2018,
+@unpublished{preskillSimulatingQuantumField2018,
   title = {Simulating Quantum Field Theory with a Quantum Computer},
   author = {Preskill, John},
   date = {2018-11-25},
@@ -5440,6 +6412,38 @@
   abstract = {Forthcoming exascale digital computers will further advance our knowledge of quantum chromodynamics, but formidable challenges will remain. In particular, Euclidean Monte Carlo methods are not well suited for studying real-time evolution in hadronic collisions, or the properties of hadronic matter at nonzero temperature and chemical potential. Digital computers may never be able to achieve accurate simulations of such phenomena in QCD and other strongly-coupled field theories; quantum computers will do so eventually, though I'm not sure when. Progress toward quantum simulation of quantum field theory will require the collaborative efforts of quantumists and field theorists, and though the physics payoff may still be far away, it's worthwhile to get started now. Today's research can hasten the arrival of a new era in which quantum simulation fuels rapid progress in fundamental physics.},
   archiveprefix = {arXiv},
   keywords = {High Energy Physics - Lattice,High Energy Physics - Theory,Quantum Physics}
+}
+
+@article{radcliffePropertiesCoherentSpin1971,
+  title = {Some Properties of Coherent Spin States},
+  author = {Radcliffe, J M},
+  date = {1971-05-01},
+  journaltitle = {J. Phys. A: Gen. Phys.},
+  volume = {4},
+  number = {3},
+  pages = {313--323},
+  issn = {0022-3689},
+  doi = {10.1088/0305-4470/4/3/009},
+  url = {https://iopscience.iop.org/article/10.1088/0305-4470/4/3/009},
+  urldate = {2022-03-06},
+  abstract = {Spin states analogous to the coherent states of the linear harmonic oscillator are defined and their properties discussed. They are used to discuss some simple problems (a single spin in a field, a spin wave, two spin 4 particles with Heisenberg coupling) and it is shown that their use may often give increased physical insight.},
+  langid = {english}
+}
+
+@unpublished{rajputHybridizedMethodsQuantum2021,
+  title = {Hybridized {{Methods}} for {{Quantum Simulation}} in the {{Interaction Picture}}},
+  author = {Rajput, Abhishek and Roggero, Alessandro and Wiebe, Nathan},
+  date = {2021-10-01},
+  shortjournal = {ArXiv210903308 Quant-Ph},
+  eprint = {2109.03308},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/2109.03308},
+  urldate = {2022-04-19},
+  abstract = {Conventional methods of quantum simulation involve trade-offs that limit their applicability to specific contexts where their use is optimal. In particular, the interaction picture simulation has been found to provide substantial asymptotic advantages for some Hamiltonians, but incurs prohibitive constant factors and is incompatible with methods like qubitization. We provide a framework that allows different simulation methods to be hybridized and thereby improve performance for interaction picture simulations over known algorithms. These approaches show asymptotic improvements over the individual methods that comprise them and further make interaction picture simulation methods practical in the near term. Physical applications of these hybridized methods yield a gate complexity scaling as \$\textbackslash log\^2 \textbackslash Lambda\$ in the electric cutoff \$\textbackslash Lambda\$ for the Schwinger Model and independent of the electron density for collective neutrino oscillations, outperforming the scaling for all current algorithms with these parameters. For the general problem of Hamiltonian simulation subject to dynamical constraints, these methods yield a query complexity independent of the penalty parameter \$\textbackslash lambda\$ used to impose an energy cost on time-evolution into an unphysical subspace.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
 }
 
 @article{raussendorfComputationallyUniversalPhase2019,
@@ -5517,6 +6521,27 @@
   keywords = {Quantum Physics}
 }
 
+@article{rebentrostQuantumSupportVector2014,
+  title = {Quantum Support Vector Machine for Big Data Classification},
+  author = {Rebentrost, Patrick and Mohseni, Masoud and Lloyd, Seth},
+  date = {2014-09-25},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {113},
+  number = {13},
+  eprint = {1307.0471},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {130503},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.113.130503},
+  url = {http://arxiv.org/abs/1307.0471},
+  urldate = {2022-06-07},
+  abstract = {Supervised machine learning is the classification of new data based on already classified training examples. In this work, we show that the support vector machine, an optimized binary classifier, can be implemented on a quantum computer, with complexity logarithmic in the size of the vectors and the number of training examples. In cases when classical sampling algorithms require polynomial time, an exponential speed-up is obtained. At the core of this quantum big data algorithm is a non-sparse matrix exponentiation technique for efficiently performing a matrix inversion of the training data inner-product (kernel) matrix.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Quantum Physics}
+}
+
 @article{ReviewsModernPhysics,
   title = {Reviews of {{Modern Physics}} - {{Accepted Paper}}: {{Micius}} Quantum Experiments in Space},
   url = {https://journals.aps.org/rmp/accepted/56076EecXc01d200b0af71c8dacb0b5c5e56ce0ef},
@@ -5591,6 +6616,27 @@
   keywords = {Quantum Physics}
 }
 
+@incollection{rossiContinuousTimeQuantumWalk2013,
+  title = {A {{Continuous-Time Quantum Walk Kernel}} for {{Unattributed Graphs}}},
+  booktitle = {Graph-{{Based Representations}} in {{Pattern Recognition}}},
+  author = {Rossi, Luca and Torsello, Andrea and Hancock, Edwin R.},
+  editor = {Kropatsch, Walter G. and Artner, Nicole M. and Haxhimusa, Yll and Jiang, Xiaoyi},
+  date = {2013},
+  series = {Lecture {{Notes}} in {{Computer Science}}},
+  volume = {7877},
+  pages = {101--110},
+  publisher = {{Springer Berlin Heidelberg}},
+  location = {{Berlin, Heidelberg}},
+  doi = {10.1007/978-3-642-38221-5_11},
+  url = {http://link.springer.com/10.1007/978-3-642-38221-5_11},
+  urldate = {2022-06-25},
+  abstract = {Kernel methods provide a way to apply a wide range of learning techniques to complex and structured data by shifting the representational problem from one of finding an embedding of the data to that of defining a positive semidefinite kernel. In this paper, we propose a novel kernel on unattributed graphs where the structure is characterized through the evolution of a continuous-time quantum walk. More precisely, given a pair of graphs, we create a derived structure whose degree of symmetry is maximum when the original graphs are isomorphic. With this new graph to hand, we compute the density operators of the quantum systems representing the evolutions of two suitably defined quantum walks. Finally, we define the kernel between the two original graphs as the quantum Jensen-Shannon divergence between these two density operators. The experimental evaluation shows the effectiveness of the proposed approach.},
+  editorb = {Hutchison, David and Kanade, Takeo and Kittler, Josef and Kleinberg, Jon M. and Mattern, Friedemann and Mitchell, John C. and Naor, Moni and Nierstrasz, Oscar and Pandu Rangan, C. and Steffen, Bernhard and Sudan, Madhu and Terzopoulos, Demetri and Tygar, Doug and Vardi, Moshe Y. and Weikum, Gerhard},
+  editorbtype = {redactor},
+  isbn = {978-3-642-38220-8 978-3-642-38221-5},
+  langid = {english}
+}
+
 @book{rubinsteinAdvancesComplexGeometry2019,
   title = {Advances in Complex Geometry},
   editor = {Rubinstein, Yanir A. and Shiffman, Bernard},
@@ -5623,7 +6669,7 @@
   keywords = {Condensed Matter - Strongly Correlated Electrons}
 }
 
-@article{rudiak-gouldSumoverhistoriesFormulationQuantum2006,
+@unpublished{rudiak-gouldSumoverhistoriesFormulationQuantum2006,
   title = {The Sum-over-Histories Formulation of Quantum Computing},
   author = {Rudiak-Gould, Ben},
   date = {2006-07-21},
@@ -5634,6 +6680,22 @@
   archiveprefix = {arXiv},
   langid = {english},
   keywords = {Quantum Physics}
+}
+
+@unpublished{sachdevGaplessSpinFluidGround1992,
+  ids = {sachdevGaplessSpinfluidGround1993},
+  title = {Gapless {{Spin-Fluid Ground State}} in a {{Random Quantum Heisenberg Magnet}}},
+  author = {Sachdev, Subir and Ye, Jinwu},
+  date = {1992-12-21},
+  shortjournal = {ArXivcond-Mat9212030},
+  eprint = {cond-mat/9212030},
+  eprinttype = {arxiv},
+  doi = {10.1103/PhysRevLett.70.3339},
+  url = {http://arxiv.org/abs/cond-mat/9212030},
+  urldate = {2022-03-24},
+  abstract = {We examine the spin-\$S\$ quantum Heisenberg magnet with Gaussian-random, infinite-range exchange interactions. The quantum-disordered phase is accessed by generalizing to \$SU(M)\$ symmetry and studying the large \$M\$ limit. For large \$S\$ the ground state is a spin-glass, while quantum fluctuations produce a spin-fluid state for small \$S\$. The spin-fluid phase is found to be generically gapless - the average, zero temperature, local dynamic spin-susceptibility obeys \$\textbackslash bar\{\textbackslash chi\} (\textbackslash omega ) \textbackslash sim \textbackslash log(1/|\textbackslash omega|) + i (\textbackslash pi/2) \textbackslash mbox\{sgn\} (\textbackslash omega)\$ at low frequencies. This form is identical to the phenomenological `marginal' spectrum proposed by Varma \{\textbackslash em et. al.\textbackslash/\} for the doped cuprates.},
+  archiveprefix = {arXiv},
+  keywords = {Condensed Matter}
 }
 
 @book{sachdevQuantumPhaseTransitions2011,
@@ -5698,7 +6760,7 @@
   archiveprefix = {arXiv}
 }
 
-@article{schifferAdiabaticSpectroscopyVariational2021,
+@unpublished{schifferAdiabaticSpectroscopyVariational2021,
   title = {Adiabatic {{Spectroscopy}} and a {{Variational Quantum Adiabatic Algorithm}}},
   author = {Schiffer, Benjamin F. and Tura, Jordi and Cirac, J. Ignacio},
   date = {2021-03-01},
@@ -5770,7 +6832,7 @@
   keywords = {Condensed Matter - Strongly Correlated Electrons,Quantum Physics}
 }
 
-@article{schollwoeckDensitymatrixRenormalizationGroup2004,
+@unpublished{schollwoeckDensitymatrixRenormalizationGroup2004,
   title = {The Density-Matrix Renormalization Group},
   author = {Schollwoeck, Ulrich},
   date = {2004-09-11},
@@ -5802,6 +6864,26 @@
   abstract = {The density-matrix renormalization group method (DMRG) has established itself over the last decade as the leading method for the simulation of the statics and dynamics of one-dimensional strongly correlated quantum lattice systems. In the further development of the method, the realization that DMRG operates on a highly interesting class of quantum states, so-called matrix product states (MPS), has allowed a much deeper understanding of the inner structure of the DMRG method, its further potential and its limitations. In this paper, I want to give a detailed exposition of current DMRG thinking in the MPS language in order to make the advisable implementation of the family of DMRG algorithms in exclusively MPS terms transparent. I then move on to discuss some directions of potentially fruitful further algorithmic development: while DMRG is a very mature method by now, I still see potential for further improvements, as exemplified by a number of recently introduced algorithms.},
   archiveprefix = {arXiv},
   keywords = {Condensed Matter - Strongly Correlated Electrons}
+}
+
+@article{schuldQuantumMachineLearning2019,
+  title = {Quantum Machine Learning in Feature {{Hilbert}} Spaces},
+  author = {Schuld, Maria and Killoran, Nathan},
+  date = {2019-02-01},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {122},
+  number = {4},
+  eprint = {1803.07128},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {040504},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.122.040504},
+  url = {http://arxiv.org/abs/1803.07128},
+  urldate = {2022-06-19},
+  abstract = {The basic idea of quantum computing is surprisingly similar to that of kernel methods in machine learning, namely to efficiently perform computations in an intractably large Hilbert space. In this paper we explore some theoretical foundations of this link and show how it opens up a new avenue for the design of quantum machine learning algorithms. We interpret the process of encoding inputs in a quantum state as a nonlinear feature map that maps data to quantum Hilbert space. A quantum computer can now analyse the input data in this feature space. Based on this link, we discuss two approaches for building a quantum model for classification. In the first approach, the quantum device estimates inner products of quantum states to compute a classically intractable kernel. This kernel can be fed into any classical kernel method such as a support vector machine. In the second approach, we can use a variational quantum circuit as a linear model that classifies data explicitly in Hilbert space. We illustrate these ideas with a feature map based on squeezing in a continuous-variable system, and visualise the working principle with \$2\$-dimensional mini-benchmark datasets.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
 }
 
 @article{schulmanPathIntegralSpin1968,
@@ -5963,7 +7045,7 @@
   keywords = {Computer Science - Data Structures and Algorithms,Quantum Physics}
 }
 
-@article{shiBothToffoliControlledNOT2002,
+@unpublished{shiBothToffoliControlledNOT2002,
   title = {Both {{Toffoli}} and {{Controlled-NOT}} Need Little Help to Do Universal Quantum Computation},
   author = {Shi, Yaoyun},
   date = {2002-05-25},
@@ -5976,7 +7058,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{shiQuantumCommunicationComplexity2008,
+@unpublished{shiQuantumCommunicationComplexity2008,
   title = {Quantum Communication Complexity of Block-Composed Functions},
   author = {Shi, Yaoyun and Zhu, Yufan},
   date = {2008-04-13},
@@ -6043,6 +7125,45 @@
   abstract = {The quantum model of computation is a model, analogous to the probabilistic Turing machine (PTM), in which the normal laws of chance are replaced by those obeyed by particles on a quantum mechanical scale, rather than the rules familiar to us from the macroscopic world. We present here a problem of distinguishing between two fairly natural classes of functions, which can provably be solved exponentially faster in the quantum model than in the classical probabilistic one, when the function is given as an oracle drawn equiprobably from the uniform distribution on either class. We thus offer compelling evidence that the quantum model may have significantly more complexity theoretic power than the PTM. In fact, drawing on this work, Shor has recently developed remarkable new quantum polynomial-time algorithms for the discrete logarithm and integer factoring problems.}
 }
 
+@article{smirnovConformalInvarianceRandom2010,
+  ids = {smirnovConformalInvarianceRandom2007},
+  title = {Conformal Invariance in Random Cluster Models. {{I}}. {{Holmorphic}} Fermions in the {{Ising}} Model},
+  author = {Smirnov, Stanislav},
+  date = {2010},
+  journaltitle = {Ann. Math.},
+  volume = {172},
+  number = {2},
+  eprint = {29764643},
+  eprinttype = {jstor},
+  pages = {1435--1467},
+  publisher = {{Annals of Mathematics}},
+  issn = {0003-486X},
+  abstract = {We construct discrete holomorphic fermions in the random cluster Ising model at criticality and show that they have conformally covariant scaling limits (as mesh of the lattice tends to zero). In the sequels those observables are used to construct conformally invariant scaling limits of interfaces and identify those with Schramm's SLE curves. Though the critical Ising model is often cited as a classical example of conformal invariance, it seems that ours is the first paper where it is actually established.},
+  keywords = {82B20; 60K35; 30C35; 81T40,Mathematical Physics,Mathematics - Probability}
+}
+
+@incollection{smolaKernelsRegularizationGraphs2003,
+  title = {Kernels and {{Regularization}} on {{Graphs}}},
+  booktitle = {Learning {{Theory}} and {{Kernel Machines}}},
+  author = {Smola, Alexander J. and Kondor, Risi},
+  editor = {Sch\"olkopf, Bernhard and Warmuth, Manfred K.},
+  options = {useprefix=true},
+  date = {2003},
+  series = {Lecture {{Notes}} in {{Computer Science}}},
+  volume = {2777},
+  pages = {144--158},
+  publisher = {{Springer Berlin Heidelberg}},
+  location = {{Berlin, Heidelberg}},
+  doi = {10.1007/978-3-540-45167-9_12},
+  url = {http://link.springer.com/10.1007/978-3-540-45167-9_12},
+  urldate = {2022-06-22},
+  abstract = {We introduce a family of kernels on graphs based on the notion of regularization operators. This generalizes in a natural way the notion of regularization and Greens functions, as commonly used for real valued functions, to graphs. It turns out that diffusion kernels can be found as a special case of our reasoning. We show that the class of positive, monotonically decreasing functions on the unit interval leads to kernels and corresponding regularization operators.},
+  editorb = {Goos, Gerhard and Hartmanis, Juris and van Leeuwen, Jan},
+  editorbtype = {redactor},
+  isbn = {978-3-540-40720-1 978-3-540-45167-9},
+  langid = {english}
+}
+
 @article{sommaQuantumSimulationsClassical2008,
   title = {Quantum {{Simulations}} of {{Classical Annealing Processes}}},
   author = {Somma, R. D. and Boixo, S. and Barnum, H. and Knill, E.},
@@ -6058,7 +7179,7 @@
   langid = {english}
 }
 
-@article{sommaQuantumSimulationsPhysics2003,
+@unpublished{sommaQuantumSimulationsPhysics2003,
   title = {Quantum {{Simulations}} of {{Physics Problems}}},
   author = {Somma, Rolando and Ortiz, Gerardo and Knill, Emanuel and Gubernatis, James},
   date = {2003-08-05},
@@ -6108,6 +7229,26 @@
   langid = {english}
 }
 
+@article{sornsaengQuantumDiffusionMap2021,
+  title = {Quantum Diffusion Map for Nonlinear Dimensionality Reduction},
+  author = {Sornsaeng, Apimuk and Dangniam, Ninnat and Palittapongarnpim, Pantita and Chotibut, Thiparat},
+  date = {2021-11-10},
+  journaltitle = {Phys. Rev. A},
+  volume = {104},
+  number = {5},
+  eprint = {2106.07302},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {052410},
+  issn = {2469-9926, 2469-9934},
+  doi = {10.1103/PhysRevA.104.052410},
+  url = {http://arxiv.org/abs/2106.07302},
+  urldate = {2022-06-10},
+  abstract = {Inspired by random walk on graphs, diffusion map (DM) is a class of unsupervised machine learning that offers automatic identification of low-dimensional data structure hidden in a high-dimensional dataset. In recent years, among its many applications, DM has been successfully applied to discover relevant order parameters in many-body systems, enabling automatic classification of quantum phases of matter. However, classical DM algorithm is computationally prohibitive for a large dataset, and any reduction of the time complexity would be desirable. With a quantum computational speedup in mind, we propose a quantum algorithm for DM, termed quantum diffusion map (qDM). Our qDM takes as an input \$N\$ classical data vectors, performs an eigen-decomposition of the Markov transition matrix in time \$O(\textbackslash log\^3 N)\$, and classically constructs the diffusion map via the readout (tomography) of the eigenvectors, giving a total expected runtime proportional to \$N\^2 \textbackslash text\{polylog\}\textbackslash, N\$. Lastly, quantum subroutines in qDM for constructing a Markov transition matrix, and for analyzing its spectral properties can also be useful for other random walk-based algorithms.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning,Quantum Physics}
+}
+
 @article{spalekAllQuantumAdversary2006,
   title = {All {{Quantum Adversary Methods}} Are {{Equivalent}}},
   author = {\v{S}palek, Robert and Szegedy, Mario},
@@ -6154,7 +7295,7 @@
   keywords = {Quantum Physics}
 }
 
-@article{stetinaSimulatingEffectiveQED2020,
+@unpublished{stetinaSimulatingEffectiveQED2020,
   title = {Simulating {{Effective QED}} on {{Quantum Computers}}},
   author = {Stetina, Torin F. and Ciavarella, Anthony and Li, Xiaosong and Wiebe, Nathan},
   date = {2020-12-31},
@@ -6182,6 +7323,26 @@
   urldate = {2021-03-27},
   abstract = {Bohr-Sommerfeld quantization is exact for a spin in a magnetic field. This well-known result is connected with the existence of a hidden supersymmetry. I discuss the supersymmetry and, in a broader context, the semiclassical quantum-mechanical interpretation of the Weyl character formula for compact, semisimple Lie groups.},
   langid = {english}
+}
+
+@article{suFaultTolerantQuantumSimulations2021,
+  title = {Fault-{{Tolerant Quantum Simulations}} of {{Chemistry}} in {{First Quantization}}},
+  author = {Su, Yuan and Berry, Dominic W. and Wiebe, Nathan and Rubin, Nicholas and Babbush, Ryan},
+  date = {2021-11-11},
+  journaltitle = {PRX Quantum},
+  volume = {2},
+  number = {4},
+  eprint = {2105.12767},
+  eprinttype = {arxiv},
+  pages = {040332},
+  issn = {2691-3399},
+  doi = {10.1103/PRXQuantum.2.040332},
+  url = {http://arxiv.org/abs/2105.12767},
+  urldate = {2022-03-09},
+  abstract = {Quantum simulations of chemistry in first quantization offer important advantages over approaches in second quantization including faster convergence to the continuum limit and the opportunity for practical simulations outside the Born-Oppenheimer approximation. However, as all prior work on quantum simulation in first quantization has been limited to asymptotic analysis, it has been impossible to compare the resources required for these approaches to those for more commonly studied algorithms in second quantization. Here, we analyze and optimize the resources required to implement two first quantized quantum algorithms for chemistry from Babbush et al that realize block encodings for the qubitization and interaction picture frameworks of Low et al. The two algorithms we study enable simulation with gate complexities \$\textbackslash tilde\{\textbackslash cal O\}(\textbackslash eta\^\{8/3\}N\^\{1/3\}t+\textbackslash eta\^\{4/3\}N\^\{2/3\}t)\$ and \$\textbackslash tilde\{\textbackslash cal O\}(\textbackslash eta\^\{8/3\} N\^\{1/3\} t)\$ where \$\textbackslash eta\$ is the number of electrons, \$N\$ is the number of plane wave basis functions, and \$t\$ is the duration of time-evolution (\$t\$ is inverse to target precision when the goal is to estimate energies). In addition to providing the first explicit circuits and constant factors for any first quantized simulation and introducing improvements which reduce circuit complexity by about a thousandfold over naive implementations for modest sized systems, we also describe new algorithms that asymptotically achieve the same scaling in a real space representation. We assess the resources required to simulate various molecules and materials and conclude that the qubitized algorithm will often be more practical than the interaction picture algorithm. We demonstrate that our qubitized algorithm often requires much less surface code spacetime volume for simulating millions of plane waves than the best second quantized algorithms require for simulating hundreds of Gaussian orbitals.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Physics - Chemical Physics,Quantum Physics}
 }
 
 @article{sunDisadiabaticDispersionMolecular2021,
@@ -6277,7 +7438,7 @@
   keywords = {Algorithm design and analysis,Computational modeling,d-dimensional torus,element distinctness,Genetic algorithms,Markov chain based algorithms,Markov processes,Monte Carlo methods,quadratic speed-up,quantum computing,Quantum computing,quantum escape time,Quantum mechanics,quantum speed-up,quantum walks,random processes,random walks,Simulated annealing,State-space methods,Stochastic processes,Symmetric matrices,transition matrix}
 }
 
-@article{szegedySpectraQuantizedWalks2004,
+@unpublished{szegedySpectraQuantizedWalks2004,
   title = {Spectra of {{Quantized Walks}} and a \$\textbackslash sqrt\{\textbackslash delta\textbackslash epsilon\}\$ Rule},
   author = {Szegedy, Mario},
   date = {2004-01-09},
@@ -6325,6 +7486,26 @@
   abstract = {A recommendation system suggests products to users based on data about user preferences. It is typically modeled by a problem of completing an m \texttimes{} n matrix of small rank k. We give the first classical algorithm to produce a recommendation in O(poly(k) polylog(m, n)) time, which is an exponential improvement on previous algorithms that run in time linear in m and n. Our strategy is inspired by a quantum algorithm by Kerenidis and Prakash: like the quantum algorithm, instead of reconstructing a user's full list of preferences, we only seek a randomized sample from the user's preferences. Our main result is an algorithm that samples high-weight entries from a low-rank approximation of the input matrix in time independent of m and n, given natural sampling assumptions on that input matrix. As a consequence, we show that Kerenidis and Prakash's quantum machine learning (QML) algorithm, one of the strongest candidates for provably exponential speedups in QML, does not in fact give an exponential speedup over classical algorithms.},
   archiveprefix = {arXiv},
   langid = {english},
+  keywords = {Computer Science - Data Structures and Algorithms,Computer Science - Information Retrieval,Computer Science - Machine Learning,Quantum Physics}
+}
+
+@article{tangQuantumPrincipalComponent2021,
+  title = {Quantum Principal Component Analysis Only Achieves an Exponential Speedup Because of Its State Preparation Assumptions},
+  author = {Tang, Ewin},
+  date = {2021-08-04},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {127},
+  number = {6},
+  eprint = {1811.00414},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {060503},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.127.060503},
+  url = {http://arxiv.org/abs/1811.00414},
+  urldate = {2022-06-27},
+  abstract = {A central roadblock to analyzing quantum algorithms on quantum states is the lack of a comparable input model for classical algorithms. Inspired by recent work of the author [E. Tang, STOC'19], we introduce such a model, where we assume we can efficiently perform \$\textbackslash ell\^2\$-norm samples of input data, a natural analogue to quantum algorithms that assume efficient state preparation of classical data. Though this model produces less practical algorithms than the (stronger) standard model of classical computation, it captures versions of many of the features and nuances of quantum linear algebra algorithms. With this model, we describe classical analogues to Lloyd, Mohseni, and Rebentrost's quantum algorithms for principal component analysis [Nat. Phys. 10, 631 (2014)] and nearest-centroid clustering [arXiv:1307.0411]. Since they are only polynomially slower, these algorithms suggest that the exponential speedups of their quantum counterparts are simply an artifact of state preparation assumptions.},
+  archiveprefix = {arXiv},
   keywords = {Computer Science - Data Structures and Algorithms,Computer Science - Information Retrieval,Computer Science - Machine Learning,Quantum Physics}
 }
 
@@ -6376,7 +7557,7 @@
   langid = {english}
 }
 
-@article{terhalAdaptiveQuantumComputation2004,
+@unpublished{terhalAdaptiveQuantumComputation2004,
   title = {Adaptive {{Quantum Computation}}, {{Constant Depth Quantum Circuits}} and {{Arthur-Merlin Games}}},
   author = {Terhal, Barbara M. and DiVincenzo, David P.},
   date = {2004-03-11},
@@ -6388,6 +7569,21 @@
   abstract = {We present evidence that there exist quantum computations that can be carried out in constant depth, using 2-qubit gates, that cannot be simulated classically with high accuracy. We prove that if one can simulate these circuits classically efficiently then the complexity class BQP is contained in AM.},
   archiveprefix = {arXiv},
   keywords = {Computer Science - Computational Complexity,Quantum Physics}
+}
+
+@article{terhalClassicalSimulationNoninteractingfermion2002,
+  title = {Classical Simulation of Noninteracting-Fermion Quantum Circuits},
+  author = {Terhal, Barbara M. and DiVincenzo, David P.},
+  date = {2002-03-01},
+  journaltitle = {Phys. Rev. A},
+  volume = {65},
+  number = {3},
+  pages = {032325},
+  issn = {1050-2947, 1094-1622},
+  doi = {10.1103/PhysRevA.65.032325},
+  url = {https://link.aps.org/doi/10.1103/PhysRevA.65.032325},
+  urldate = {2022-04-13},
+  langid = {english}
 }
 
 @article{terhalProblemEquilibrationComputation2000,
@@ -6409,6 +7605,21 @@
   keywords = {Condensed Matter,Quantum Physics}
 }
 
+@article{tobochnikMonteCarloStudy1979,
+  title = {Monte {{Carlo}} Study of the Planar Spin Model},
+  author = {Tobochnik, Jan and Chester, G. V.},
+  date = {1979-11-01},
+  journaltitle = {Phys. Rev. B},
+  volume = {20},
+  number = {9},
+  pages = {3761--3769},
+  issn = {0163-1829},
+  doi = {10.1103/PhysRevB.20.3761},
+  url = {https://link.aps.org/doi/10.1103/PhysRevB.20.3761},
+  urldate = {2022-03-07},
+  langid = {english}
+}
+
 @article{toffoliWhatLagrangianCounting2003,
   title = {What {{Is}} the {{Lagrangian Counting}}?},
   author = {Toffoli, Tommaso},
@@ -6417,6 +7628,42 @@
   pages = {19},
   url = {https://link.springer.com/article/10.1023/A:1024411819910},
   langid = {english}
+}
+
+@unpublished{tongProvablyAccurateSimulation2021,
+  title = {Provably Accurate Simulation of Gauge Theories and Bosonic Systems},
+  author = {Tong, Yu and Albert, Victor V. and McClean, Jarrod R. and Preskill, John and Su, Yuan},
+  date = {2021-10-13},
+  shortjournal = {ArXiv211006942 Hep-Th Physicsquant-Ph},
+  eprint = {2110.06942},
+  eprinttype = {arxiv},
+  primaryclass = {hep-th, physics:quant-ph},
+  url = {http://arxiv.org/abs/2110.06942},
+  urldate = {2022-03-23},
+  abstract = {Quantum many-body systems involving bosonic modes or gauge fields have infinite-dimensional local Hilbert spaces which must be truncated to perform simulations of real-time dynamics on classical or quantum computers. To analyze the truncation error, we develop methods for bounding the rate of growth of local quantum numbers such as the occupation number of a mode at a lattice site, or the electric field at a lattice link. Our approach applies to various models of bosons interacting with spins or fermions, and also to both abelian and non-abelian gauge theories. We show that if states in these models are truncated by imposing an upper limit \$\textbackslash Lambda\$ on each local quantum number, and if the initial state has low local quantum numbers, then an error at most \$\textbackslash epsilon\$ can be achieved by choosing \$\textbackslash Lambda\$ to scale polylogarithmically with \$\textbackslash epsilon\^\{-1\}\$, an exponential improvement over previous bounds based on energy conservation. For the Hubbard-Holstein model, we numerically compute a bound on \$\textbackslash Lambda\$ that achieves accuracy \$\textbackslash epsilon\$, obtaining significantly improved estimates in various parameter regimes. We also establish a criterion for truncating the Hamiltonian with a provable guarantee on the accuracy of time evolution. Building on that result, we formulate quantum algorithms for dynamical simulation of lattice gauge theories and of models with bosonic modes; the gate complexity depends almost linearly on spacetime volume in the former case, and almost quadratically on time in the latter case. We establish a lower bound showing that there are systems involving bosons for which this quadratic scaling with time cannot be improved. By applying our result on the truncation error in time evolution, we also prove that spectrally isolated energy eigenstates can be approximated with accuracy \$\textbackslash epsilon\$ by truncating local quantum numbers at \$\textbackslash Lambda=\textbackslash textrm\{polylog\}(\textbackslash epsilon\^\{-1\})\$.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Data Structures and Algorithms,High Energy Physics - Theory,Quantum Physics}
+}
+
+@article{torlaiManybodyQuantumState2018,
+  title = {Many-Body Quantum State Tomography with Neural Networks},
+  author = {Torlai, Giacomo and Mazzola, Guglielmo and Carrasquilla, Juan and Troyer, Matthias and Melko, Roger and Carleo, Giuseppe},
+  date = {2018-05},
+  journaltitle = {Nature Phys},
+  volume = {14},
+  number = {5},
+  eprint = {1703.05334},
+  eprinttype = {arxiv},
+  pages = {447--450},
+  issn = {1745-2473, 1745-2481},
+  doi = {10.1038/s41567-018-0048-5},
+  url = {http://arxiv.org/abs/1703.05334},
+  urldate = {2022-03-04},
+  abstract = {The experimental realization of increasingly complex synthetic quantum systems calls for the development of general theoretical methods, to validate and fully exploit quantum resources. Quantum-state tomography (QST) aims at reconstructing the full quantum state from simple measurements, and therefore provides a key tool to obtain reliable analytics. Brute-force approaches to QST, however, demand resources growing exponentially with the number of constituents, making it unfeasible except for small systems. Here we show that machine learning techniques can be efficiently used for QST of highly-entangled states, in both one and two dimensions. Remarkably, the resulting approach allows one to reconstruct traditionally challenging many-body quantities - such as the entanglement entropy - from simple, experimentally accessible measurements. This approach can benefit existing and future generations of devices ranging from quantum computers to ultra-cold atom quantum simulators.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Condensed Matter - Disordered Systems and Neural Networks,Condensed Matter - Quantum Gases,Physics - Computational Physics,Quantum Physics}
 }
 
 @article{tranLocalityDigitalQuantum2019,
@@ -6510,6 +7757,21 @@
   keywords = {Quantum Physics}
 }
 
+@misc{vandamQuantumAlgorithmsHidden2002,
+  title = {Quantum {{Algorithms}} for Some {{Hidden Shift Problems}}},
+  author = {van Dam, Wim and Hallgren, Sean and Ip, Lawrence},
+  options = {useprefix=true},
+  date = {2002-11-21},
+  eprint = {quant-ph/0211140},
+  eprinttype = {arxiv},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/quant-ph/0211140},
+  urldate = {2022-06-28},
+  abstract = {Almost all of the most successful quantum algorithms discovered to date exploit the ability of the Fourier transform to recover subgroup structure of functions, especially periodicity. The fact that Fourier transforms can also be used to capture shift structure has received far less attention in the context of quantum computation. In this paper, we present three examples of ``unknown shift'' problems that can be solved efficiently on a quantum computer using the quantum Fourier transform. We also define the hidden coset problem, which generalizes the hidden shift problem and the hidden subgroup problem. This framework provides a unified way of viewing the ability of the Fourier transform to capture subgroup and shift structure.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
 @article{vaziraniPowerQuantumComputation1998,
   title = {On the Power of Quantum Computation},
   author = {Vazirani, Umesh},
@@ -6582,6 +7844,20 @@
   keywords = {Condensed Matter,High Energy Physics - Theory,Quantum Physics}
 }
 
+@article{vishwanathanGraphKernels2010,
+  title = {Graph Kernels},
+  author = {Vishwanathan, S.V.N. and Schraudolph, Nicol N. and Kondor, Risi and Borgwardt, Karsten M.},
+  date = {2010},
+  journaltitle = {J. Mach. Learn. Res.},
+  volume = {11},
+  number = {40},
+  eprint = {0807.0093},
+  eprinttype = {arxiv},
+  pages = {1201--1242},
+  url = {http://jmlr.org/papers/v11/vishwanathan10a.html},
+  archiveprefix = {arXiv}
+}
+
 @article{vonderlindenQuantumMonteCarlo1992,
   title = {A Quantum {{Monte Carlo}} Approach to Many-Body Physics},
   author = {von der Linden, Wolfgang},
@@ -6630,7 +7906,7 @@
   langid = {english}
 }
 
-@article{watrousSuccinctQuantumProofs2000,
+@unpublished{watrousSuccinctQuantumProofs2000,
   title = {Succinct Quantum Proofs for Properties of Finite Groups},
   author = {Watrous, John},
   date = {2000-09-07},
@@ -6643,7 +7919,7 @@
   keywords = {Computer Science - Computational Complexity,F.1.2,F.1.3,Quantum Physics}
 }
 
-@article{watrousZeroKnowledgeQuantumAttacks,
+@unpublished{watrousZeroKnowledgeQuantumAttacks,
   title = {Zero-{{Knowledge Against Quantum Attacks}}},
   author = {Watrous, John},
   eprint = {quant-ph/0511020},
@@ -6837,7 +8113,7 @@
   abstract = {The modern formulation of the renormalization group is explained for both critical phenomena in classical statistical mechanics and quantum field theory. The expansion in {$\epsilon$}=4-d is explained [d is the dimension of space (statistical mechanics) or space\- time (quantum field theory)). The emphasis is on principles, not particular applications. Sections 1- 8 provide a self-contained introduction at a fairly elementary level to the statistical mechanical theory. No background is required except for some prior experience with diagrams. In particular, a diagrammatic approximation to an exact renormalization group equation is presented in sections 4 and 5; sections 6---8 include the approximate renormalization group recursion formula and the Feynman graph method for calculating exponents. Sections 10- 13 go deeper into renormalization group theory (section 9 presents a calculation of anomalous dimensions). The equivalence of quantum field theory and classical statistical mechanics near the critical point is established in section 10 ; sections 11- 13 concern problems common to both subjects. Specific field theoretic references assume some background in quantum field theory . An exact renormalization group equation is presented in section 11; sections 12 and 13 concern fundamental topological questions.}
 }
 
-@article{wittenSitterSpaceHolography1998,
+@unpublished{wittenSitterSpaceHolography1998,
   title = {Anti {{De Sitter Space And Holography}}},
   author = {Witten, Edward},
   date = {1998-04-06},
@@ -6866,6 +8142,21 @@
   url = {https://doi.org/10.1007/BF01217347},
   urldate = {2021-04-05},
   abstract = {Self-organizing behaviour in cellular automata is discussed as a computational process. Formal language theory is used to extend dynamical systems theory descriptions of cellular automata. The sets of configurations generated after a finite number of time steps of cellular automaton evolution are shown to form regular languages. Many examples are given. The sizes of the minimal grammars for these languages provide measures of the complexities of the sets. This complexity is usually found to be non-decreasing with time. The limit sets generated by some classes of cellular automata correspond to regular languages. For other classes of cellular automata they appear to correspond to more complicated languages. Many properties of these sets are then formally non-computable. It is suggested that such undecidability is common in these and other dynamical systems.},
+  langid = {english}
+}
+
+@article{wolframStatisticalMechanicsCellular1983,
+  title = {Statistical Mechanics of Cellular Automata},
+  author = {Wolfram, Stephen},
+  date = {1983-07-01},
+  journaltitle = {Rev. Mod. Phys.},
+  volume = {55},
+  number = {3},
+  pages = {601--644},
+  issn = {0034-6861},
+  doi = {10.1103/RevModPhys.55.601},
+  url = {https://link.aps.org/doi/10.1103/RevModPhys.55.601},
+  urldate = {2022-03-06},
   langid = {english}
 }
 
@@ -6926,6 +8217,36 @@
   langid = {english}
 }
 
+@article{wuConceptNonintegrablePhase1975,
+  title = {Concept of Nonintegrable Phase Factors and Global Formulation of Gauge Fields},
+  author = {Wu, Tai Tsun and Yang, Chen Ning},
+  date = {1975-12-15},
+  journaltitle = {Phys. Rev. D},
+  volume = {12},
+  number = {12},
+  pages = {3845--3857},
+  issn = {0556-2821},
+  doi = {10.1103/PhysRevD.12.3845},
+  url = {https://link.aps.org/doi/10.1103/PhysRevD.12.3845},
+  urldate = {2022-03-05},
+  langid = {english}
+}
+
+@article{wuPottsModel1982,
+  title = {The {{Potts}} Model},
+  author = {Wu, F. Y.},
+  date = {1982-01-01},
+  journaltitle = {Rev. Mod. Phys.},
+  volume = {54},
+  number = {1},
+  pages = {235--268},
+  issn = {0034-6861},
+  doi = {10.1103/RevModPhys.54.235},
+  url = {https://link.aps.org/doi/10.1103/RevModPhys.54.235},
+  urldate = {2022-03-05},
+  langid = {english}
+}
+
 @thesis{wuSpaceefficientSimulationsQuantum2013,
   title = {Space-Efficient {{Simulations}} of {{Quantum Interactive Proofs}}},
   author = {Wu, Xiaodi},
@@ -6933,7 +8254,7 @@
   institution = {{University of Michigan}}
 }
 
-@article{xuLagrangianFormalismQuantum2021,
+@unpublished{xuLagrangianFormalismQuantum2021,
   title = {On {{Lagrangian Formalism}} of {{Quantum Computation}}},
   author = {Xu, Jue},
   date = {2021-12-07},
@@ -7076,6 +8397,21 @@
   keywords = {Boolean circuit model,Boolean functions,Circuit simulation,communication complexity,Complexity theory,computational complexity,Computational modeling,Computer networks,Computer science,Computer simulation,polynomial time,Polynomials,quantum circuit complexity,quantum communication complexity,Quantum computing,Quantum mechanics,quantum Turing machine,Turing machines}
 }
 
+@article{yepezRelativisticPathIntegral2006,
+  title = {Relativistic {{Path Integral}} as a {{Lattice-based Quantum Algorithm}}},
+  author = {Yepez, Jeffrey},
+  date = {2006-03-16},
+  journaltitle = {Quantum Inf Process},
+  volume = {4},
+  number = {6},
+  pages = {471--509},
+  issn = {1570-0755, 1573-1332},
+  doi = {10.1007/s11128-005-0009-7},
+  url = {http://link.springer.com/10.1007/s11128-005-0009-7},
+  urldate = {2022-03-07},
+  langid = {english}
+}
+
 @article{yoranEfficientClassicalSimulation2007,
   ids = {yoranEfficientClassicalSimulation2007a},
   title = {Efficient Classical Simulation of the Approximate Quantum {{Fourier}} Transform},
@@ -7093,6 +8429,45 @@
   url = {http://arxiv.org/abs/quant-ph/0611241},
   urldate = {2021-03-12},
   abstract = {We present a method for classically simulating quantum circuits based on the tensor contraction model of Markov and Shi (quant-ph/0511069). Using this method we are able to classically simulate the approximate quantum Fourier transform in polynomial time. Moreover, our approach allows us to formulate a condition for the composability of simulable quantum circuits. We use this condition to show that any circuit composed of a constant number of approximate quantum Fourier transform circuits and log-depth circuits with limited interaction range can also be efficiently simulated.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
+@article{yuanQuantumSimulationHybrid2021,
+  title = {Quantum Simulation with Hybrid Tensor Networks},
+  author = {Yuan, Xiao and Sun, Jinzhao and Liu, Junyu and Zhao, Qi and Zhou, You},
+  date = {2021-07-20},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {127},
+  number = {4},
+  eprint = {2007.00958},
+  eprinttype = {arxiv},
+  primaryclass = {hep-th, physics:quant-ph},
+  pages = {040501},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.127.040501},
+  url = {http://arxiv.org/abs/2007.00958},
+  urldate = {2022-06-13},
+  abstract = {Tensor network theory and quantum simulation are respectively the key classical and quantum computing methods in understanding quantum many-body physics. Here, we introduce the framework of hybrid tensor networks with building blocks consisting of measurable quantum states and classically contractable tensors, inheriting both their distinct features in efficient representation of many-body wave functions. With the example of hybrid tree tensor networks, we demonstrate efficient quantum simulation using a quantum computer whose size is significantly smaller than the one of the target system. We numerically benchmark our method for finding the ground state of 1D and 2D spin systems of up to \$8\textbackslash times 8\$ and \$9\textbackslash times 8\$ qubits with operations only acting on \$8+1\$ and \$9+1\$ qubits,\textasciitilde respectively. Our approach sheds light on simulation of large practical problems with intermediate-scale quantum computers, with potential applications in chemistry, quantum many-body physics, quantum field theory, and quantum gravity thought experiments.},
+  archiveprefix = {arXiv},
+  keywords = {High Energy Physics - Theory,Quantum Physics}
+}
+
+@article{yuanTheoryVariationalQuantum2019,
+  title = {Theory of Variational Quantum Simulation},
+  author = {Yuan, Xiao and Endo, Suguru and Zhao, Qi and Li, Ying and Benjamin, Simon},
+  date = {2019-10-07},
+  journaltitle = {Quantum},
+  volume = {3},
+  eprint = {1812.08767},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  pages = {191},
+  issn = {2521-327X},
+  doi = {10.22331/q-2019-10-07-191},
+  url = {http://arxiv.org/abs/1812.08767},
+  urldate = {2022-06-13},
+  abstract = {The variational method is a versatile tool for classical simulation of a variety of quantum systems. Great efforts have recently been devoted to its extension to quantum computing for efficiently solving static many-body problems and simulating real and imaginary time dynamics. In this work, we first review the conventional variational principles, including the Rayleigh-Ritz method for solving static problems, and the Dirac and Frenkel variational principle, the McLachlan's variational principle, and the time-dependent variational principle, for simulating real time dynamics. We focus on the simulation of dynamics and discuss the connections of the three variational principles. Previous works mainly focus on the unitary evolution of pure states. In this work, we introduce variational quantum simulation of mixed states under general stochastic evolution. We show how the results can be reduced to the pure state case with a correction term that takes accounts of global phase alignment. For variational simulation of imaginary time evolution, we also extend it to the mixed state scenario and discuss variational Gibbs state preparation. We further elaborate on the design of ansatz that is compatible with post-selection measurement and the implementation of the generalised variational algorithms with quantum circuits. Our work completes the theory of variational quantum simulation of general real and imaginary time evolution and it is applicable to near-term quantum hardware.},
   archiveprefix = {arXiv},
   keywords = {Quantum Physics}
 }
@@ -7168,7 +8543,38 @@
   keywords = {Condensed Matter - Statistical Mechanics,Quantum Physics}
 }
 
-@article{zhengSpeedingLearningQuantum2022,
+@misc{zhaoCompilingBasicLinear2019,
+  title = {Compiling Basic Linear Algebra Subroutines for Quantum Computers},
+  author = {Zhao, Liming and Zhao, Zhikuan and Rebentrost, Patrick and Fitzsimons, Joseph},
+  date = {2019-02-27},
+  eprint = {1902.10394},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/1902.10394},
+  urldate = {2022-06-25},
+  abstract = {Efficiently processing basic linear algebra subroutines is of great importance for a wide range of computational problems. In this paper, we consider techniques to implement matrix functions on a quantum computer, which are composed of basic matrix operations on a set of matrices. These matrix operations include addition, multiplication, Kronecker sum, tensor product, Hadamard product, and single-matrix functions. We discuss the composed matrix functions in terms of the estimation of scalar quantities such as inner products, trace, determinant and Schatten p-norms. We thus provide a framework for compiling instructions for linear algebraic computations into gate sequences on actual quantum computers.},
+  archiveprefix = {arXiv},
+  keywords = {Quantum Physics}
+}
+
+@unpublished{zhaoHamiltonianSimulationRandom2021,
+  title = {Hamiltonian Simulation with Random Inputs},
+  author = {Zhao, Qi and Zhou, You and Shaw, Alexander F. and Li, Tongyang and Childs, Andrew M.},
+  date = {2021-11-08},
+  shortjournal = {ArXiv211104773 Quant-Ph},
+  eprint = {2111.04773},
+  eprinttype = {arxiv},
+  primaryclass = {quant-ph},
+  url = {http://arxiv.org/abs/2111.04773},
+  urldate = {2022-03-06},
+  abstract = {The algorithmic error of digital quantum simulations is usually explored in terms of the spectral norm distance between the actual and ideal evolution operators. In practice, this worst-case error analysis may be unnecessarily pessimistic. To address this, we develop a theory of average-case performance of Hamiltonian simulation with random initial states. We relate the average-case error to the Frobenius norm of the multiplicative error and give upper bounds for the product formula (PF) and truncated Taylor series methods. As applications, we estimate average-case error for digital Hamiltonian simulation of general lattice Hamiltonians and \$k\$-local Hamiltonians. In particular, for the nearest-neighbor Heisenberg chain with \$n\$ spins, the error is quadratically reduced from \$\textbackslash mathcal O(n)\$ in the worst case to \$\textbackslash mathcal O(\textbackslash sqrt\{n\})\$ on average for both the PF method and the Taylor series method. Numerical evidence suggests that this theory accurately characterizes the average error for concrete models. We also apply our results to error analysis in the simulation of quantum scrambling.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
+}
+
+@unpublished{zhengSpeedingLearningQuantum2022,
   title = {Speeding up {{Learning Quantum States}} through {{Group Equivariant Convolutional Quantum Ans}}\textbackslash "atze},
   author = {Zheng, Han and Li, Zimu and Liu, Junyu and Strelchuk, Sergii and Kondor, Risi},
   date = {2022-01-20},
@@ -7199,7 +8605,7 @@
   langid = {english}
 }
 
-@article{zhouStronglyUniversalHamiltonian2021,
+@unpublished{zhouStronglyUniversalHamiltonian2021,
   title = {Strongly {{Universal Hamiltonian Simulators}}},
   author = {Zhou, Leo and Aharonov, Dorit},
   date = {2021-02-04},
@@ -7258,6 +8664,41 @@
   abstract = {Can high energy physics be simulated by low-energy, non-relativistic, many-body systems, such as ultracold atoms? Such ultracold atomic systems lack the type of symmetries and dynamical properties of high energy physics models: in particular, they manifest neither local gauge invariance nor Lorentz invariance, which are crucial properties of the quantum field theories which are the building blocks of the standard model of elementary particles. However, it turns out, surprisingly, that there are ways to configure atomic system to manifest both local gauge invariance and Lorentz invariance. In particular, local gauge invariance can arise either as an effective, low energy, symmetry, or as an "exact" symmetry, following from the conservation laws in atomic interactions. Hence, one could hope that such quantum simulators may lead to new type of (table-top) experiments, that shall be used to study various QCD phenomena, as the confinement of dynamical quarks, phase transitions, and other effects, which are inaccessible using the currently known computational methods. In this report, we review the Hamiltonian formulation of lattice gauge theories, and then describe our recent progress in constructing quantum simulation of Abelian and non-Abelian lattice gauge theories in 1+1 and 2+1 dimensions using ultracold atoms in optical lattices.},
   archiveprefix = {arXiv},
   keywords = {Condensed Matter - Quantum Gases,High Energy Physics - Lattice,High Energy Physics - Theory,Quantum Physics}
+}
+
+@article{zuoOpticalNeuralNetwork2022,
+  title = {Optical Neural Network Quantum State Tomography},
+  author = {Zuo, Ying and Cao, Chenfeng and Cao, Ningping and Lai, Xuanying and Zeng, Bei and Du, Shengwang},
+  date = {2022-03-24},
+  journaltitle = {Adv. Photon.},
+  volume = {4},
+  number = {02},
+  issn = {2577-5421},
+  doi = {10.1117/1.AP.4.2.026004},
+  url = {https://www.spiedigitallibrary.org/journals/advanced-photonics/volume-4/issue-02/026004/Optical-neural-network-quantum-state-tomography/10.1117/1.AP.4.2.026004.full},
+  urldate = {2022-06-07},
+  abstract = {Quantum state tomography (QST) is a crucial ingredient for almost all aspects of experimental quantum information processing. As an analog of the ``imaging'' technique in quantum settings, QST is born to be a data science problem, where machine learning techniques, noticeably neural networks, have been applied extensively. We build and demonstrate an optical neural network (ONN) for photonic polarization qubit QST. The ONN is equipped with built-in optical nonlinear activation functions based on electromagnetically induced transparency. The experimental results show that our ONN can determine the phase parameter of the qubit state accurately. As optics are highly desired for quantum interconnections, our ONN-QST may contribute to the realization of optical quantum networks and inspire the ideas combining artificial optical intelligence with quantum information studies.},
+  langid = {english}
+}
+
+@article{zurelHiddenVariableModel2020,
+  title = {A Hidden Variable Model for Universal Quantum Computation with Magic States on Qubits},
+  author = {Zurel, Michael and Okay, Cihan and Raussendorf, Robert},
+  date = {2020-12-23},
+  journaltitle = {Phys. Rev. Lett.},
+  volume = {125},
+  number = {26},
+  eprint = {2004.01992},
+  eprinttype = {arxiv},
+  pages = {260404},
+  issn = {0031-9007, 1079-7114},
+  doi = {10.1103/PhysRevLett.125.260404},
+  url = {http://arxiv.org/abs/2004.01992},
+  urldate = {2022-03-27},
+  abstract = {We show that every quantum computation can be described by Bayesian update of a probability distribution on a finite state space. When applied to the model of quantum computation with magic states, the size of this state space only depends on the number of magic states used in the quantum computation, and not on the length of the gate and measurement sequence.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Quantum Physics}
 }
 
 

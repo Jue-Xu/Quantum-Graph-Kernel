@@ -2,13 +2,13 @@
 
 \section{Introduction}
 % \subsection{Motivation}
-With the success of machine learning and potential advantages of quantum computing [ref], the combination of these two areas attracts attention.
-Many quantum versions of machine learning techniques \cite{rebentrostQuantumSupportVector2014} \cite{lloydQuantumPrincipalComponent2014} \cite{congQuantumConvolutionalNeural2019} are developed and exhibtis substantial (meaningful) speedups.
-However, the quantum advantages are heuristic and strongly depend on the assumptions of models \cite{tangQuantumPrincipalComponent2021}.
-Since several quantum kernel tricks are coined \cite{havlicekSupervisedLearningQuantum2019} \cite{schuldQuantumMachineLearning2019} and advantages are demonstrated \cite{glickCovariantQuantumKernels2021} \cite{liuRigorousRobustQuantum2021},
+With the remarkable success of machine learning and potential (exponential) advantages of quantum computing [ref], the combination of these two areas attracts much attention.
+Many quantum versions of machine learning techniques \cite{rebentrostQuantumSupportVector2014} \cite{lloydQuantumPrincipalComponent2014} \cite{congQuantumConvolutionalNeural2019} are developed and exhibtis substantial (meaningful) speedups,
+but some quantum advantages are heuristic and strongly depend on the assumptions of models \cite{tangQuantumPrincipalComponent2021}.
+Since several quantum kernel tricks are coined \cite{havlicekSupervisedLearningQuantum2019} \cite{schuldQuantumMachineLearning2019} and (rigorous) advantages are demonstrated in \cite{glickCovariantQuantumKernels2021} \cite{liuRigorousRobustQuantum2021},
 we focus on quantum graphs kernel based on quantum random walk. 
 The (rigorous) quantum advantages in this context are analyzed in terms of symmetries by theoretical group methods \cite{kondorGroupTheoreticalMethods2008} \cite{ben-davidSymmetriesGraphProperties2020}.
-On the other hand, the (empirical) connections between quantum machine learing and quantum physics are revealed by symmetries.
+On the other hand, the (empirical) connections between quantum machine learing and quantum physics are revealed from the perspective of symmetry.
 % diffusion kernel on graphs \cite{kondorDiffusionKernelsGraphs2002}
 
 % Many insightful and powerful models, like adiabatic quantum computation \cite{farhiQuantumComputationAdiabatic2000}, quantum random walks \cite{childsQuantumInformationProcessing2004} \cite{ambainisOnedimensionalQuantumWalks2001}, 
@@ -21,25 +21,68 @@ Normally, the input $\vbx:= (x_1,x_2,\dots,x_d) \in \realnumber^d$  is a vector 
 and its \emph{label} $y\in\Sigma$ is a scalar with some discrete set $\Sigma$ of alphabet/categories. 
 For simplicity, we assume $\Sigma=\qty{-1,1}$ (binary classification).
 
-graph $\graph=(V,E)$, group $\group$. 
-operator $\hat{A}$, $\hamiltonian$
+Notations: a graph $\graph=(V,E)$ with vertices $V$ and edges $E$; a group $\group$ with a subgroup $\subgroup$. 
+The hats on the matrices such as $\hat{A}$, $\hamiltonian$ emphasize they play the roles of operators.
 
-computational basis $\ket{z}$ with $z\in \qty[2^n]$ where $n$ is the number of qubits,
-the binary representation $\ket{\vbx}=\ket{x_1,x_2,\dots,x_n},x_j\in \qty{0,1}$. 
-Let $N \equiv 2^n$ if no ambiguity.
-$\ket{\vb{0}}\equiv\ket{0}^n$, $\ket{\pm}$.
+For specific purpose, we use different basis (representations) for quantum states.
+One is the computational basis $\qty{\ket{z}}$ with $z\in \qty[2^n]$ where $n$ is the number of qubits,
+while the other useful one is the binary representation of computational basis $\ket{\vbx}=\ket{x_1,x_2,\dots,x_n},x_j\in \qty{0,1}$. 
+For simplicity, we let $N \equiv 2^n$ and $\ket{\vb{0}}\equiv\ket{0^n} \equiv\ket{0}^{\otimes n}$ if no ambiguity.
+% , $\ket{\pm}$.
 % \subsubsection{Support Vector Machine (SVM)}
 % \subsubsection{Kernel trick}
 % \subsubsection*{Hilbert space}
-inner product can be understood as a `similarity' metric between two vectors ?
+
+
+\subsection{Background: SVM and kernel trick}\label{sec:svm}
+Support vector machine (SVM) is one of popular \emph{supervised learning} techniques \cite{cortesSupportvectorNetworks1995}.
+% \footnote{unsupervised learning}
+% \subsubsection{Support Vector Machine (SVM)}
+training stage, classification stage (phase).
+exponentially large space;
+($d-1$-dimensional) \emph{hyperplane} $(\vb{w},b)$ parametrized by a normal vector $\vb{w}\in\realnumber^n$ and a \emph{bias} term $b\in\realnumber$. in the (high-dimensional) \emph{feature space}.
+\begin{definition}[feature map]\label{def:feature_map_classical}
+	The \emph{feature map} is a function (mapping)
+	\begin{equation}
+		\Phi(\vbx) : \mathcal{X} \to \hilbertspace_{\kernel}
+		\label{eq:feature_map_classical}
+	\end{equation}
+	from a low dimensional space (non-linearly) to a high dimensional \nameref{def:hilbert_space} $\hilbertspace$ which is commonly referred to as the \emph{feature space}.
+	For example, $\Phi(\vbx):\realnumber^d \to \realnumber^n$ with $n\gg d$.
+\end{definition}
+% \subsubsection{Kernel trick (method)}
+\emph{kernel trick}: \emph{feature map} the input data to higher dimension such that the data are linearly separatable in this feature space (see \cref{fig:kernel} for the intuition).
+only depend on the inner product to avoid the expensive (exponential) calculation. [ref]
+\begin{definition}[kernel function]\label{def:kernel}
+	A \emph{kernel function} (mapping) $\kernel: \Omega\times\Omega\to\hilbertspace$,
+	is defined as \nameref{def:inner_product}
+	% a \emph{(feature) mapping} $\phi:\Omega\mapsto\hilbertspace_\kernel$
+	\begin{equation}
+		\kernel(\vbx,\vbx') = \langle \Phi(\vbx),\Phi(\vbx') \rangle_{\hilbertspace}
+		\label{eq:kernel_classical}
+	\end{equation}
+	w.r.t a \nameref{def:feature_map_classical} $\Phi(\vbx)$.
+	A function $\kernel$ is a valid kernel if and only if? it corresponding Gram matrix $K_{\vbx,\vbx'}:=\kernel(\vbx,\vbx')$ is symmetric and positive semi-definite.
+% \end{definition}
+% \begin{definition}[Positive semi-definite]\label{def:psd}
+	A matrix $K\in\realnumber^{n\times n}$ is \emph{positive semi-definite} (PSD/p.s.d) if
+	\begin{equation}
+		\forall \vbx \in \realnumber^n, \vbx^\T K \vbx \ge 0.
+	\end{equation}
+	% or decompose $C^\T C$
+	% \begin{equation}
+	% 	\sum_{i=1}^m \sum_{j=1}^m \alpha_i\alpha_j \kernel(\vbx^{(i)},\vbx^{(j)}) \ge 0
+	% \end{equation}
+	Or equivalently, all eigenvalues of $K$ are non-negative. (Mercer's condition...)
+\end{definition}
 \begin{definition}[inner product]\label{def:inner_product}
 	An \emph{inner product} is a map
 	$\expval{\cdot,\cdot}: \mathcal{V} \times \mathcal{V} \to \numberfield$
-	where $\mathcal{V}$ is a vector space and $\numberfield$ is...
+	where $\mathcal{V}$ is a vector space and $\numberfield$ is a number field.
 	% \begin{equation}
 	% 	\expval{\cdot,\cdot}: V \times V \to \numberfield
 	% \end{equation}
-	And $\forall \vbx,\vb{y},\vb{z}\in V,a,b\in\numberfield$, 
+	And $\forall \vbx,\vb{y},\vb{z}\in \mathcal{V},a,b\in\numberfield$, 
 	the map satisfies the following three properties:
 	\begin{itemize}
 		\item \textbf{Conjugate symmetry}:
@@ -49,73 +92,44 @@ inner product can be understood as a `similarity' metric between two vectors ?
 		\item \textbf{Positive-definiteness}:
 		$\expval{\vbx,\vbx}\ge 0$ with equality only when $\vbx=\vb{0}$.
 	\end{itemize}
-	In classical machine learning, we assume the base field is $\realnumber$.
-	The inner product gives rise to the \emph{norm} $\norm{\vbx}=\sqrt{\expval{\vbx,\vbx}}$,
+	In classical machine learning, we assume $\mathcal{V}$ is $\realnumber^n$ and $\numberfield$ is $\realnumber$.
+	The inner product gives rise to the $(l_2)$ \emph{norm} $\norm{\vbx}=\sqrt{\expval{\vbx,\vbx}}$,
 	and a distance metric $d(\vbx,\vbx')=\norm{\vbx-\vbx'}$.
 	dot product
 \end{definition}
 Euclidean vector space $\realnumber^n$ with dot product is an inner product space,.
 While in the context of quantum mechanics,
 the inner product is replaced by 
-Dirac notation $\braket{\vbx}{\vbx'}$ with complex field $\complexnumber$.
+Dirac notation $\braket{\vbx}{\vbx'}$ and complex field $\complexnumber$.
 \begin{definition}[Hilbert space]\label{def:hilbert_space}
-	A \emph{Hilbert space} is a vector space $\hilbertspace$ induced by an \nameref{def:inner_product}
-	such that the inner product yields a complete metric space?.
+	A \emph{Hilbert space} $\hilbertspace$ is a vector space induced by an \nameref{def:inner_product}
+	such that the inner product yields a complete metric space[?].
 \end{definition}
-
-\subsection{Background: SVM and kernel trick}\label{sec:svm}
-\emph{Support vector machine} (SVM) is one of popular \emph{supervised learning} techniques \cite{cortesSupportvectorNetworks1995}.
-% \footnote{unsupervised learning}
-% \subsubsection{Support Vector Machine (SVM)}
-training stage, classification stage (phase).
-exponentially large space;
-($n-1$-dimensional) \emph{hyperplane} $(\vb{w},b)$ parametrized by a normal vector $\vb{w}\in\realnumber^n$ and a \emph{bias} term $b\in\realnumber$. in the (high-dimensional) \emph{feature space}.
-maximize the \emph{margin} [ref]
-\begin{equation}
-	f^* = \arg \max_f  L(y,\tilde{y}) + \norm{}
-\end{equation}
-$\tilde{y}:=f(x)$.
-where the loss function $L$, slackness. 
-called \emph{support vector}. \emph{concept class}, \emph{hypothesis}
-
-% \subsubsection{Kernel trick (method)}
-\emph{kernel trick}: \emph{feature map} the input data to higher dimension such that the data are linearly separatable in this feature space (see \cref{fig:kernel} for the intuition).
-only depend on the inner product to avoid the expensive (exponential) calculation. [ref]
-\begin{definition}[kernel function]\label{def:kernel}
-	a \emph{kernel function} (mapping) $\kernel: \Omega\times\Omega\to\hilbertspace$,
-	is defined as \nameref{def:inner_product}
-	% a \emph{(feature) mapping} $\phi:\Omega\mapsto\hilbertspace_\kernel$
-	\begin{equation}
-		\kernel(\vbx,\vbx') = \langle \Phi(\vbx),\Phi(\vbx') \rangle_{\hilbertspace}
-		\label{eq:kernel_classical}
-	\end{equation}
-	w.r.t a \nameref{def:feature_map_classical} $\Phi(\vbx)$.
-	A function $\kernel$ is a valid kernel if and only if? it corresponding Gram matrix $K_{\vbx,\vbx'}:=\kernel(x,x')$ is symmetric and positive semi-definite.
-% \end{definition}
-% \begin{definition}[Positive semi-definite]\label{def:psd}
-	A matrix $K\in\realnumber^{d\times n}$ is \emph{positive semi-definite} (PSD/p.s.d) if
-	\begin{equation}
-		\forall \vb{a} \in \realnumber^d, \vb{a}^\T K \vb{a} \ge 0.
-	\end{equation}
-	% or decompose $C^\T C$
-	% \begin{equation}
-	% 	\sum_{i=1}^m \sum_{j=1}^m \alpha_i\alpha_j \kernel(\vbx^{(i)},\vbx^{(j)}) \ge 0
-	% \end{equation}
-	or equivalently all eigenvalues are non-negative. (Mercer's condition?)
-\end{definition}
+inner product can be understood as a `similarity' metric between two vectors ?
 Informally, a kernel is a type of similarity measure between two data in the high-dimensional feature space.
 % \begin{remark}
 % 	A function $\kernel$ is a valid kernel if and only if? it corresponding (Gram) matrix $K_{\vbx,\vbx'}=\kernel(x,x')$ is symmetric and PSD.
 % \end{remark}
-\begin{definition}[feature map]\label{def:feature_map_classical}
-	The \emph{feature map} is a function (mapping)
+
+\begin{definition}[Informal]\label{def:rkhs}
+	It is well known that any continuous, symmetric, positive definite (\nameref{def:kernel}) has corresponding Hilbert space $\hilbertspace$ of (any real) functions $f$ defined on $\inputspace$, 
+	called the \emph{Reproducing Kernel Hilbert Space} (RKHS) with the \emph{reproducing property}
 	\begin{equation}
-		\Phi(\vbx) : \mathcal{X} \to \hilbertspace_{\kernel}
-		\label{eq:feature_map_classical}
+		f(\vbx) = \expval{f(\cdot),\kernel(\cdot,\vbx)}
 	\end{equation}
-	from a low dimensional space non-linearly in to a high dimensional \nameref{def:hilbert_space} $\hilbertspace$ which is commonly referred to as the \emph{feature space}.
-	For example, $\Phi(\vbx):\realnumber^d \to \realnumber^n$ with $n\gg d$.
+	% which induces a \nameref{def:feature_map_classical} satisfying \cref{eq:kernel_classical}.
 \end{definition}
+% \begin{theorem}[Representer theorem]
+% 	the kernel trick ? or more formally the \emph{representer theorem}
+% 	\cite{chatterjeeGeneralizedCoherentStates2017}
+% \end{theorem}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Kernel_trick_idea.png}
+	\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx(x_1, x_2)) = (x_1, x_2, x_1^2 + x_2^2)$ and thus $\kernel(\vbx,\vbx')=\vbx\cdot \vbx' + \norm{\vbx}^2 \norm{\vbx'}^2$. The training points are mapped from a 2-dimensional to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}
+	% that only depends on inner product
+	\label{fig:kernel}
+\end{figure}
 % \begin{figure}[!ht]
 % 	\centering
 % 	\begin{subfigure}{0.3\textwidth}
@@ -129,18 +143,11 @@ Informally, a kernel is a type of similarity measure between two data in the hig
 % 		\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx:=(a, b)) = (a, b, a^2 + b^2)$ and thus $\kernel(\vbx,\vb{y})=\vbx\cdot \vb{y}+\norm{x}^2 \norm{y}^2$ that only depends on inner product. The training points are mapped to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}	
 % 	\end{subfigure}
 % \end{figure}
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.6\linewidth]{Kernel_trick_idea.png}
-	\caption{kernel trick idea: SVM with kernel given by $\phi(\vbx(x_1, x_2)) = (x_1, x_2, x_1^2 + x_2^2)$ and thus $\kernel(\vbx,\vbx')=\vbx\cdot \vbx' + \norm{\vbx}^2 \norm{\vbx'}^2$. The training points are mapped from a 2-dimensional to a 3-dimensional space where a separating hyperplane can be easily found. (from Wikipedia: Kernel method)}
-	% that only depends on inner product
-	\label{fig:kernel}
-\end{figure}
-Some common (popular) kernels on $\realnumber^d$ with dot product:
+Some common (popular) kernels with input space $\realnumber^d$ (dot product):
 \begin{itemize}
 	\item \emph{polynomial kernel}:
-	$\kernel(\vbx,\vbx')=(c+\vbx\cdot \vbx')^p$.
-	Take $d=2,p=2$ as an example, the corresponding feature map $\Phi(\vbx)=(x_1^2,x_2^2,\sqrt{2c}x_1,\sqrt{2c}x_2,c)^\T$.
+	$\kernel(\vbx,\vbx')=(c+\vbx\cdot \vbx')^\nu$.
+	Take $d=2,\nu=2$ as an example, the corresponding feature map $\Phi(\vbx)=(x_1^2,x_2^2,\sqrt{2c}x_1,\sqrt{2c}x_2,c)^\T$.
 
 	\item \emph{Gaussian (radial basis) kernel}:
 	with the feature map $\Phi(\vbx)?=(\frac{1}{\sqrt{0!}}e^{-\vbx^2}\vbx^0,\dots,\frac{1}{\sqrt{n!}}e^{-\vbx^2}\vbx^n,\dots)$ (infinite dimensions)
@@ -156,31 +163,25 @@ Some common (popular) kernels on $\realnumber^d$ with dot product:
 	% 	\exp(-\frac{\norm{\vbx-\vbx'}}{\gamma})
 	% \end{equation}
 \end{itemize}
+\begin{remark}
 Note that the Hilbert space associated with the Gaussian RBF kernel has infinite dimension, but the kernel may be readily computed for any pair of data points.
-The kernel only depends on the inner product $\vbx\cdot\vbx'$ (without calculating the feature map explicitly). 
+Since both polynomial kernel and Gaussian kernel depends only on the inner product $\vbx\cdot\vbx'$, 
+no explicit calculation for the feature maps is required. 
 % we don't need the explicit mapping $\Phi$ as the kernel alone defines the solution 
-graph kernels discuss in the remainder of this paper.
+\end{remark}
+Although the development of kernel methods was driven by the empirical success of supervised learning of vector-valued data or image data, 
+in many domains, such as chemo- and bioinformatics, (social) network analysis, data are not naturally interpreted as vectors.
+Instead, graphs are the better representations.
+In the remainder of this paper, we are going to shift our attention to graphs (inputs) instead of vectors in $ \realnumber^d$.
 
-\begin{definition}[Reproducing Kernel Hilbert Space]\label{def:rkhs}
-	It is well known that any continuous, symmetric, positive definite (\nameref{def:kernel}) has corresponding Hilbert space $\hilbertspace$ of (any real) functions $f$ defined on $\inputspace$, 
-	called the \emph{Reproducing Kernel Hilbert Space} (RKHS) with the \emph{reproducing property}
-	\begin{equation}
-		f(\vbx) = \expval{f(\cdot),\kernel(\cdot,\vbx)}
-	\end{equation}
-	% which induces a \nameref{def:feature_map_classical} satisfying \cref{eq:kernel_classical}.
-\end{definition}
-% \begin{theorem}[Representer theorem]
-% 	the kernel trick ? or more formally the \emph{representer theorem}
-% 	\cite{chatterjeeGeneralizedCoherentStates2017}
-% \end{theorem}
 
 \section{Graph Kernels and Quantum Random Walks}
-We commence by reviewing the classical graphs kernels and quantum random walks.
-Largely, this development was driven by the empirical success of supervised learning of vector-valued data or image data. However, in many domains, such as chemo- and bioinformatics, social network analysis or computer vision, observations describe relations between objects or individuals and cannot be interpreted as vectors or fixed grids; instead, they are naturally represented by graphs.
 \cite{kriegeSurveyGraphKernels2020}
 graph-structured data is to make use of graph kernels—functions which measure the similarity between graphs.
+Two basic questions:
 \textbf{How similar are two graphs?}
 \textbf{How similar are two nodes of a graph?}
+We commence by reviewing the classical graphs kernels and then quantum random walks.
 
 \subsection{Diffusion kernel of a pair of vertices}
 \cite{kondorDiffusionKernelsGraphs2002}.
@@ -190,7 +191,7 @@ We propose a family of regularization operators (equivalently, kernels) on graph
 with Euclidean space $\Omega = \realnumber^m$
 
 \begin{definition}[Adjacency matrix]\label{def:adjacency_matrix}
-	Given a (undirected, unweighted) graph $\graph(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
+	Given a (undirected, unweighted) graph $\graph=(V,E)$, its \emph{adjacency matrix} $\hat{A}$ is defined as
 	\begin{equation}
 		\hat{A}_{v,v'} : = 
 		\begin{cases}
@@ -212,15 +213,17 @@ with Euclidean space $\Omega = \realnumber^m$
 	\end{equation}
 	where $\hat{D}_{v,v}:=\textup{deg}(v)=\sum_{v}[\hat{A}]_{v,v'}$ is the diagonal degree matrix.
 \end{definition}
-	Analogously, the adjacency matrix and graph Laplacian of weighted graphs can be defined.
+\begin{remark}
+The adjacency matrix and graph Laplacian of a weighted graph can be defined in the similar manner.
 % \begin{remark}
 	Graph Laplacian $\llaplacian$ is the 
 	discrete version of (continuous) Laplacian operator $\laplacian$
 	\cite{chungSpectralGraphTheory1997}.
 % \end{remark}
-\begin{observation}
-	The matrix exponential of any ? $\hhat$ i.e., $e^{\beta \hamiltonian}$, is a valid kernel (PSD). [to verify for $e^{-\ii t\hamiltonian}$]
-\end{observation}
+% \begin{observation}
+	The matrix exponential of any? $\hhat$, i.e. $e^{\beta \hamiltonian}$, is a valid kernel (\psd). [to verify for $e^{-\ii t\hamiltonian}$]
+% \end{observation}
+\end{remark}
 The diffusion kernel is defined as the exponential of the generator (Laplacian)
 \begin{definition}[Diffusion kernel]\label{def:diffusion_kernel}
 	The \emph{diffusion kernel} of a graph w.r.t a pair of vertices $(v,v')$ is
@@ -281,7 +284,7 @@ except that the factor of $\ii\hbar$.
 	\begin{equation}
 		\kernel (x,t;x',t')
 		=
-		\mel{x}{e^{-\ii t \hamiltonian}}{x'}
+		\mel{x}{e^{-\ii (t'-t) \hamiltonian}}{x'}
 		=
 		\mel{x}{\U}{x'}
 	\end{equation}
@@ -340,69 +343,77 @@ survey
 	% 	% : =	G(V,E)\times G'(V',E') 
 	% 	: = \qty{(v,v')\in V\times V',((v,v'),(w,w')): (v,w)\in E, (v',w')\in E'}
 	% \end{equation}
-	\begin{itemize}
-		\item 
-	\emph{tensor (Kronecker) product of graphs}; $G\otimes G' := \qty{ \vee }$
-	% \begin{equation}
-	% 	G\otimes G' := \qty{ \vee }
-	% \end{equation}
-		\item 
-	\emph{Cartesian product of graphs}; $G\times G' = \qty{}$
-	% \begin{equation}
-	% 	G\times G' = \qty{}
-	% \end{equation}
-		\item 
-	% \emph{Kronecker sum};
-	\emph{factor graph};
-	% \emph{Hadamard product} element-wise multiplication;
-	\end{itemize}
+
+	% \begin{itemize}
+	% 	\item 
+	% 	\emph{tensor (Kronecker) product of graphs}; $G\otimes G' := \qty{ \vee }$
+	% 	% \begin{equation}
+	% 	% 	G\otimes G' := \qty{ \vee }
+	% 	% \end{equation}
+
+	% 	\item 
+	% 	\emph{Cartesian product of graphs}; $G\times G' = \qty{}$
+	% 	% \begin{equation}
+	% 	% 	G\times G' = \qty{}
+	% 	% \end{equation}
+
+	% 	\item 
+	% 	% \emph{Kronecker sum};
+	% 	\emph{factor graph};
+	% 	% \emph{Hadamard product} element-wise multiplication;
+	% \end{itemize}
 \end{definition}
-\begin{fact}
-	the adjacency matrix of the product graph $A_{\times}=A\otimes A'$ ($\exp(A_{\times}=\exp(A)\otimes \exp(A'))$).	
-	In general, the Laplacian of the direct product graph 
-	$\llaplacian_{\times}\neq \llaplacian_1\otimes \llaplacian_2$.
-	Performing a random walk on the direct product graph is equivalent to performing a simultaneous random walk on G and G'.
-\end{fact}
+\begin{remark}
+	The adjacency matrix of the product graph $\hat{A}_{\times}=\hat{A}\otimes \hat{A}'$ and $\exp(\hat{A}_{\times})=\exp(\hat{A})\otimes \exp(\hat{A}')$.	
+	Performing a random walk on the direct product graph is equivalent to performing a simultaneous random walk on $\graph$ and $\graph'$.
+	However, in general, the Laplacian of the direct product graph 
+	$\llaplacian_{\times}\neq \llaplacian\otimes \llaplacian'$.
+\end{remark}
 The idea of the shortest path kernel is to compare the attributes and lengths of the shortest paths between all pairs of vertices in two graphs.
+Graph kernels based on random walks count the number of (label sequences along) walks that two graphs have in common.
 \begin{definition}[Random walk kernel]
 	\begin{equation}
 		\kernel_{\times}(G,G) = 
 	\end{equation}
 \end{definition}
-graph kernels based on random walks, which count the number of (label sequences along) walks that two graphs have in common.
 % \begin{remark}
-for diffusion processes on factor graphs the kernel on the factor graph is given by the product of kernels on the constituents, that is 
+\begin{definition}[Factor graph]
+	\emph{factor graph}
+\end{definition}
+For diffusion processes, on factor graphs the kernel on the factor graph is given by the product of kernels on the constituents, that is 
 \begin{equation}
 	\kernel((i, i'), (j, j')) = \kernel(i, j) \kernel' (i' , j' ).
 \end{equation}
 % \end{remark}
-% \begin{remark}
-Random Walk on Product Graph is equivalent to simultaneous random walk on input graphs [?]
-% \end{remark}
 \begin{remark}
 	A natural question to ask is the following: Since diffusion can be viewed as a \textbf{continuous time} limit of random walks, can the ideas behind the random walk kernel be extended to diffusion? Unfortunately, the Laplacian of the product graph does not decompose into the Kronecker product of the Laplacian matrices of the constituent graphs; this rules out a straightforward extension.
-	discrete-time quantum random walk (need coin space) \cite{ambainisCoinsMakeQuantum2005} \cite{childsQuantumInformationProcessing2004};
-	Szegedy's walk formalism.
-	\cite{szegedySpectraQuantizedWalks2004}
+	Is it feasible to extend by discrete-time quantum random walk (need coin space) \cite{ambainisCoinsMakeQuantum2005} or
+	Szegedy's walk formalism
+	\cite{szegedySpectraQuantizedWalks2004}.
 \end{remark}
 
 \subsection{Discrete-time quantum random walk}
-\emph{Discrete-time quantum random walk} is the quantum analogy of random walk
-\cite{ambainisOnedimensionalQuantumWalks2001}.
-\cite{baiQuantumKernelsUnattributed2017}
+Discrete-time (DT) quantum random walk is the quantum analogy of classical DT random walk.
+The significant difference between CT and DT quantum random walk is that DT quantum random walk requires a coin space (flip a quantum coin at each move) to ensure the unitarity of the quantum walk \cite{ambainisOnedimensionalQuantumWalks2001}.
+Consequently, they have different behaviors.
 
 \subsection{Relations, difference, and examples}
-\subsubsection{Line}
-(classical) diffusion kernel of a 1-dimensional lattice (line)
+\subsubsection{Chain}
+Consider a 1-dimensional lattice (chain/line) of $N$ vertices,
+the classical diffusion kernel between two positions $z_I,z_F\in [N]$
 \begin{equation}
-	\kernel(v,v') = 
+	\kernel_{\classical}(z_F,z_I) = \frac{1}{N}  
+	\sum_{\nu=1}^{N} e^{-2\beta(1-\cos\frac{2\pi \nu}{N})} 
+	\cos\qty(\frac{2\pi\nu(z_I-z_F)}{N}).
 \end{equation}
-\nameref{def:quantum_propagator} (quantum kernel)
+% where $\omega_{\nu}=2(1-\cos\frac{2\pi \nu}{n})$.
+\nameref{def:quantum_propagator} (CT quantum random walk/quantum kernel)
 \begin{align}
-	\tilde{\kernel}(z_F,z_I) = 
+	\kernel_{\quantum}(z_F,z_I) = 
 	\mel{z_F}{e^{-\ii t\hhat_0 }}{z_I}
-	&=\sum_{p=1}^{N} 
-	e^{-\ii t 2\cos(\frac{2\pi}{N}p) +\ii \frac{2\pi}{N} p(z_I-z_F)} 
+	&=\sum_{\nu=1}^{N} 
+	e^{-\ii 2t \cos\qty(\frac{2\pi}{N}\nu)} 
+	\exp(\ii \frac{2\pi \nu(z_I-z_F)}{N})
 	\\
 	&
 	% \approx \frac{1}{2\pi} \int_{\pi}^{\pi} e^{\ii p d -2\ii t cos(p)} \dd{p} 
@@ -410,20 +421,47 @@ Random Walk on Product Graph is equivalent to simultaneous random walk on input 
 	\tag{large N approx}
 	\label{eq:ctqrw_kernel}
 \end{align}
-where the distance between .
+where $J(\cdot)$ is the Bessel function and $d$ is the distance between the initial and final positions $z_I,z_F$.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=.7\linewidth]{walk_propagator_1d.pdf}
-	\caption{Different kinds of walks in 1d space}
+	\caption{The probability distributions of different walks in 1d space after 50 steps.}
+	\label{fig:random_walks}
 \end{figure}
+% The discrete-time quantum walk ...
 \begin{remark}
     The random walk on this graph starting from the origin (in either continuous or discrete time)
     typically moves a distance proportional to $\sqrt{t}$ in time $t$.
-	In contrast, the quantum random walk spreads as a wave packet with speed 2.
+	In contrast, quantum random walks spread linearly in time $t$.
+	see \cref{fig:random_walks}
 \end{remark}
 
+\subsubsection{Complete graph}
+the classical diffusion kernel:
+$\hamiltonian_{ij}=1-\delta(i,j)N$
+\begin{equation}
+	\kernel_{\classical} (i,j) = 
+	\frac{1-\hamiltonian_{ij} e^{-N\beta }}{N}
+\end{equation}
+% with increasing $\beta$, the kernel relaxes exponentially to $\kernel(i,j)=1/n$.
+CT quantum random walk
+\begin{equation}
+	\kernel_{\quantum} (i,j) = 
+\end{equation}
+DT
+
 \subsubsection{Hyercube}
-the unitary evolution operator of quantum diffusion on hypercube
+The classical diffusion kernel on a $n$-dimensional hypercube 
+\begin{equation}
+	\kernel_{\classical}(\vbx,\vbx')  
+	\propto
+	\qty(
+		\frac{1-e^{-2\beta}}{1+e^{-2\beta}}
+	)^{d(\vbx,\vbx')}
+	= \qty(\tanh \beta)^{d(\vbx,\vbx')}
+\end{equation}
+which only depends on the Hamming distance $d(\vbx,\vbx')$ between two binary strings $\vbx$ and $\vbx'$.
+Quantumly, the unitary evolution operator of quantum (continuous-time) diffusion 
 \begin{equation}
 	e^{-\ii t \hat{A}} = 
 	\prod_{j=1}^n e^{-\ii t \px^{(j)} }
@@ -431,10 +469,50 @@ the unitary evolution operator of quantum diffusion on hypercube
 	\begin{pmatrix}
 		\cos t & -\ii \sin t \\ 
 		-\ii \sin t & \cos t
-	\end{pmatrix}
+	\end{pmatrix}.
 \end{equation}
+Discrete-time
+\cite{mooreQuantumWalksHypercube2001}
+% Note 
+\begin{remark}
+	% In contrast, 
+	Consider the continuous or discrete time random walk starting from the vertex $\vbx$. 
+	The probability of reaching the opposite vertex $\bar{\vbx}$ is exponentially small at any time, since the walk rapidly reaches the uniform distribution (no stationary distribution?) over all $2^n$ vertices of the hypercube. 
+	So this simple example shows that random and quantum walks can exhibit radically different behaviors.
+\end{remark}
 
-\subsubsection{Tree (TODO)}
+\subsubsection{Tree}
+Kondor and Lafferty \cite{kondorDiffusionKernelsGraphs2002} discuss the diffusion kernel of the (infinite) 3-regular tree and binary rooted tree
+\begin{equation}
+	\kernel_{\classical} (i,j) = 
+	\frac{1}{2} \kernel_{R}^{(3)}(d(i,j)) + \frac{1}{2} \kernel_R^{(3)} \qty(d(i,r)+d(r,j)+1)
+	\tag{??}
+\end{equation}
+where $r$ designates the root and $d$ measures distances on the binary tree.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=.6\linewidth]{regular_tree.png}
+	\caption{The three-regular tree (left), which extends to inﬁnity in all directions. A little bending of the branches shows that it is isomorphic to two rooted binary trees joined at the root (right). \cite{kondorDiffusionKernelsGraphs2002}}
+\end{figure}
+On the other hand, Childs et. al \cite{childsExponentialAlgorithmicSpeedup2003} investigate the CT quantum random walk on another kind of tree and show an exponential speedup over classical computation.
+% We have seen that the behavior of a quantum walk can be dramatically different from that of its classical counterpart. Next we will see an even stronger example of the power of quantum walk: a black-box problem that can be solved exponentially faster by a quantum walk than by any classical algorithm.
+\begin{problem}[Glued tree]
+	Consider a graph obtained by starting from two balanced binary trees of height $n$, and joining them by a random cycle of length $2\cdot 2^n$ that alternates between the leaves of the two trees. (e.g. \cref{fig:glued_tree} when $n = 4$)
+	\begin{itemize}
+		\item \textbf{Input:} a such glued tree in its \nameref{def:adjacency_matrix} $\hat{A}$ representation, oracle? to entries of $\hat{A}$
+		% dequantization?
+		\item \textbf{Output (goal):} find the exit (start from entrance)
+	\end{itemize}
+\end{problem}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=.5\linewidth]{glued_tree.pdf}
+	\caption{A typical graph exhibits exponential (query) speedup over classical model in graph matrix representation. \cite{childsExponentialAlgorithmicSpeedup2003}}
+	\label{fig:glued_tree}
+\end{figure}
+% \begin{theorem}[\cite{childsExponentialAlgorithmicSpeedup2003}]
+% 	There exists exponential (classiacl-quantum) separation with respect to query complexity under the adjacency matrix (graph) model. (glued tree)
+% \end{theorem}
 
 \subsubsection{Cayley graphs (TODO)}
 \begin{definition}[Cayley graph]\label{def:cayley_graph}
@@ -470,14 +548,14 @@ For the performance in M, we re-express the SVM as an approximate least-squares 
 	On quantum computers, the quantum feature map $\Phi(\vbx)$ is realized by applying a unitary quantum circuit $\U_{\Phi(\vbx)}$ to a reference state $\ket{0^n}$.
 \end{definition}
 \begin{definition}[Quantum kernel estimation]\label{def:quantum_kernel}
-	The \emph{quantum kernel estimation} is the \emph{Hilbert-Schmidt} \nameref{def:inner_product} between density matrices
+	The \emph{quantum kernel estimation} is the \emph{Hilbert-Schmidt} \nameref{def:inner_product} between (feature) density matrices c.f. \cref{eq:quantum_feature_map}
 	\begin{equation}
 		\kernel(\vbx,\vbx') 
 		= \Tr\qty(\dyad{\Phi(\vbx)}\cdot \dyad{\Phi(\vbx')})
 		= \abs{\braket{\Phi(\vbx)}{\Phi(\vbx')}}^2 = 
-		\abs{\matrixel{\vb{0}}{\U^\dagger_{\Phi(\vbx)} \U_{\Phi(\vbx')}}{\vb{0}}}^2.
+		\abs{\matrixel{\vb{0}}{\U^\dagger_{\Phi(\vbx)} \U_{\Phi(\vbx')}}{\vb{0}}}^2
 	\end{equation}
-	exactly the \nameref{def:quantum_propagator}.
+	which is exactly the \nameref{def:quantum_propagator}.
 \end{definition}
 Naturally, the \emph{quantum kernel estimation}
 \cite{schuldQuantumMachineLearning2019}
@@ -529,17 +607,18 @@ The kernel entry is obtained to an additive sampling error of $\tilde{\epsilon}$
 \subsubsection{Quantum graph kernels}
 quantum graph kernel defined in terms of quantum Jensen Shannon as a metric of dissimilarity of graphs
 density matrices associated with (representing) the evolution of continuous-time quantum random walks on graphs
-\cite{baiQuantumJensenShannon2015}.
-In classical information theory, the Jensen-Shannon divergence is a similarity measure between probability distributions.
-\begin{equation}
-	D(p,p')
-\end{equation}
-\begin{remark}
-	Unfortunately, the required composite entropy for the Jensen-Shannon kernel is computed from a product graph formed by a pair of graphs,
-	and reflects no correspondence information between pairs of vertices.
-	As a result, the Jensen-Shannon graph kernel lacks correspondence information between the probability distributions over the graphs,
-	and thus cannot precisely reflect the similarity between graphs[??].
-\end{remark}
+\cite{baiQuantumJensenShannon2015} 
+\cite{baiQuantumKernelsUnattributed2017}.
+In classical information theory, the Jensen-Shannon divergence $\textup{JSD}(p,p')$ is a similarity measure between probability distributions.
+% \begin{equation}
+% 	\textup{JSD}(p,p')
+% \end{equation}
+% \begin{remark}
+% 	Unfortunately, the required composite entropy for the Jensen-Shannon kernel is computed from a product graph formed by a pair of graphs,
+% 	and reflects no correspondence information between pairs of vertices.
+% 	As a result, the Jensen-Shannon graph kernel lacks correspondence information between the probability distributions over the graphs,
+% 	and thus cannot precisely reflect the similarity between graphs[??].
+% \end{remark}
 Analogously, the quantum version of Jensen-Shannon divergence is defined as the distance measure between mixed quantum states (density matrices).
 \begin{definition}[]
 	Given a graph $\graph(V,E)$, the von Neumann entropy of $\graph$ is defined as
@@ -547,16 +626,16 @@ Analogously, the quantum version of Jensen-Shannon divergence is defined as the 
 		H_N (\rho_{\graph}) = -\Tr(\rho_{G}\log \rho_{\graph})
 		= - \sum_{j}^{\abs{V}} \lambda_j \log \lambda_j
 	\end{equation}
-	where $\rho_{\graph}$ is .. and $\lambda$ is ....
+	where $\rho_{\graph}$ is ..random walk?? and $\lambda$ is ....
 	Given two density operators $\rho$ and $\rho'$,
 	the \emph{quantum Jensen-Shannon divergence} is defined as
 	\begin{equation}
-		D_{QJS} (\rho,\rho') = 
+		\textup{QJSD} (\rho,\rho') = 
 		H_N\qty(\frac{\rho+\rho'}{2}- \frac{1}{2}H_N(\rho)) - \frac{1}{2} H_N (\rho')
 	\end{equation}
-	$D_{QJS}$ is always well defined, symmetric, negative definite and bounded, i.e., $0\le D_{QJS}\le 1$?.
+	% $D_{QJS}$ is always well defined, symmetric, negative definite and bounded, i.e., $0\le D_{QJS}\le 1$?.
+	PSD?
 \end{definition}
-PSD?
 
 \subsubsection{Quantum diffusion map}
 Inspired by random walk on graphs, \emph{diffusion map} (DM) is a class of \textbf{unsupervised} machine learning that offers automatic identification of \textbf{low-dimensional data structure hidden in a high dimensional dataset}.
@@ -598,12 +677,12 @@ In DM, the similarity matrix between a pair of data vectors, or equivalently the
 	\label{eq:diffusion_map_kernel}
 \end{equation}
 where the adjustable parameter $\sigma$, called the bandwidth, sets the scale of neighborhood.
-Given a graph with weighted edges $W_{ij}$ ’s, DM assigns a \emph{discrete-time random walk} on a data-induced graph, 
+Given a graph with weighted edges $W_{ij}$, DM assigns a \emph{discrete-time random walk} on a data-induced graph, 
 where the Markov transition probability from vertex $i$ to $j$ is given by the normalized weighted edge,
 \begin{equation}
 	P_{ij} = \frac{W_{ij}}{\sum_{j}W_{ij}}
-	,
-	P = D^{-1} W
+	,\quad
+	\tilde{P} = D^{-1} W
 \end{equation}
 % \begin{remark}
 % 	The notion of proximity based on graph connectivity can be characterized by how fast random walkers on a graph starting at diﬀerent data points visit each other. One expects that two points that are connected by multiple paths should be near; whereas two points that are sparsely connected should lie far from each other.
@@ -647,22 +726,22 @@ performs (quantumly) an eigen-decomposition of the Markov transition matrix in t
 
 
 \subsection{Provable quantum speedups}
-structure is required for quantum speedup
-\cite{aaronsonNeedStructureQuantum2014}.
-only polynomial speedup for total problem [ref].
-only quadratic speedup for unstructured search \cite{groverQuantumMechanicsHelps1997}
-the core challenge to provable quantum speedup and practical problems.
+The core challenge to provable quantum speedup and substantial improvement for practical problems.
 
 \subsubsection{Quantum linear algebra toolbox (subroutines)}
-\cite{sornsaengQuantumDiffusionMap2021}
-\emph{Fast Fourier Transform}  (FFT) \cite{kondorGraphletSpectrum2009};
-quantum linear algebra (qMAT) \cite{zhaoCompilingBasicLinear2019}: 
+% \cite{sornsaengQuantumDiffusionMap2021}
+Firstly, provable speedups by quantum linear algebra algorithms:
 \begin{itemize}
-	\item HHL quantum algorithm for linear equation systems \cite{harrowQuantumAlgorithmSolving2009}, qSVD (eigen decomposition) [ref]
-	\item matrices multiplication, matrix inversion, matrix exponentiation, 
-	\item quantum simulation techniques (evolution); QFT, quantum phase estimation.
-	\item FFT by quantum algorithms: $\bigO(n\log n)$; 
+	\item HHL (quantum) algorithm for solving linear equation systems \cite{harrowQuantumAlgorithmSolving2009}, qSVD (eigen decomposition) \cite{gilyenQuantumSingularValue2019}; 
+	quantum linear algebra (qMAT) \cite{zhaoCompilingBasicLinear2019}: matrices multiplication, matrix inversion, matrix exponentiation, 
+
+	\item quantum (evolution) simulation techniques: product formula, LCU, etc.
+
+	\item quantum Fourier transform (QFT), quantum phase estimation.
+
+	\item FFT by quantum algorithms: 
 	It is shown that quantum circuits are a natural choice for Fourier space neural architectures affording a super-exponential speedup in computing the matrix elements of $\mathbb{S}_n$-Fourier coefficients compared to the best known classical (FFT) over the symmetric group. \cite{zhengSpeedingLearningQuantum2022}
+	\cite{kondorGraphletSpectrum2009}
 \end{itemize}
 
 \subsubsection{Quantum Fourier Transform (QFT) and algebraic problems}
@@ -680,7 +759,7 @@ rigorous and robust quantum speedup with Discret Logarithm problem \cite{liuRigo
 	(specified in terms of a generating set) using queries to $f$.
 \end{problem}
 \begin{remark}
-	Simon's problem [ref] 
+	Simon's problem \cite{simonPowerQuantumComputation1997}
 	% (Abelian subgroup problem) 
 	is a $\hsp$ with $\group = \integer^n_2$ and $\subgroup = \qty{ 0, s }$ for some $s \in \integer_2^n$ .
 \end{remark}
@@ -710,47 +789,33 @@ However, the choice will greatly affect the performance of the classifier as we 
 	\emph{covariant}
 	feature map circuits that we call covariant feature maps. 
 \end{definition}
-kernel alignment?
 \begin{problem}[labeling cosets with error]
 	\emph{labeling cosets with error}
-
+	% kernel alignment?
 	\begin{itemize}
 		\item 
 		\textbf{Input:} given a group $\group$ and subgroup $\subgroup$,
-		we can define two left-cosets $\mathbb{C}_{\pm}=c_{\pm}\subgroup$ by choosing $c_+,c_-$ randomly
-
+		we can define two left-cosets $\mathbb{C}_{\pm}=c_{\pm}\subgroup$ by choosing $c_+,c_-$ randomly ...
 		\item 
 		\textbf{Output: ?} 
 	\end{itemize}
-
 	% this problem is related to the problem of deciding membership in a subgroup
 \end{problem}
 
 \subsubsection{Permutation, symmetry, and graph properties}
+It is well-known that structure of a problem is necessary for quantum speedup \cite{aaronsonNeedStructureQuantum2014}.
+only polynomial speedup for total problem \cite{bealsQuantumLowerBounds2001} \cite{aaronsonQuantumImplicationsHuang2020}.
+% \cite{huangInducedSubgraphsHypercubes2019}
+An illustrative example is that quadratic speedup is optimal for unstructured (Grover) search \cite{groverQuantumMechanicsHelps1997} while exponential speedup is widely believed for integer (prime) factorization \cite{shorPolynomialTimeAlgorithmsPrime1997}.
 fully symmetric (partial) functions do not admit exponential quantum speedup in the query model.
 \cite{ben-davidSymmetriesGraphProperties2020}.
-\begin{problem}[Glued tree]
-	see \cref{fig:glued_tree}
-	\begin{itemize}
-		\item \textbf{Input:} a glued tree in the \nameref{def:adjacency_matrix} representation, oracle (neighbor)?
-		\item \textbf{Output (goal):} find the exit (start from entrance)
-	\end{itemize}
-\end{problem}
-Consider a graph obtained by starting from two balanced binary trees of height n, and joining them by a random cycle of length $2\cdot 2^n$ that alternates between the leaves of the two trees. 
-For example, such a graph for $n = 4$ could look like \cref{fig:glued_tree}
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=.5\linewidth]{glued_tree.pdf}
-	\caption{A typical graph exhibits rigorous exponential speedup over classical model in graph matrix representation. \cite{childsExponentialAlgorithmicSpeedup2003}}
-	\label{fig:glued_tree}
-\end{figure}
-We have seen that the behavior of a quantum walk can be dramatically different from that of its classical counterpart. Next we will see an even stronger example of the power of quantum walk: a black-box problem that can be solved exponentially faster by a quantum walk than by any classical algorithm.
-\begin{theorem}[\cite{childsExponentialAlgorithmicSpeedup2003}]
-	There exists exponential (classiacl-quantum) separation with respect to query complexity under the adjacency matrix (graph) model. (glued tree)
-\end{theorem}
 % \cite{zhengSpeedingLearningQuantum2022};
 % robust, provable speedup
 % \cite{liuRigorousRobustQuantum2021}
+\begin{equation}
+	\le 
+\end{equation}
+reduction to (modified) glued tree \cref{fig:glued_tree}
 
 
 \subsubsection{Dequantization and input assumption}
@@ -790,7 +855,6 @@ A straightforward implementation of supervised training fails to classify a test
 symmetries in physics
 \cite{bogatskiyLorentzGroupEquivariant2020}
 \cite{bogatskiySymmetryGroupEquivariant2022};
-\cite{zhengSpeedingLearningQuantum2022}?;
 
 % \subsubsection{Group theory and machine learning}
 % \cite{kondorDiffusionKernelsGraphs2002}
@@ -805,40 +869,47 @@ One of the key properties of classical CNNs is equivariance, which roughly state
 	\end{equation}
 	% here the notation is $\rho_g(x) = \rho(g,x)$.
 \end{definition}
-Equivariance is one of the main reasons behind the unreasonable success of CNNs.
-Combining these two is the basis of so-called Permutational Quantum Computing (PQC) [30]. Therefore, a natural starting point for realizing convolutional neural networks in quantum circuits is to look for permutational equivariance.
-In particular, it has been recognized that by constructing neural networks that operate on the basis of irreducible representations of the group (so-called Fourier space neural networks), and group equivariant convolution is easy to implement because it simply reduces to matrix multiplication [32].
-the quantum Fourier space activation (within PQP+) enjoys a super-exponential quantum speed-up compared with the best-known result in classical FFT over the symmetric group.
 % There have been several attempts to introduce theoretically sound analogs of convolutional neural networks to quantum circuits, but they have generally been somewhat heuristic.
-The major difficulty is that the key ingredient of the success of CNNs - translation invariance - lacks a mathematically rigorous quantum counterpart due to the discrete spectrum of spin-based quantum circuits.
-the natural form of equivariance in quantum circuits is permutation equivariance!.
-equivariant CNN 
-\cite{zhengSpeedingLearningQuantum2022}.
+\begin{remark}
+% Equivariance is one of the main reasons behind the unreasonable success of CNNs.
+% Combining these two is the basis of so-called Permutational Quantum Computing (PQC) [30]. Therefore, a natural starting point for realizing convolutional neural networks in quantum circuits is to look for permutational equivariance.
+% the quantum Fourier space activation (within PQP+) enjoys a super-exponential quantum speed-up compared with the best-known result in classical FFT over the symmetric group.
+	In particular, it has been recognized that by constructing neural networks that operate on the basis of irreducible representations of the group (so-called Fourier space neural networks), and group equivariant convolution is easy to implement because it simply reduces to matrix multiplication [32].
+	The major difficulty is that the key ingredient of the success of CNNs - translation invariance - lacks a mathematically rigorous quantum counterpart due to the discrete spectrum of spin-based quantum circuits.
+	the natural form of equivariance in quantum circuits is permutation equivariance.
+	\cite{zhengSpeedingLearningQuantum2022}!?
+\end{remark}
+
+% equivariant CNN 
+% Quantum CNN \cite{congQuantumConvolutionalNeural2019} for quantum phase recognition and quantum error correction.
+% The MERA framework provides an efficient tensor network representation of many classes of interesting many-body wavefunctions, including those associated with critical systems.
+% The QCNN circuit has similar structure, but runs in the reverse direction.
+% In this sense, the QCNN circuit can mimic renormalizationgroup (RG) ﬂow, a methodology which successfully classifies many families of quantum phases 29.
 
 
 \section{Experiments}\label{sec:experiments}
 
 \subsection{Datasets and benchmark}
-preliminary experiment;
-prototypical machine learning tasks
+Firstly, we will validate our method (by preliminary experiment) on artificial data (of group structures).
+Then, we test the performance for prototypical machine learning tasks and physics datasets.
 
 \subsubsection{Artificial data}
-we generate artificial data that can be fully separated by our feature map.
+We generate artificial data that can be fully separated by our feature map.
 
 \subsubsection{Real-world dataset}
 conventional graph datasets
 \begin{itemize}
 	\item UCI \cite{kondorDiffusionKernelsGraphs2002}, 
 	\item protein [ref], 
-	\item The MUTAG dataset consists of graphs representing 188 chemical compounds labeled ..;
+	\item The MUTAG dataset consists of graphs representing chemical compounds labeled ..;
 \end{itemize}
 physics datasets
 \begin{itemize}
-	\item particle physics: JET? \cite{bogatskiyLorentzGroupEquivariant2020}; 
+	\item particle physics: JET tagging task \cite{bogatskiyLorentzGroupEquivariant2020}; 
 
-	\item quantum many-body physics (phase transition)
-	\cite{carrasquillaMachineLearningPhases2017} 
-	topology order?
+	\item quantum many-body physics: determine phase transition
+	\cite{carrasquillaMachineLearningPhases2017},
+	topological order
 	\cite{congQuantumConvolutionalNeural2019}
 % \cite{dohertyIdentifyingPhasesQuantum2009} 
 \end{itemize}
@@ -856,67 +927,75 @@ physics datasets
 \printbibliography
 \appendix
 
-\section{Machine Learning and Group Theory}
+\section{Machine Learning and Group Theory [TODO]}
 % \subsection{Kernel trick in machine learning}
-supervised learning: classification, regression
-(SVM, neural network; gradient descent);
-unsupervised learning: clustering, dimension reduction;
-reinforced learning not discussed in this paper.
-\subsection{Machine learning}
-training set, test set.
-find $f\in C$ classifier, hypothesis (concept) class. (unknow probability distribution)
-The algorithm consists of two main parts: a training stage and a classification stage. 
-For the training stage, a set of labeled data points are provided, on which the algorithm is performed. 
-For the classification stage, we take a different set of data points and run the optimized classifying circuit on them without any label input.
+\begin{itemize}
+	\item supervised learning (classification, regression):
+	SVM, neural network. (methods: gradient descent, backpropagation)
 
-\subsubsection{SVM and kernel tricks}
-maximize the margin
-objective (cost function): \emph{empirical risk} (error rate, loss function)
-\begin{equation}
-	R_{emp}(\vb{\theta}) = \frac{1}{\abs{T}}
-	\sum_{\vbx\in T} \probability (\tilde{y} \neq y)
-\end{equation}
-the dual quadratic program that (only uses access to the kernel)
-we maximize 
-\begin{equation}
-	L_D(\alpha) = \sum_{i=1}^t \alpha_i - \frac{1}{2}\sum_{i,j=1}^t y_i y_j \alpha_i \alpha_j \kernel(\vbx_i,\vbx_j)
-\end{equation}
-subject to $\sum_{i=1}^t \alpha_i y_i = 0$ and $\alpha_i\ge 0$ for each $i$?.
-Lagrangian multiplier method. then dual problem
-% \begin{figure}[!ht]
-% 	\centering
-% 	\includegraphics[width=.3\linewidth]{SVM_margin.png}
-% 	\caption{linearly separable SVM}
-% \end{figure}
-construct the classifier
-\begin{equation}
-	\tilde{y}_{\textup{pred}}(\vb{s}) := \textup{sign} \qty(
-		\sum_{i=1}^t y_i \alpha_i^* \kernel(\vbx_i,\vb{s}) + b
-	)
-\end{equation}
+	\item unsupervised learning (clustering, dimension reduction): k-means, PCA
+
+	\item reinforced learning not covered in this paper.
+\end{itemize}
+
+\subsection{Machine learning}
+% training set, test set.
+% find $f\in C$ classifier, hypothesis (concept) class. (unknow probability distribution)
+% The algorithm consists of two main parts: a training stage and a classification stage. 
+% For the training stage, a set of labeled data points are provided, on which the algorithm is performed. 
+% For the classification stage, we take a different set of data points and run the optimized classifying circuit on them without any label input.
+
+\subsubsection{Details of SVM and kernel tricks [TODO]}
+% maximize the \emph{margin} [ref]
+% \begin{equation}
+% 	f^* = \arg \max_f  L(y,\tilde{y}) + \norm{}
+% \end{equation}
+% $\tilde{y}:=f(x)$.
+% where the loss function $L$, slackness. 
+% called \emph{support vector}. \emph{concept class}, \emph{hypothesis}
+% maximize the margin
+% objective (cost function): \emph{empirical risk} (error rate, loss function)
+% \begin{equation}
+% 	R_{emp}(\vb{\theta}) = \frac{1}{\abs{T}}
+% 	\sum_{\vbx\in T} \probability (\tilde{y} \neq y)
+% \end{equation}
+% the dual quadratic program that (only uses access to the kernel)
+% we maximize 
+% \begin{equation}
+% 	L_D(\alpha) = \sum_{i=1}^t \alpha_i - \frac{1}{2}\sum_{i,j=1}^t y_i y_j \alpha_i \alpha_j \kernel(\vbx_i,\vbx_j)
+% \end{equation}
+% subject to $\sum_{i=1}^t \alpha_i y_i = 0$ and $\alpha_i\ge 0$ for each $i$?.
+% Lagrangian multiplier method. then dual problem
+% % \begin{figure}[!ht]
+% % 	\centering
+% % 	\includegraphics[width=.3\linewidth]{SVM_margin.png}
+% % 	\caption{linearly separable SVM}
+% % \end{figure}
+% construct the classifier
+% \begin{equation}
+% 	\tilde{y}_{\textup{pred}}(\vb{s}) := \textup{sign} \qty(
+% 		\sum_{i=1}^t y_i \alpha_i^* \kernel(\vbx_i,\vb{s}) + b
+% 	)
+% \end{equation}
 
 % \subsubsection{Neural network}
 
 \subsubsection{Quantum machine learning}\label{sec:quantum_machine_learning}
-\cite{biamonteQuantumMachineLearning2017}; 
-unsupervised learning, quantum PCA \cite{lloydQuantumPrincipalComponent2014} \cite{tangQuantumPrincipalComponent2021}.
-neural network,
-graph neural networks (GNNs) have emerged as an alternative to graph kernels.
-Quantum CNN \cite{congQuantumConvolutionalNeural2019} for quantum phase recognition and quantum error correction.
-The MERA framework provides an efficient tensor network representation of many classes of interesting many-body wavefunctions, including those associated with critical systems.
-The QCNN circuit has similar structure, but runs in the reverse direction.
-In this sense, the QCNN circuit can mimic renormalizationgroup (RG) ﬂow, a methodology which successfully classifies many families of quantum phases 29.
+overview \cite{biamonteQuantumMachineLearning2017}
+\begin{itemize}
+	\item supervised learning: quantum SVM \cite{rebentrostQuantumSupportVector2014}, quantum neural network  \cite{congQuantumConvolutionalNeural2019}; 
+	\item unsupervised learning: quantum PCA \cite{lloydQuantumPrincipalComponent2014} \cite{tangQuantumPrincipalComponent2021}.
+\end{itemize}
+% graph neural networks (GNNs) have emerged as an alternative to graph kernels.
 
 \subsection{Group theory and symmetries}
-group $\group$,
-permutation group $\mathbb{S}_n$;
+permutation (symmetric) group $\mathbb{S}_n$;
 
 \subsubsection{Representation theory}\label{sec:representation_theory}
+group $\group$
 
 \section{Symmetries in physics}
 \subsection{Lagrangian formalism}\label{sec:lagrangian}
-\subsubsection{Path integral and quantum computing}
-\cite{xuLagrangianFormalismQuantum2021}
 In optics, Fermat's principle states that the path taken by a ray between two given points is the path that can be traveled in the least (extremum) time. 
 % Lagrange multiplier method
 A similar argument, \emph{principle of least action}, was developed in classical mechanics:
@@ -967,8 +1046,10 @@ In the classical limit (Planck's constant $\hbar\to 0$), \nameref{thm:path_integ
 because only the paths around the stationary point of the action contribute 
 (the other paths' contributions frequently oscillate and cancel out).
 % We have included a summary of the path integral formalism for various kinds of systems in \cref{sec:path_integral}.
+\subsubsection{Path integral and quantum computing}
+\cite{xuLagrangianFormalismQuantum2021}
 
-\subsection{Symmetries with Lagrangian}
+\subsection{Symmetries in physics with Lagrangians}
 \subsubsection{Z}
 Ising model, $\integer_2$
 % \begin{theorem}[Noether theorem]
