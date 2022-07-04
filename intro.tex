@@ -880,7 +880,14 @@ Moreover, the application of such techniques to problems of greater interest in 
 % \subsubsection{Group theory and machine learning}
 % \cite{kondorDiffusionKernelsGraphs2002}
 One of the key properties of classical CNNs is equivariance, which roughly states that if the input to the neural network is shifted, then its activations translate accordingly. 
-\begin{definition}[Equivariance]\label{def:equivariant}
+\cite{cohenGroupEquivariantConvolutional2016}
+\cite{kondorCovariantCompositionalNetworks2018}
+\begin{definition}[Covariant]
+\end{definition}
+\begin{definition}[Invariant]
+	informal
+\end{definition}
+\begin{definition}[Equivariant]\label{def:equivariant}
 	Given a group $\group$ and the actions $\rho: \group \times X\to X$ and $\rho': \group \times Y\to Y$,
 	a map $f: X\to Y$ is said to be \emph{equivariant} if
 	\begin{equation}
@@ -900,6 +907,8 @@ One of the key properties of classical CNNs is equivariance, which roughly state
 	the natural form of equivariance in quantum circuits is permutation equivariance.
 	\cite{zhengSpeedingLearningQuantum2022}!?
 \end{remark}
+invariant and equivariant graph nn
+\cite{maronInvariantEquivariantGraph2019}
 
 % equivariant CNN 
 % Quantum CNN \cite{congQuantumConvolutionalNeural2019} for quantum phase recognition and quantum error correction.
@@ -914,19 +923,24 @@ One of the key properties of classical CNNs is equivariance, which roughly state
 Firstly, we will validate our method (by preliminary experiment) on artificial data (of group structures).
 Then, we test the performance for prototypical machine learning tasks and physics datasets.
 
-\subsubsection{Artificial data}
+\subsubsection{Synthetic data}
 We generate artificial data that can be fully separated by our feature map.
 
 \subsubsection{Real-world dataset}
 conventional graph datasets
 \begin{itemize}
 	\item UCI \cite{kondorDiffusionKernelsGraphs2002}, 
-	\item protein [ref], 
+	\item protein [ref], \cite{jumperHighlyAccurateProtein2021}
 	\item The MUTAG dataset consists of graphs representing chemical compounds labeled ..;
 \end{itemize}
 physics datasets
 \begin{itemize}
-	\item particle physics: JET tagging task \cite{bogatskiyLorentzGroupEquivariant2020}; 
+	\item particle physics: JET tagging task (This is a classification task that aims to identify top quark “jets” among a background of lighter quarks. Since the classification task is independent of the inertial frame of the observer, the outputs of the classifier should be \textbf{Lorentz invariants}.) \cite{bogatskiyLorentzGroupEquivariant2020}
+	% All activations in our neural network will belong to various ﬁnite-dimensional representations of the Lorentz group.
+	% Our goal is to design an architecture that can learn arbitrary equivariant maps between ﬁnite-dimensional representations of the Lorentz group.
+	% As demonstrated in (Cohen & Welling, 2016), the restriction to equivariant linear layers, compared to a general fully connected linear layer, leads to signiﬁcantly fewer learnable parameters
+	% Dot products are the invariant parts in the isotypic decompositions of tensor products of two 4-vectors, therefore a quantity of this kind can be very efﬁciently learned by an equivariant network if physically appropriate nonlinear activation functions are chosen.
+	% When a particle decay event produces hundreds of observed particles, generating all relevant Lorentz invariants (and even more so equivariants) up to a ﬁxed polynomial degree quickly becomes an intimidating task that begs for a procedural solution. This is exactly the goal of our architecture.
 
 	\item quantum many-body physics: determine phase transition
 	\cite{carrasquillaMachineLearningPhases2017},
@@ -1006,6 +1020,8 @@ overview \cite{biamonteQuantumMachineLearning2017}
 \begin{itemize}
 	\item supervised learning: quantum SVM \cite{rebentrostQuantumSupportVector2014}, quantum neural network  \cite{congQuantumConvolutionalNeural2019}; 
 	\item unsupervised learning: quantum PCA \cite{lloydQuantumPrincipalComponent2014} \cite{tangQuantumPrincipalComponent2021}.
+	\item reinforcement learning:
+	\item generative models:
 \end{itemize}
 % graph neural networks (GNNs) have emerged as an alternative to graph kernels.
 
