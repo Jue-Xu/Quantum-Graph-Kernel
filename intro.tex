@@ -23,6 +23,7 @@ For simplicity, we assume $\Sigma=\qty{-1,1}$ (binary classification).
 
 Notations: a graph $\graph=(V,E)$ with vertices $V$ and edges $E$; a group $\group$ with a subgroup $\subgroup$. 
 The hats on the matrices such as $\hat{A}$, $\hamiltonian$ emphasize that they play the roles of operators.
+vector notations $\vbx$, $\vb{K}$.
 
 For specific purpose, we use different basis (representations) for quantum states.
 One is the computational basis $\qty{\ket{z}}$ with $z\in \qty[2^n]$ where $n$ is the number of qubits,
@@ -775,23 +776,43 @@ rigorous and robust quantum speedup with Discret Logarithm problem \cite{liuRigo
 	The goal of \emph{hidden subgroup problem} (\hsp) is to learn $\subgroup$
 	(specified in terms of a generating set) using queries to $f$.
 \end{problem}
+\begin{problem}[Simon's problem]
+	The \emph{Simon's problem}, is formulated as 
+	\begin{itemize}
+		\item \textbf{Input}: a (partial/promise) black-box Boolean function $f:\qty{0,1}^n \to \qty{0,1}^m$ 
+		% where $m$ can possibly be larger than 
+		\item \textbf{Promise}: there exist a secret $s\in \qty{0,1}^n $ such that $f(x)=f(y)$ \iff $x=y$ or $x=y+s$
+		\item \textbf{Output}: the value of $s$
+	\end{itemize}
+\end{problem}
+\begin{problem}[Supervised learning with group?]
+	with group structure
+	\begin{itemize}
+		\item \textbf{Input}: a dataset $\qty{\vbx^{(i)},y^{(i)}}_{i=1}^m$,
+		that is a (partial) black-box function $f(\vbx):\qty{0,1}^n \to \qty{0,1}$
+		\item \textbf{Promise}: $f(\vbx)=f(\vb{y})$ \iff $\vbx^{-1}\vb{y}\in \subgroup$
+		\item \textbf{Output}: learn $f$; learn subgroup (translation?; physics?); predict $f(\vb{z})$
+	\end{itemize}
+\end{problem}
 \begin{remark}
 	Simon's problem \cite{simonPowerQuantumComputation1997}
 	% (Abelian subgroup problem) 
 	is a $\hsp$ with $\group = \integer^n_2$ and $\subgroup = \qty{ 0, s }$ for some $s \in \integer_2^n$ .
+	Decision version of Simon's problem is Element distinctness.
+	translation group?
 \end{remark}
 % robust, provable speedup \cite{liuRigorousRobustQuantum2021}
 \begin{problem}[Discrete Logarithm problem]\label{prm:dlog}
 	The \emph{discrete logarithm problem} (\dlog) is defined as
 	\begin{itemize}
-		\item \textbf{Input:} a prime $p$, a primitive element (generator) $g$ of $\integer_p^*=\qty{1,2,\dots,p-1}$, and an element $y=g^x \pmod{p} \in\integer_p^*$ with some unknow $x$. black-box function $f$?
+		\item \textbf{Input:} a prime $p$, a primitive element (generator) $g$ of $\integer_p^*:=\qty{1,2,\dots,p-1}$, and an element $y=g^x \pmod{p} \in\integer_p^*$ with some unknow $x$. black-box function $f$?
 		\item \textbf{Output (goal):} find $x=\log_g y$
 	\end{itemize}
 	$\dlog$ is a special case of $\hsp$ with ... subgroup 
 \end{problem}
 reducible to decision version $\dlog_{1/2}$, then classification version.
 \begin{equation}
-	\dlog \le \dlog_{1/2} \le \dlog
+	\dlog \le \dlog_{\textup{decision}} \le \dlog_{\textup{promise}}
 \end{equation}
 $\le$ represents polynomial (time) reduction.
 
