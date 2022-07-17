@@ -506,6 +506,7 @@ where $r$ designates the root and $d$ measures distances on the binary tree.
 \end{figure}
 On the other hand, Childs et. al \cite{childsExponentialAlgorithmicSpeedup2003} investigate the CT quantum random walk on another kind of tree and show an exponential speedup over classical computation.
 % We have seen that the behavior of a quantum walk can be dramatically different from that of its classical counterpart. Next we will see an even stronger example of the power of quantum walk: a black-box problem that can be solved exponentially faster by a quantum walk than by any classical algorithm.
+An prominent example
 \begin{problem}[Glued tree]
 	Consider a graph obtained by starting from two balanced binary trees of height $n$, and joining them by a random cycle of length $2\cdot 2^n$ that alternates between the leaves of the two trees. (e.g. \cref{fig:glued_tree} when $n = 4$)
 	\begin{itemize}
@@ -653,6 +654,7 @@ Analogously, the quantum version of Jensen-Shannon divergence is defined as the 
 \begin{remark}
 	\psd
 \end{remark}
+shortcomings ??
 
 \subsubsection{Quantum diffusion map}
 Inspired by random walk on graphs, \emph{diffusion map} (DM) \cite{sornsaengQuantumDiffusionMap2021} is a class of \textbf{unsupervised} machine learning that offers automatic identification of \textbf{low-dimensional data structure hidden in a high dimensional dataset}.
@@ -851,6 +853,8 @@ Moreover, fully symmetric (partial) functions do not admit exponential quantum s
 % \cite{zhengSpeedingLearningQuantum2022};
 % robust, provable speedup
 % \cite{liuRigorousRobustQuantum2021}
+A natural class of problems with significant symmetry, though much less than full permutation symmetry, is the class of graph properties. For such problems, the input describes a graph, and the output depends only on the isomorphism class of that graph. 
+% \cite{childsCanGraphProperties2020}
 Graph property test ...
 \begin{equation}
 	\le 
