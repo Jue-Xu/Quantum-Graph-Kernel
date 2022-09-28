@@ -579,6 +579,7 @@ has been studied to enhance the performance of quantum SVM.
 There are mainly two approaches.
 % Here, we propose two SVM type classifiers that process data provided purely classically and use the quantum state space as the feature space to still obtain a quantum advantage.
 
+
 \subsubsection{Quantum variational classification (explicit method)}
 The first one is based on variational quantum circuit: generates a separating hyperplane in the quantum feature space.
 the quantum variational classifier builds on \cite{mitaraiQuantumCircuitLearning2018} \cite{farhiClassificationQuantumNeural2018} and operates through using a variational quantum circuit to classify a training set in direct analogy to conventional SVMs.
@@ -651,10 +652,77 @@ Analogously, the quantum version of Jensen-Shannon divergence is defined as the 
 	\end{equation}
 	% $D_{QJS}$ is always well defined, symmetric, negative definite and bounded, i.e., $0\le D_{QJS}\le 1$?.
 \end{definition}
+similarity measures? advantages? why? (isomorphism?)
+\begin{definition}[divergence]\label{def:divergence}
+	KL divergence (relative \nameref{def:entropy}): measure the distance (similarity) between two probability distributions:
+	\begin{equation}
+		\kl (P || Q) := \sum P(x) \log (P(x)/Q(x))
+	\end{equation}
+	symmetric version: Jensen-Shannon divergence (machine learning)
+	\begin{equation}
+		\jsd (P || P') := \frac{1}{2} \qty(\kl(P|| M) + \kl(P'||M))
+		\equiv H_S(M)-\frac{1}{2} (H_S(P) - H_S(P') ) 
+	\end{equation}
+	where $M=(P+P')/2$ and Shannon \nameref{def:entropy} $H_S$.
+	Analogously, quantum Jensen-Shannon divergence $D_{\qjs}$ of two density matrices can be defined...
+	\begin{equation}
+		D_{\qjs}(\dm||\dm'):= 
+		H_V(\dm_M) - \frac{1}{2} (H_V(\dm) - H_V(\dm') ) 
+	\end{equation}
+	as a quantum graph kernel ($\dm$ induced by quantum random walk)
+\end{definition}
 \begin{remark}
 	\psd
 \end{remark}
 shortcomings ??
+\begin{definition}[graph state]\label{def:graph_state}
+\end{definition}
+graph state as the quantum graph kernel ???
+
+
+\begin{definition}[graph property]\label{def:graph_property}
+	% The setting of graph property testing provides a natural class of partial graph properties.
+	monotone ...
+\end{definition}
+\begin{example}[colorable]\label{exm:colorable}
+	$k$-colorable is a graph property, i.e., allow for a coloring of the vertices with $k$ colors such that no two adjacent vertices have the same color.
+	A graph is bipartite $\iff$ 2-colorable.
+	other graph properties: isomorphism; vertex cover; Hamiltonian cycle ...
+\end{example}
+\begin{problem}[graph property test]\label{prm:graph_property_test}
+	\textbf{promise}: the input graph either has a property, or is $\epsilon$-far from having the property, meaning that we must change at least an $\epsilon$ fraction of the edges to make the property hold.
+\end{problem}
+\begin{theorem}[bounds for graph property test]
+\end{theorem}
+\begin{question}
+	\cite{montanaroSurveyQuantumProperty2018}
+	Is there any graph property which admits an exponential quantum speed-up?
+	\cite{ben-davidSymmetriesGraphProperties2020}
+	depends on input model (query adjacency matrix/list)
+	% quantum algorithms (bounds) for graph properties \cite{ben-davidSymmetriesGraphProperties2020}
+\end{question}
+Graphs is another kind of data which is fundamentally different from a real value vector because of vertex-edge relation and graph isomorphism.
+So, graph kernel \cite{kriegeSurveyGraphKernels2020} need additional attention.
+\begin{definition}[graph kernel]\label{def:graph_kernel}
+	given a pair of graphs $(\graph,\graph')$,
+	\emph{graph kernel} is $\kernel (\graph,\graph')  =$.
+	% \begin{equation}
+	% \end{equation}
+	quantum graph kernel $\kernel (\graph,\graph')  = \abs{\ip{\graph}{\graph'}}^2$ ??
+	\cite{baiQuantumJensenShannon2015}	
+\end{definition}
+classical graph data mapped to graph state, then fidelity represents a kernel function??.
+\begin{theorem}
+	On quantum computers, evaluating the trace distances is probably hard since even judging whether $\dm$ and $\dm'$ have large or small trace distance is known to be QSZK-complete \cite{watrousQuantumComputationalComplexity2008}, where QSZK (quantum statistical zero-knowledge) is a complexity class that includes BQP (bounded-error quantum polynomial time).
+	% Variational Quantum Algorithms for Trace Distance and Fidelity Estimation
+\cite{chenVariationalQuantumAlgorithms2022}
+\end{theorem}
+\begin{proposition}[\cite{huangPowerDataQuantum2021}]
+	If a classical algorithm without training data can compute (label) $y=f(x)=\mel{x}{\U_{\textup{QNN}}^\dagger \ob U_{\textup{QNN}}}{x}$ (with amplitude encoding) efficiently (poly time in ...) for any $\U_{\textup{QNN}}$ and $\ob$, then $\nameref{def:bpp}=\nameref{def:bqp}$ (which is believed unlikely).
+\end{proposition}
+\begin{proposition}[\cite{huangPowerDataQuantum2021}]
+	Training an arbitrarily deep quantum neural network $\U_{\qnn}$ with a trainable observable $\ob$ is equivalent to training a \nameref{def:quantum_kernel} method with kernel $k_{Q}(\vbx,\vbx')=\Tr(\dm(\vbx)\dm'(\vbx'))$
+\end{proposition}
 
 \subsubsection{Quantum diffusion map}
 Inspired by random walk on graphs, \emph{diffusion map} (DM) \cite{sornsaengQuantumDiffusionMap2021} is a class of \textbf{unsupervised} machine learning that offers automatic identification of \textbf{low-dimensional data structure hidden in a high dimensional dataset}.
@@ -1127,3 +1195,23 @@ non-abelian, particle physics
 
 \subsubsection{SO(1,3)}
 Lorentz invariance
+
+% \subsubsection{quantum neural network}\label{sec:quantum_neural_network}
+% \subsection{Unsupervised: PCA}
+
+\section{Hardness assumptions}
+\begin{definition}[\NP]\label{def:np}
+	\NP, \NP-hard, \NP-complete
+\end{definition}
+\begin{definition}[\sharpP]\label{def:sharpp}
+	\sharpP
+\end{definition}
+\begin{definition}[QMA]\label{def:qma}
+	QMA
+\end{definition}
+\begin{definition}[\BPP]\label{def:bpp}
+	\BPP
+\end{definition}
+\begin{definition}[\BQP]\label{def:bqp}
+	\BQP
+\end{definition}
