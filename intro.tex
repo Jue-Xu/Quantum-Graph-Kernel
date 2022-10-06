@@ -1,4 +1,4 @@
-% !TEX root = ./main.tex
+% !TEX root = ./graph_kernel.tex
 
 \section{Introduction}
 % \subsection{Motivation}
@@ -673,10 +673,34 @@ similarity measures? advantages? why? (isomorphism?)
 \end{definition}
 \begin{remark}
 	\psd
-\end{remark}
 shortcomings ??
+\end{remark}
+\nameref{def:graph_state} is an important large class of multipartite states in quantum information,
+because (connected) graph states represent a large class of genuine multipartite entangled states that have concise representations.
+Typical graph states include cluster states, GHZ states, and the states involved in error correction (toric code).
+	% Any connected graph state is \nameref{def:fully_entangled} state.
+It worth noting that 2D cluster (rectangular lattice graph) state is the universal resource for the measurement based quantum computation (MBQC) \cite{briegelMeasurementbasedQuantumComputation2009}.
+\begin{question}
+	efficient? meaningful encoding of graph data/input??
+	Hamiltona cycle of a graph state? vertex cover
+	% Any connected graph state is fully entangled m-particle state
+\end{question}
 \begin{definition}[graph state]\label{def:graph_state}
+	Given a simple graph (undirected, unweighted, no loop and multiple edge) $G=(V,E)$, a graph state is constructed as 
+	from the initial state $\ket{+}^{\otimes n}$ corresponding to $n$ vertices.
+	Then, apply controlled-Z gate to every edge, that is 
+	$\ket{G}:=\prod_{(i,j)\in E}\textsf{cZ}_{(i,j)} \ket{+}^{\otimes n}$
+	with $\ket{+}: = (\ket{0}+\ket{1})/\sqrt{2}$.
 \end{definition}
+% \begin{remark}
+	An $n$-partite(qubit) graph state can also be uniquely determined by $n$ independent stabilizers, 
+	$S_i:= X_i \bigotimes_{j\in n}Z_j$, 
+	which commute with each other and $\forall i,S_i\ket{G}=\ket{G}$.??
+	The graph state is the unique eigenstate wtih eignevalue of +1 for all the $n$ stabilizers.
+	As a result, a graph state can be written as a product of stailizer projectors, $\op{G}=\prod_{i=1}^n \frac{S_i +\identity}{2}$.
+	% \nameref{def:stabilizer} formalism
+	% stabilizer formalism
+% \end{remark}	
 graph state as the quantum graph kernel ???
 
 
