@@ -560,6 +560,19 @@ However, when data is provided in the conventional way, i.e. from a classical co
 	where the quantum state is written in the density matrix representation.
 	The quantum feature map $\Phi(\vbx)$ is realized by applying a unitary quantum circuit $\U_{\Phi(\vbx)}$ to a reference state $\ket{\vb{0}}$.
 \end{definition}
+\begin{notation}[norm]\label{def:norm}
+	Schatten p-norm $\norm{x}_p:= (\sum_i \abs{x_i}^p)^{1/p}$.
+	Euclidean norm $l_2$ norm;
+	Spectral (operator) norm $\norm{\vbx}_{\infty}$;
+	Trace norm $\norm{A}_{\Tr}\equiv\norm{A}_{1}:=\Tr(\abs{A})\equiv\Tr(\sqrt{A^\dagger A})$, $\abs{A}:=\sqrt{A^\dagger A}$, $p=1$;
+	Frobenius norm $\norm{A}_{F}:=\sqrt{\Tr(A^\dagger A)}$, $p=2$;
+	Hilbert-Schmidt norm $\norm{A}_{HS}:=\sqrt{\sum_{i,j} A_{ij}^2 }=?\sum_{i\in I}\norm{Ae_i}_H^2$;
+	Hilbert-Schmidt inner product $\expval{A,B}_{\textup{HS}}:=\Tr(A^\dagger B)$,
+	Frobenius inner product $\expval{A,B}_{\textup{F}}:=\Tr(A^\dagger B)$?
+	(in finite-dimensionala Euclidean space, the HS norm is identical to the Frobenius norm)
+	Although the Hilbert-Schmidt distance is arguably not too meaningful, operationally, one can use Cauchy-Schwarz to relate it to the very natural trace distance. 
+	shadow norm ...
+\end{notation}
 \begin{definition}[Quantum kernel estimation]\label{def:quantum_kernel}
 	Straightforwardly,
 	% Naturally,
